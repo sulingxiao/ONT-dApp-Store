@@ -2,11 +2,7 @@
   <div class="banner-container">
     <el-carousel :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="item in 3" :key="item">
-        <img
-          width="100%"
-          :src="banners.img"
-          @click="toUrl(banners.url)"
-        />
+        <img width="100%" :src="banners.img" @click="toUrl(banners.url)" />
       </el-carousel-item>
     </el-carousel>
   </div>

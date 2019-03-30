@@ -16,11 +16,16 @@
       <div class="spt-detail-txt">
         {{ txt1 }}
         <span class="spt-detail-txt-focus">{{ txt2 }}</span>
-        {{ txt3}}
+        {{ txt3 }}
       </div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">活动应用激励细则</span>
       </div>
       <div class="spt-detail-txt">
@@ -39,7 +44,12 @@
       </div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">举例</span>
       </div>
       <div class="spt-detail-txt">
@@ -50,7 +60,12 @@
       </div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">激励收益模拟曲线</span>
       </div>
       <div class="spt-detail-txt">

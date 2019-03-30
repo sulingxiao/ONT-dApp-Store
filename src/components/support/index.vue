@@ -3,7 +3,11 @@
     <div class="support-tit">"文艺复兴"激励计划</div>
 
     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-12" v-for="(item,index) in supportList" :key="index">
+      <div
+        class="col-xl-6 col-lg-6 col-12"
+        v-for="(item, index) in supportList"
+        :key="index"
+      >
         <div class="spt-item">
           <div class="spt-nickname">{{ item.nickname }}</div>
           <div class="spt-line"></div>

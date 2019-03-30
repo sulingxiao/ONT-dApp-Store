@@ -2,8 +2,8 @@
   <div class="container">
     <banner></banner>
     <table-list></table-list>
-<!--    <tables></tables>-->
-<!--    <list></list>-->
+    <!--    <tables></tables>-->
+    <!--    <list></list>-->
   </div>
 </template>
 
@@ -18,5 +18,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

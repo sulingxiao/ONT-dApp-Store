@@ -7,9 +7,7 @@
           src="../../assets/logo/logo-footer@2x.png"
         />
         <label class="footer-logo-label">></label>
-        <label class="footer-logo-text">{{
-          $t("footer.dApps")
-        }}</label>
+        <label class="footer-logo-text">{{ $t("footer.dApps") }}</label>
       </div>
 
       <div class="row">

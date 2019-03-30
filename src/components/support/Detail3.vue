@@ -16,13 +16,23 @@
       <div class="spt-detail-txt">{{ txt1 }}</div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">借款方式</span>
       </div>
       <div class="spt-detail-txt">{{ txt2 }}</div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">申请链接</span>
       </div>
       <div class="spt-detail-txt">
@@ -30,7 +40,12 @@
       </div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">借款流程</span>
       </div>
       <div class="spt-detail-txt">{{ txt4 }}</div>
@@ -45,7 +60,12 @@
       </div>
 
       <div class="spt-detail-example">
-        <span><img class="spt-d-e-img" src="./../../assets/support/detail/Rectangle.png" alt=""></span>
+        <span
+          ><img
+            class="spt-d-e-img"
+            src="./../../assets/support/detail/Rectangle.png"
+            alt=""
+        /></span>
         <span class="spt-d-e-tit">还款方式</span>
       </div>
       <div class="spt-detail-txt">{{ txt9 }}</div>

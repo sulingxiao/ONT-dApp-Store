@@ -7,10 +7,10 @@
       </div>
 
       <div class="row tl-total-info">
-        <div class="col">Total: </div>
-        <div class="col">24h Transaction: </div>
-        <div class="col">24h Active Users: </div>
-        <div class="col">24h Volume: </div>
+        <div class="col">Total:</div>
+        <div class="col">24h Transaction:</div>
+        <div class="col">24h Active Users:</div>
+        <div class="col">24h Volume:</div>
       </div>
 
       <div class="tl-total-info-line"></div>
@@ -32,9 +32,15 @@
               <tr v-for="(item, index) in lists" :key="index">
                 <td>
                   <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-12"><img class="tl-logo" :src="item.logo" alt=""></div>
+                    <div class="col-xl-3 col-lg-3 col-12">
+                      <img class="tl-logo" :src="item.logo" alt="" />
+                    </div>
                     <div class="col-xl-9 col-lg-9 col-12">
-                      <div class="td-name"><router-link :to="{name: ''}">{{ item.name }}</router-link></div>
+                      <div class="td-name">
+                        <router-link :to="{ name: '' }">{{
+                          item.name
+                        }}</router-link>
+                      </div>
                       <div class="td-desc">{{ item.desc }}</div>
                     </div>
                   </div>
