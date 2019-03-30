@@ -18,7 +18,9 @@
             v-for="(item, indexI) in fItem.list"
             :key="indexI"
           >
-            <a class="footer-content-text" :href="item.url">{{ item.name }}</a>
+            <a class="footer-content-text" :href="item.url" target="_blank">{{
+              item.name
+            }}</a>
           </div>
         </div>
       </div>
@@ -67,52 +69,70 @@ export default {
           list: [
             {
               name: this.$t("footer.developer.center"),
-              url: ""
+              url: "https://developer.ont.io/"
             },
             {
               name: this.$t("footer.developer.bounty"),
-              url: ""
+              url: "https://bounty.ont.io/"
             },
             {
               name: this.$t("footer.developer.doc"),
-              url: ""
+              url: "https://ontio.github.io/documentation/wp_download_en.html"
             },
             {
               name: this.$t("footer.developer.github"),
-              url: ""
+              url: "https://github.com/ontio"
             }
           ]
         },
         {
           name: this.$t("footer.dApps.name"),
           list: [
-            { name: this.$t("footer.dApps.dl"), url: "" },
-            { name: this.$t("footer.dApps.submit"), url: "" }
+            { name: this.$t("footer.dApps.dl"), url: "https://dapp.ont.io/" },
+            {
+              name: this.$t("footer.dApps.submit"),
+              url: "https://ont.io/#/dapp"
+            }
           ]
         },
-        {
-          name: this.$t("footer.business.name"),
-          list: [
-            { name: this.$t("footer.business.gaming"), url: "" },
-            { name: this.$t("footer.business.creative"), url: "" }
-          ]
-        },
+        // {
+        //   name: this.$t("footer.business.name"),
+        //   list: [
+        //     { name: this.$t("footer.business.gaming"), url: "" },
+        //     { name: this.$t("footer.business.creative"), url: "" }
+        //   ]
+        // },
         {
           name: this.$t("footer.trust.name"),
           list: [
-            { name: this.$t("footer.trust.anchor"), url: "" },
-            { name: this.$t("footer.trust.node"), url: "" }
+            {
+              name: this.$t("footer.trust.anchor"),
+              url: "https://info.ont.io/trust-anchor/en"
+            },
+            {
+              name: this.$t("footer.trust.node"),
+              url: "https://info.ont.io/listtriones/en"
+            }
           ]
         },
         {
           name: this.$t("footer.about.name"),
           list: [
-            { name: this.$t("footer.about.us"), url: "" },
-            { name: this.$t("footer.about.res"), url: "" },
-            { name: this.$t("footer.about.events"), url: "" },
-            { name: this.$t("footer.about.faq"), url: "" },
-            { name: this.$t("footer.about.whitePaper"), url: "" },
-            { name: this.$t("footer.about.explorer"), url: "" }
+            {
+              name: this.$t("footer.about.us"),
+              url: "https://ont.io/#/aboutus"
+            },
+            // { name: this.$t("footer.about.res"), url: "" },
+            {
+              name: this.$t("footer.about.events"),
+              url: "https://medium.com/ontologynetwork"
+            },
+            // { name: this.$t("footer.about.faq"), url: "" },
+            // { name: this.$t("footer.about.whitePaper"), url: "" },
+            {
+              name: this.$t("footer.about.explorer"),
+              url: "https://explorer.ont.io/"
+            }
           ]
         }
       ];
