@@ -15,10 +15,7 @@
               @click="toUrl(detail.url)"
             >
               link
-              <img
-                class="dapp-detail-project-logo-link-img"
-                src=""
-              />
+              <img class="dapp-detail-project-logo-link-img" src="" />
             </button>
           </div>
         </div>
@@ -125,7 +122,7 @@ export default {
       let startTime = endTime - 60 * 60 * 24 * 14;
 
       let url =
-        process.env.VUE_APP_EXPLORER_API_URL +
+        process.env.EXPLORER_API_URL +
         "explorer/summary/project/" +
         $ontid +
         "/daily/" +
