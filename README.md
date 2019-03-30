@@ -27,8 +27,9 @@ yarn fix
 
 
 ### 项目部署
-打包编译：
+安装package、打包编译：
 ```
+yarn
 yarn build
 ```
 > 复制dist目录下所有文件到apache/nginx指定根目录下即可完成部署。
