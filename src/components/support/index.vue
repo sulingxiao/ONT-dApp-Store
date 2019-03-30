@@ -76,8 +76,6 @@ export default {
 
   .support-tit {
     text-align: center;
-    height: 140px;
-    line-height: 140px;
     background: linear-gradient(
       270deg,
       rgba(124, 205, 239, 1) 0%,
@@ -86,6 +84,7 @@ export default {
     border-radius: 6px;
     opacity: 0.7994;
     margin-bottom: 90px;
+    padding: 50px 24px;
     font-size: 32px;
     color: rgba(255, 255, 255, 1);
     text-shadow: 0 2px 5px rgba(70, 159, 219, 1);
@@ -130,6 +129,7 @@ export default {
       margin-top: 20px;
 
       .spt-btn {
+        border: 0;
         min-width: 80px;
         height: 34px;
         background: linear-gradient(
