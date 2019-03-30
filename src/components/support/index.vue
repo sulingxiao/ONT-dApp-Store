@@ -1,6 +1,6 @@
 <template>
   <div class="container support-container">
-    <div class="support-tit">"文艺复兴"激励计划</div>
+    <div class="support-tit">{{ $t("support.index.name") }}</div>
 
     <div class="row">
       <div
@@ -27,39 +27,39 @@
 
 <script>
 export default {
-  data() {
-    return {
-      supportList: [
+  computed: {
+    supportList() {
+      return [
         {
-          name: "节点大让利",
-          nickname: "收入五五分成",
+          name: this.$t("support.index.detail1.name"),
+          nickname: this.$t("support.index.detail1.nickname"),
           img: "/support/1.png",
-          desc: "用户行为付出的手续费，开发者和节点各分50%",
+          desc: this.$t("support.index.detail1.desc"),
           url: "SupportDetail1"
         },
         {
-          name: "日激励 周激励",
-          nickname: "节点大让利",
+          name: this.$t("support.index.detail2.name"),
+          nickname: this.$t("support.index.detail2.nickname"),
           img: "/support/2.png",
-          desc: "ONG AND ONG 活跃度前50，通通奖励",
+          desc: this.$t("support.index.detail2.desc"),
           url: "SupportDetail2"
         },
         {
-          name: "我出钱 你开发",
-          nickname: "贷款计划",
+          name: this.$t("support.index.detail3.name"),
+          nickname: this.$t("support.index.detail3.nickname"),
           img: "/support/3.png",
-          desc: "帮开发者度过前期开发经费不足的问题 无利率",
+          desc: this.$t("support.index.detail3.desc"),
           url: "SupportDetail3"
         },
         {
-          name: "不懂就要问",
-          nickname: "开发者支持",
+          name: this.$t("support.index.detail4.name"),
+          nickname: this.$t("support.index.detail4.nickname"),
           img: "/support/4.png",
-          desc: "本体技术支持人员欢迎您的骚扰",
+          desc: this.$t("support.index.detail4.desc"),
           url: "SupportDetail4"
         }
-      ]
-    };
+      ];
+    }
   },
   methods: {
     goToDetail(routeName) {
@@ -110,6 +110,7 @@ export default {
       font-size: 40px;
       color: rgba(0, 0, 0, 1);
       margin-top: 36px;
+      min-height: 120px;
     }
     .spt-img {
       margin-top: 49px;
@@ -123,12 +124,13 @@ export default {
       font-size: 18px;
       color: rgba(89, 89, 89, 1);
       margin-top: 94px;
+      min-height: 60px;
     }
     .spt-btn-area {
       margin-top: 20px;
 
       .spt-btn {
-        width: 80px;
+        min-width: 80px;
         height: 34px;
         background: linear-gradient(
           270deg,

@@ -65,6 +65,27 @@ export default {
   },
   support: {
     index: {
+      name: '"文艺复兴"激励计划',
+      detail1: {
+        name: "节点大让利",
+        nickname: "收入五五分成",
+        desc: "用户行为付出的手续费，开发者和节点各分50%"
+      },
+      detail2: {
+        name: "日激励 周激励",
+        nickname: "dApp激励计划",
+        desc: "ONG AND ONG 活跃度前50，通通奖励"
+      },
+      detail3: {
+        name: "我出钱 你开发",
+        nickname: "贷款计划",
+        desc: "帮开发者度过前期开发经费不足的问题 无利率"
+      },
+      detail4: {
+        name: "不懂就要问",
+        nickname: "开发者支持",
+        desc: "本体技术支持人员欢迎您的骚扰"
+      },
       detail: "详情"
     },
     breadcrumb: {

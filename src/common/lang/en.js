@@ -65,7 +65,30 @@ export default {
   },
   support: {
     index: {
-      detail: "Detail"
+      name: "“The Renaissance” Incentive Plan",
+      detail1: {
+        name: "Split the Profits",
+        nickname: "Big profits on nodes",
+        desc:
+          "Split the cost of the user's actions, 50% for developers and 50% for nodes."
+      },
+      detail2: {
+        name: "Daily incentive and weekly incentive",
+        nickname: "dApp Incentive Plan",
+        desc: "ONT and ONG, the rewards for the top 50 activeness."
+      },
+      detail3: {
+        name: "We pay for your development",
+        nickname: "Loan Program",
+        desc:
+          "Without interest rate, we will help developers solving the problem of insufficient funds."
+      },
+      detail4: {
+        name: "Asks for advice",
+        nickname: "Developer Support",
+        desc: "Ontology technical support team welcome your consultation."
+      },
+      detail: "Learn More"
     },
     breadcrumb: {
       home: "Home",
