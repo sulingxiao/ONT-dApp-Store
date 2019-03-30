@@ -40,6 +40,29 @@ export default {
       explorer: "Explorer"
     }
   },
+  main: {
+    tl: {
+      name: "DApp List",
+      total: {
+        name: "Total:",
+        txn: "24h Transaction:",
+        activeU: "24h Active Users:",
+        volume: "24h Volume:"
+      },
+      th: {
+        dApp: "DApp",
+        c: "Category",
+        activeU: "Active user",
+        txn: "Transactions",
+        volume: "Volume",
+        reward: "Reward"
+      },
+      td: {
+        hour: "24h: ",
+        days: "7day: "
+      }
+    }
+  },
   support: {
     index: {
       detail: "Detail"

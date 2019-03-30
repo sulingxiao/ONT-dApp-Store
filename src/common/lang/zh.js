@@ -40,6 +40,29 @@ export default {
       explorer: "浏览器"
     }
   },
+  main: {
+    tl: {
+      name: "DApp列表",
+      total: {
+        name: "总数:",
+        txn: "24小时交易数:",
+        activeU: "24小时活动用户数:",
+        volume: "24小时总量"
+      },
+      th: {
+        dApp: "DApp",
+        c: "类型",
+        activeU: "活动用户",
+        txn: "交易",
+        volume: "总量",
+        reward: "奖励"
+      },
+      td: {
+        hour: "24小时: ",
+        days: "7天: "
+      }
+    }
+  },
   support: {
     index: {
       detail: "详情"

@@ -2,15 +2,15 @@
   <div class="row table-list-container">
     <div class="col">
       <div class="tables-top">
-        <span class="tl-table-tit">DApp List</span>
+        <span class="tl-table-tit">{{ $t("main.tl.name") }}</span>
         <div class="tl-table-line"></div>
       </div>
 
       <div class="row tl-total-info">
-        <div class="col">Total:</div>
-        <div class="col">24h Transaction:</div>
-        <div class="col">24h Active Users:</div>
-        <div class="col">24h Volume:</div>
+        <div class="col">{{ $t("main.tl.total.name") }}</div>
+        <div class="col">{{ $t("main.tl.total.txn") }}</div>
+        <div class="col">{{ $t("main.tl.total.activeU") }}</div>
+        <div class="col">{{ $t("main.tl.total.volume") }}</div>
       </div>
 
       <div class="tl-total-info-line"></div>
@@ -20,12 +20,12 @@
           <table class="table table-hover tl-table">
             <thead>
               <tr>
-                <th scope="col">DApp</th>
-                <th scope="col">Category</th>
-                <th scope="col">Active user</th>
-                <th scope="col">Transactions</th>
-                <th scope="col">Volume</th>
-                <th scope="col">Reward</th>
+                <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
+                <th scope="col">{{ $t("main.tl.th.c") }}</th>
+                <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
+                <th scope="col">{{ $t("main.tl.th.txn") }}</th>
+                <th scope="col">{{ $t("main.tl.th.volume") }}</th>
+                <th scope="col">{{ $t("main.tl.th.reward") }}</th>
               </tr>
             </thead>
             <tbody>
@@ -47,20 +47,24 @@
                 </td>
                 <td>{{ item.category }}</td>
                 <td>
-                  <div>24h: {{ item.activeUser.day }}</div>
-                  <div>7day: {{ item.activeUser.week }}</div>
+                  <div>{{ $t("main.tl.td.hour") + item.activeUser.day }}</div>
+                  <div>{{ $t("main.tl.td.days") + item.activeUser.week }}</div>
                 </td>
                 <td>
-                  <div>24h: {{ item.txn.day }}</div>
-                  <div>7day: {{ item.txn.week }}</div>
+                  <div>{{ $t("main.tl.td.hour") + item.txn.day }}</div>
+                  <div>{{ $t("main.tl.td.days") + item.txn.week }}</div>
                 </td>
                 <td>
-                  <div>24h: {{ item.volume.day }}</div>
-                  <div>7day: {{ item.volume.week }}</div>
+                  <div>{{ $t("main.tl.td.hour") + item.volume.day }}</div>
+                  <div>{{ $t("main.tl.td.days") + item.volume.week }}</div>
                 </td>
                 <td>
-                  <div class="td-reward">24h: {{ item.reward.day }}</div>
-                  <div class="td-reward">7day: {{ item.reward.week }}</div>
+                  <div class="td-reward">
+                    {{ $t("main.tl.td.hour") + item.reward.day }}
+                  </div>
+                  <div class="td-reward">
+                    {{ $t("main.tl.td.days") + item.reward.week }}
+                  </div>
                 </td>
               </tr>
             </tbody>
