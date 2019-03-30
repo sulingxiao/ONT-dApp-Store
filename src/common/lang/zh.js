@@ -44,10 +44,10 @@ export default {
     tl: {
       name: "DApp列表",
       total: {
-        name: "总数:",
-        txn: "24小时交易数:",
-        activeU: "24小时活动用户数:",
-        volume: "24小时总量"
+        name: "总数: ",
+        txn: "24小时交易数: ",
+        activeU: "24小时活动用户数: ",
+        volume: "24小时总量: "
       },
       th: {
         dApp: "DApp",

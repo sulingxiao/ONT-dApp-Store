@@ -7,10 +7,26 @@
       </div>
 
       <div class="row tl-total-info">
-        <div class="col">{{ $t("main.tl.total.name") }}</div>
-        <div class="col">{{ $t("main.tl.total.txn") }}</div>
-        <div class="col">{{ $t("main.tl.total.activeU") }}</div>
-        <div class="col">{{ $t("main.tl.total.volume") }}</div>
+        <div class="col">
+          {{ $t("main.tl.total.name") + (totals.Total || 0) }}
+        </div>
+        <div class="col">
+          {{ $t("main.tl.total.txn") + (totals.DayTxCount || 0) }}
+        </div>
+        <div class="col">
+          {{
+            $t("main.tl.total.activeU") + (totals.DayActiveAddressCount || 0)
+          }}
+        </div>
+        <div class="col">
+          {{
+            $t("main.tl.total.volume") +
+              (totals.DayOnt || 0) +
+              " ONT, " +
+              (totals.DayOnt || 0) +
+              " ONG"
+          }}
+        </div>
       </div>
 
       <div class="tl-total-info-line"></div>
@@ -33,37 +49,57 @@
                 <td>
                   <div class="row">
                     <div class="col-xl-3 col-lg-3 col-12">
-                      <img class="tl-logo" :src="item.logo" alt="" />
+                      <img class="tl-logo" :src="item.Logo" alt="" />
                     </div>
                     <div class="col-xl-9 col-lg-9 col-12">
                       <div class="td-name">
                         <router-link :to="{ name: '' }">{{
-                          item.name
+                          item.Name
                         }}</router-link>
                       </div>
-                      <div class="td-desc">{{ item.desc }}</div>
+                      <div class="td-desc">{{ item.Description }}</div>
                     </div>
                   </div>
                 </td>
-                <td>{{ item.category }}</td>
+                <td>{{ item.Category }}</td>
                 <td>
-                  <div>{{ $t("main.tl.td.hour") + item.activeUser.day }}</div>
-                  <div>{{ $t("main.tl.td.days") + item.activeUser.week }}</div>
+                  <div>
+                    {{ $t("main.tl.td.hour") + item.DayActiveAddressCount }}
+                  </div>
+                  <div>
+                    {{ $t("main.tl.td.days") + item.WeekActiveAddressCount }}
+                  </div>
                 </td>
                 <td>
-                  <div>{{ $t("main.tl.td.hour") + item.txn.day }}</div>
-                  <div>{{ $t("main.tl.td.days") + item.txn.week }}</div>
+                  <div>{{ $t("main.tl.td.hour") + item.DayTxCount }}</div>
+                  <div>{{ $t("main.tl.td.days") + item.WeekTxCount }}</div>
                 </td>
                 <td>
-                  <div>{{ $t("main.tl.td.hour") + item.volume.day }}</div>
-                  <div>{{ $t("main.tl.td.days") + item.volume.week }}</div>
+                  <div>
+                    {{
+                      $t("main.tl.td.hour") +
+                        item.DayOnt +
+                        " ONT, " +
+                        item.DayOng +
+                        " ONG"
+                    }}
+                  </div>
+                  <div>
+                    {{
+                      $t("main.tl.td.days") +
+                        item.WeekOnt +
+                        " ONT, " +
+                        item.WeekOng +
+                        " ONG"
+                    }}
+                  </div>
                 </td>
                 <td>
                   <div class="td-reward">
-                    {{ $t("main.tl.td.hour") + item.reward.day }}
+                    {{ $t("main.tl.td.hour") + item.DayRewardOng }}
                   </div>
                   <div class="td-reward">
-                    {{ $t("main.tl.td.days") + item.reward.week }}
+                    {{ $t("main.tl.td.days") + item.WeekRewardOnt }}
                   </div>
                 </td>
               </tr>
@@ -77,7 +113,6 @@
           @current-change="handleCurrentChange"
           background
           layout="prev, pager, next"
-          :current-page="currentPage"
           :page-size="pageSize"
           :total="tlTotal"
         >
@@ -91,131 +126,27 @@
 export default {
   data() {
     return {
-      tlTotal: 50,
-      currentPage: 3,
-      pageSize: 5,
-      lists: [
-        {
-          name: "1111111112",
-          logo:
-            "https://cms.ont.io/uploads/images/dapp/1ac27db1899bae0a037f7ce9aa8737f6.jpg",
-          desc: "我是描述",
-          category: "1",
-          activeUser: {
-            day: 123,
-            week: 123
-          },
-          txn: {
-            day: 123,
-            week: 123
-          },
-          volume: {
-            day: 123,
-            week: 123
-          },
-          reward: {
-            day: "123ONG",
-            week: "123ONT"
-          }
-        },
-        {
-          name: "222222223",
-          logo:
-            "https://cms.ont.io/uploads/images/dapp/1ac27db1899bae0a037f7ce9aa8737f6.jpg",
-          desc: "我是描述",
-          category: "1",
-          activeUser: {
-            day: 123,
-            week: 123
-          },
-          txn: {
-            day: 123,
-            week: 123
-          },
-          volume: {
-            day: 123,
-            week: 123
-          },
-          reward: {
-            day: "123ONG",
-            week: "123ONT"
-          }
-        },
-        {
-          name: "333333444444",
-          logo:
-            "https://cms.ont.io/uploads/images/dapp/1ac27db1899bae0a037f7ce9aa8737f6.jpg",
-          desc: "我是描述",
-          category: "1",
-          activeUser: {
-            day: 123,
-            week: 123
-          },
-          txn: {
-            day: 123,
-            week: 123
-          },
-          volume: {
-            day: 123,
-            week: 123
-          },
-          reward: {
-            day: "123ONG",
-            week: "123ONT"
-          }
-        },
-        {
-          name: "4344444444",
-          logo:
-            "https://cms.ont.io/uploads/images/dapp/1ac27db1899bae0a037f7ce9aa8737f6.jpg",
-          desc: "我是描述",
-          category: "1",
-          activeUser: {
-            day: 123,
-            week: 123
-          },
-          txn: {
-            day: 123,
-            week: 123
-          },
-          volume: {
-            day: 123,
-            week: 123
-          },
-          reward: {
-            day: "123ONG",
-            week: "123ONT"
-          }
-        },
-        {
-          name: "55555556",
-          logo:
-            "https://cms.ont.io/uploads/images/dapp/1ac27db1899bae0a037f7ce9aa8737f6.jpg",
-          desc: "我是描述",
-          category: "1",
-          activeUser: {
-            day: 123,
-            week: 123
-          },
-          txn: {
-            day: 123,
-            week: 123
-          },
-          volume: {
-            day: 123,
-            week: 123
-          },
-          reward: {
-            day: "123ONG",
-            week: "123ONT"
-          }
-        }
-      ]
+      pageSize: 10
     };
   },
+  async created() {
+    await this.$store.dispatch("getDAppTotals");
+    await this.$store.dispatch("getDAppLists", { page: 1 });
+  },
+  computed: {
+    totals() {
+      return this.$store.getters.dAppTotals || {};
+    },
+    lists() {
+      return this.$store.getters.dAppLists || {};
+    },
+    tlTotal() {
+      return this.$store.getters.dAppListsTotal || 0;
+    }
+  },
   methods: {
-    handleCurrentChange(val) {
-      let params = { pageSize: this.$route.params.pageSize, pageNumber: val };
+    async handleCurrentChange(val) {
+      await this.$store.dispatch("getDAppLists", { page: val });
     }
   }
 };

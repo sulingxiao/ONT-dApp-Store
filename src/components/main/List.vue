@@ -55,15 +55,12 @@ export default {
   },
   computed: {
     lists() {
-      return this.$store.getters.dappLists || {};
+      return this.$store.getters.dAppLists || {};
     }
   },
   methods: {
     toDAppDetails($id) {
       this.$router.push({ name: "DAppDetails", params: { id: $id } });
-    },
-    toDAppApplicaiton() {
-      this.$router.push({ name: "DAppApplication" });
     }
   }
 };

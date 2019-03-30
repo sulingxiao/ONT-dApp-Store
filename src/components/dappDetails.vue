@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     detail() {
-      return this.$store.getters.dappDetail || {};
+      return this.$store.getters.dAppDetail || {};
     }
   },
   created() {

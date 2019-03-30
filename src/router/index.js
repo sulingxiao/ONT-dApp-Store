@@ -39,11 +39,6 @@ const routes = [
     path: "/dapp-details/:id",
     name: "DAppDetails",
     component: _import("dappDetails")
-  },
-  {
-    path: "/dapp-submit",
-    name: "DAppSubmit",
-    component: _import("dappSubmit")
   }
 ];
 

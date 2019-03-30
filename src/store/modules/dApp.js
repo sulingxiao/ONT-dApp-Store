@@ -1,6 +1,7 @@
 import axios from "axios/index";
 
-const baseURL = process.env.CMS_API_URL;
+const cmsURL = process.env.VUE_APP_CMS_API_URL;
+const expURL = process.env.VUE_APP_EXPLORER_API_URL;
 
 /**
  * 分组dApp数据
@@ -42,30 +43,48 @@ function dAppGroupBy($list) {
 
 export default {
   state: {
+    totals: {},
     lists: {},
+    listTotal: 0,
     detail: {}
   },
   getters: {
-    dappLists: state => state.lists,
-    dappDetail: state => state.detail
+    dAppTotals: state => state.totals,
+    dAppLists: state => state.lists,
+    dAppListsTotal: state => state.listTotal,
+    dAppDetail: state => state.detail
   },
   mutations: {
+    setDAppTotals(state, payload) {
+      state.totals = payload;
+    },
     setDAppLists(state, payload) {
       state.lists = payload;
+    },
+    setDAppListTotal(state, payload) {
+      state.listTotal = payload;
     },
     setDAppDetail(state, payload) {
       state.detail = payload.info;
     }
   },
   actions: {
-    async getDAppLists({ commit }) {
-      let url = baseURL + "dapp-info/list";
+    async getDAppTotals({ commit }) {
+      let url = expURL + "explorer/contract/dappstore/24h/summary";
       let ret = await axios.get(url);
-      let lists = dAppGroupBy(ret.data.data);
-      commit("setDAppLists", lists);
+      commit("setDAppTotals", ret.data.Result);
+    },
+    async getDAppLists({ commit }, params) {
+      let url = expURL + "explorer/contract/dappstore/10/" + params.page;
+      // let url = cmsURL + "dapp-info/list";
+      let ret = await axios.get(url);
+      // let lists = dAppGroupBy(ret.data.data);
+      // commit("setDAppLists", lists);
+      commit("setDAppLists", ret.data.Result.ContractList);
+      commit("setDAppListTotal", ret.data.Result.Total);
     },
     async getDAppDetail({ commit }, params) {
-      let url = baseURL + "dapp-info/" + params.id;
+      let url = cmsURL + "dapp-info/" + params.id;
       let ret = await axios.get(url);
       commit("setDAppDetail", ret.data.data);
       return ret.data.data;
