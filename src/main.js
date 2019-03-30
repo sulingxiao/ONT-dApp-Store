@@ -12,8 +12,6 @@ import VueCookies from "vue-cookies";
 import VeeValidate from "vee-validate";
 import zh from "./common/lang/zh";
 import en from "./common/lang/en";
-import jp from "./common/lang/jp";
-import ko from "./common/lang/ko";
 
 Vue.use(Element);
 Vue.use(VeeValidate);
@@ -23,9 +21,7 @@ const i18n = new VueI18n({
   locale: LangStorage.getLang("en"), // 语言标识
   messages: {
     zh: zh,
-    en: en,
-    jp: jp,
-    ko: ko
+    en: en
   }
 });
 

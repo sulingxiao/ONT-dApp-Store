@@ -267,6 +267,10 @@ export default {
   .td-name {
     font-size: 14px;
     color: rgba(36, 114, 204, 1);
+
+    a {
+      color: rgba(70, 159, 219, 1);
+    }
   }
   .td-desc {
     font-size: 14px;

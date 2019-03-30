@@ -16,7 +16,7 @@
           <div class="spt-desc">{{ item.desc }}</div>
           <div class="spt-btn-area">
             <button type="button" class="spt-btn" @click="goToDetail(item.url)">
-              详情
+              {{ $t("support.index.detail") }}
             </button>
           </div>
         </div>
@@ -32,7 +32,7 @@ export default {
       supportList: [
         {
           name: "节点大让利",
-          nickname: "收入六四分成",
+          nickname: "收入五五分成",
           img: "/support/1.png",
           desc: "用户行为付出的手续费，开发者和节点各分50%",
           url: "SupportDetail1"

@@ -7,7 +7,7 @@
           src="../../assets/logo/logo-footer@2x.png"
         />
         <label class="footer-logo-label">></label>
-        <label class="footer-logo-text">{{ $t("footer.dApps") }}</label>
+        <label class="footer-logo-text">{{ $t("footer.homeName") }}</label>
       </div>
 
       <div class="row">
@@ -56,60 +56,67 @@ export default {
           value: "zh",
           label: "中文（简体）"
         }
-      ],
-      footerList: [
+      ]
+    };
+  },
+  computed: {
+    footerList() {
+      return [
         {
-          name: "Developer",
+          name: this.$t("footer.developer.name"),
           list: [
             {
-              name: "Developer Center",
+              name: this.$t("footer.developer.center"),
               url: ""
             },
             {
-              name: "Bounty Program",
+              name: this.$t("footer.developer.bounty"),
               url: ""
             },
             {
-              name: "Documentation",
+              name: this.$t("footer.developer.doc"),
               url: ""
             },
             {
-              name: "GitHub",
+              name: this.$t("footer.developer.github"),
               url: ""
             }
           ]
         },
         {
-          name: "dApps",
+          name: this.$t("footer.dApps.name"),
           list: [
-            { name: "dApps List", url: "" },
-            { name: "Submit a dApp", url: "" }
+            { name: this.$t("footer.dApps.dl"), url: "" },
+            { name: this.$t("footer.dApps.submit"), url: "" }
           ]
         },
         {
-          name: "Business",
+          name: this.$t("footer.business.name"),
           list: [
-            { name: "Gaming Industry", url: "" },
-            { name: "Creative Industry", url: "" }
+            { name: this.$t("footer.business.gaming"), url: "" },
+            { name: this.$t("footer.business.creative"), url: "" }
           ]
         },
         {
-          name: "Trust Ecosystem",
-          list: [{ name: "Trust Anchor", url: "" }, { name: "Node", url: "" }]
+          name: this.$t("footer.trust.name"),
+          list: [
+            { name: this.$t("footer.trust.anchor"), url: "" },
+            { name: this.$t("footer.trust.node"), url: "" }
+          ]
         },
         {
-          name: "About",
+          name: this.$t("footer.about.name"),
           list: [
-            { name: "About Us", url: "" },
-            { name: "Resources", url: "" },
-            { name: "Events", url: "" },
-            { name: "FAQ", url: "" },
-            { name: "White Paper", url: "" },
-            { name: "Explorer", url: "" }
+            { name: this.$t("footer.about.us"), url: "" },
+            { name: this.$t("footer.about.res"), url: "" },
+            { name: this.$t("footer.about.events"), url: "" },
+            { name: this.$t("footer.about.faq"), url: "" },
+            { name: this.$t("footer.about.whitePaper"), url: "" },
+            { name: this.$t("footer.about.explorer"), url: "" }
           ]
         }
-      ]
-    };
+      ];
+    }
   },
   watch: {
     "$i18n.locale": function(newV, oldV) {

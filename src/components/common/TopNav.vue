@@ -23,7 +23,7 @@
         <router-link
           class="btn mr-sm-2 ont-navbar-txt"
           :to="{ name: 'Support' }"
-          >Incentive Plan</router-link
+          >{{ $t("navbar.plan") }}</router-link
         >
       </div>
       <a
@@ -31,7 +31,7 @@
         href="https://ont.io/#/dapp"
         target="_blank"
       >
-        Submit
+        {{ $t("navbar.submit") }}
       </a>
     </div>
   </nav>
