@@ -36,7 +36,9 @@
           <table class="table table-hover tl-table">
             <thead>
               <tr>
-                <th class="first-th-td" scope="col">{{ $t("main.tl.th.dApp") }}</th>
+                <th class="first-th-td" scope="col">
+                  {{ $t("main.tl.th.dApp") }}
+                </th>
                 <th scope="col">{{ $t("main.tl.th.c") }}</th>
                 <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
                 <th scope="col">{{ $t("main.tl.th.txn") }}</th>
@@ -63,7 +65,22 @@
                           >{{ item.Name }}</a
                         >
                       </div>
-                      <div class="td-desc">{{ item.Description }}</div>
+                      <div class="td-desc">
+                        <a
+                          :href="
+                            'https://explorer.ont.io/contract/' +
+                              item.ContractHash +
+                              '/10/1'
+                          "
+                          target="_blank"
+                        >
+                          {{
+                            item.Description.length > 100
+                              ? item.Description.substring(0, 100) + "..."
+                              : item.Description
+                          }}</a
+                        >
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -229,10 +246,12 @@ export default {
       color: rgba(70, 159, 219, 1);
     }
   }
-  .td-desc {
+  .td-desc,
+  .td-desc > a {
     font-size: 14px;
     font-weight: 300;
     color: rgba(74, 74, 74, 1);
+    line-height: 18px;
   }
   .td-reward {
     font-size: 14px;
