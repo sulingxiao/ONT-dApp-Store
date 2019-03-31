@@ -36,7 +36,7 @@
           <table class="table table-hover tl-table">
             <thead>
               <tr>
-                <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
+                <th class="first-th-td" scope="col">{{ $t("main.tl.th.dApp") }}</th>
                 <th scope="col">{{ $t("main.tl.th.c") }}</th>
                 <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
                 <th scope="col">{{ $t("main.tl.th.txn") }}</th>
@@ -46,7 +46,7 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in lists" :key="index">
-                <td>
+                <td class="first-th-td">
                   <div class="flex-row">
                     <div class="flex-col">
                       <img class="tl-logo" :src="item.Logo" alt="" />
@@ -206,6 +206,9 @@ export default {
     div {
       line-height: 28px;
     }
+  }
+  .first-th-td {
+    padding-left: 15px;
   }
   .flex-row {
     display: flex;
