@@ -23,7 +23,7 @@
             $t("main.tl.total.volume") +
               (totals.DayOnt || 0) +
               " ONT, " +
-              (totals.DayOng.toFixed(2) || 0) +
+              (totals.DayOng ? parseFloat(totals.DayOng).toFixed(2) : 0) +
               " ONG"
           }}
         </div>

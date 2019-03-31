@@ -42,15 +42,15 @@ export default {
   },
   main: {
     tl: {
-      name: "DApp List",
+      name: "dApp List",
       total: {
-        name: "Total: ",
+        name: "dApp Total: ",
         txn: "24h Transaction: ",
         activeU: "24h Active Users: ",
         volume: "24h Volume: "
       },
       th: {
-        dApp: "DApp",
+        dApp: "dApp",
         c: "Category",
         activeU: "Active user",
         txn: "Transactions",
