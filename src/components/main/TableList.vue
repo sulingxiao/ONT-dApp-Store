@@ -7,24 +7,24 @@
       </div>
 
       <div class="row tl-total-info">
-        <div class="col">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
           {{ $t("main.tl.total.name") + (totals.Total || 0) }}
         </div>
-        <div class="col">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
           {{ $t("main.tl.total.txn") + (totals.DayTxCount || 0) }}
         </div>
-        <div class="col">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
           {{
             $t("main.tl.total.activeU") + (totals.DayActiveAddressCount || 0)
           }}
         </div>
-        <div class="col">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
           {{
             $t("main.tl.total.volume") +
-              (totals.DayOnt || 0) +
-              " ONT, " +
               (totals.DayOng ? parseFloat(totals.DayOng).toFixed(2) : 0) +
-              " ONG"
+              " ONG, " +
+              (totals.DayOnt || 0) +
+              " ONT"
           }}
         </div>
       </div>
@@ -75,8 +75,8 @@
                           target="_blank"
                         >
                           {{
-                            item.Description.length > 100
-                              ? item.Description.substring(0, 100) + "..."
+                            item.Description.length > 50
+                              ? item.Description.substring(0, 50) + "..."
                               : item.Description
                           }}</a
                         >
@@ -91,47 +91,63 @@
                   }}
                 </td>
                 <td>
-                  <div>
-                    {{ $t("main.tl.td.hour") + item.DayActiveAddressCount }}
-                  </div>
-                  <div>
-                    {{ $t("main.tl.td.days") + item.WeekActiveAddressCount }}
-                  </div>
-                </td>
-                <td>
-                  <div>{{ $t("main.tl.td.hour") + item.DayTxCount }}</div>
-                  <div>{{ $t("main.tl.td.days") + item.WeekTxCount }}</div>
-                </td>
-                <td>
-                  <div>
-                    {{
-                      $t("main.tl.td.hour") +
-                        item.DayOnt +
-                        " ONT, " +
-                        item.DayOng.toFixed(2) +
-                        " ONG"
-                    }}
-                  </div>
-                  <div>
-                    {{
-                      $t("main.tl.td.days") +
-                        item.WeekOnt +
-                        " ONT, " +
-                        item.WeekOng.toFixed(2) +
-                        " ONG"
-                    }}
+                  <div class="flex-row">
+                    <div class="flex-td-tit">
+                      <div>{{ $t("main.tl.td.hour") }}</div>
+                      <div>{{ $t("main.tl.td.days") }}</div>
+                    </div>
+                    <div class="flex-td-txt">
+                      <div>{{ item.DayActiveAddressCount }}</div>
+                      <div>{{ item.WeekActiveAddressCount }}</div>
+                    </div>
                   </div>
                 </td>
                 <td>
-                  <div class="td-reward">
-                    {{
-                      $t("main.tl.td.hour") +
-                        item.DayRewardOng.toFixed(2) +
-                        " ONG"
-                    }}
+                  <div class="flex-row">
+                    <div class="flex-td-tit">
+                      <div>{{ $t("main.tl.td.hour") }}</div>
+                      <div>{{ $t("main.tl.td.days") }}</div>
+                    </div>
+                    <div class="flex-td-txt">
+                      <div>{{ item.DayTxCount }}</div>
+                      <div>{{ item.WeekTxCount }}</div>
+                    </div>
                   </div>
-                  <div class="td-reward">
-                    {{ $t("main.tl.td.days") + item.WeekRewardOnt + " ONT" }}
+                </td>
+                <td>
+                  <div class="flex-row">
+                    <div class="flex-td-tit">
+                      <div>{{ $t("main.tl.td.hour") }}</div>
+                      <div>{{ $t("main.tl.td.days") }}</div>
+                    </div>
+                    <div class="flex-td-txt">
+                      <div>
+                        {{ item.DayOng.toFixed(2) + " ONG, " }}
+                      </div>
+                      <div>
+                        {{ item.WeekOng.toFixed(2) + " ONG, " }}
+                      </div>
+                    </div>
+                    <div class="flex-td-txt">
+                      <div>
+                        {{ item.DayOnt + " ONT" }}
+                      </div>
+                      <div>
+                        {{ item.WeekOnt + " ONT" }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex-row td-reward">
+                    <div class="flex-td-tit">
+                      <div>{{ $t("main.tl.td.hour") }}</div>
+                      <div>{{ $t("main.tl.td.days") }}</div>
+                    </div>
+                    <div class="flex-td-txt">
+                      <div>{{ item.DayRewardOng.toFixed(2) + " ONG" }}</div>
+                      <div>{{ item.WeekRewardOnt + " ONT" }}</div>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -233,6 +249,14 @@ export default {
   }
   .flex-row {
     display: flex;
+  }
+  .flex-td-tit {
+    text-align: right;
+  }
+  .flex-td-txt {
+    text-align: right;
+    margin-left: 3px;
+    white-space: nowrap;
   }
   .td-name-desc {
     margin-left: 12px;

@@ -58,8 +58,8 @@ export default {
         reward: "奖励"
       },
       td: {
-        hour: "24小时: ",
-        days: "7天: "
+        hour: "24h:",
+        days: "7day:"
       }
     }
   },
