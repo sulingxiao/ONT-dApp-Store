@@ -1,8 +1,10 @@
 <template>
   <div class="banner-container">
     <el-carousel type="card" height="210px">
-      <el-carousel-item v-for="item in 3" :key="item">
-        <img height="100%" :src="banners.img" @click="toUrl(banners.url)" />
+      <el-carousel-item v-for="(banner, index) in banners" :key="index">
+        <a :href="banner.url" target="_blank"
+          ><img height="100%" :src="banner.img" alt=""
+        /></a>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -12,18 +14,21 @@
 export default {
   data() {
     return {
-      banners: {
-        url: "https://hyd-go.alfakingdom.com/",
-        img: "/dApp/dapp-dragon-big.jpeg"
-      }
+      banners: [
+        {
+          url: "https://hyd-go.alfakingdom.com/",
+          img: "/banner/dragon.jpeg"
+        },
+        {
+          url: "https://candy.ont.io/#/",
+          img: "/banner/candy-box.jpg"
+        },
+        {
+          url: "https://candy.ont.io/#/",
+          img: "/banner/candy-box.jpg"
+        }
+      ]
     };
-  },
-  methods: {
-    toUrl($url) {
-      if ($url) {
-        window.location.href = $url;
-      }
-    }
   }
 };
 </script>
