@@ -47,21 +47,32 @@
             <tbody>
               <tr v-for="(item, index) in lists" :key="index">
                 <td>
-                  <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-12">
+                  <div class="flex-row">
+                    <div class="flex-col">
                       <img class="tl-logo" :src="item.Logo" alt="" />
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-12">
+                    <div class="flex-col td-name-desc">
                       <div class="td-name">
-                        <router-link :to="{ name: '' }">{{
-                          item.Name
-                        }}</router-link>
+                        <a
+                          :href="
+                            'https://explorer.ont.io/contract/' +
+                              item.ContractHash +
+                              '/10/1'
+                          "
+                          target="_blank"
+                          >{{ item.Name }}</a
+                        >
                       </div>
                       <div class="td-desc">{{ item.Description }}</div>
                     </div>
                   </div>
                 </td>
-                <td>{{ item.Category }}</td>
+                <td>
+                  {{
+                    item.Category.substring(0, 1).toUpperCase() +
+                      item.Category.substring(1)
+                  }}
+                </td>
                 <td>
                   <div>
                     {{ $t("main.tl.td.hour") + item.DayActiveAddressCount }}
@@ -96,10 +107,10 @@
                 </td>
                 <td>
                   <div class="td-reward">
-                    {{ $t("main.tl.td.hour") + item.DayRewardOng }}
+                    {{ $t("main.tl.td.hour") + item.DayRewardOng + " ONG" }}
                   </div>
                   <div class="td-reward">
-                    {{ $t("main.tl.td.days") + item.WeekRewardOnt }}
+                    {{ $t("main.tl.td.days") + item.WeekRewardOnt + " ONT" }}
                   </div>
                 </td>
               </tr>
@@ -195,6 +206,14 @@ export default {
     div {
       line-height: 28px;
     }
+  }
+  .flex-row {
+    display: flex;
+  }
+  .td-name-desc {
+    margin-left: 12px;
+    width: 200px;
+    word-wrap: break-word;
   }
   .tl-logo {
     width: 60px;
