@@ -37,8 +37,6 @@
   </nav>
 </template>
 
-<script></script>
-
 <style scoped>
 .navbar-logo {
   height: 22px;

@@ -129,9 +129,9 @@ export default {
       pageSize: 10
     };
   },
-  async created() {
-    await this.$store.dispatch("getDAppTotals");
-    await this.$store.dispatch("getDAppLists", { page: 1 });
+  created() {
+    this.$store.dispatch("getDAppTotals").then();
+    this.$store.dispatch("getDAppLists", { page: 1 }).then();
   },
   computed: {
     totals() {

@@ -142,30 +142,6 @@ export default {
     "$i18n.locale": function(newV, oldV) {
       LangStorage.setLang(newV);
     }
-  },
-  methods: {
-    toTechNews() {
-      let lang = LangStorage.getLang("en");
-      let url;
-      switch (lang) {
-        case "en":
-          url = "https://medium.com/ontologynetwork/tagged/tech";
-          break;
-        case "zh":
-          url = "https://ontfans.io/?/";
-          break;
-        case "jp":
-          url = "https://medium.com/ontologynetwork/tagged/tech";
-          break;
-        case "ko":
-          url = "https://medium.com/ontologynetwork/tagged/tech";
-          break;
-        default:
-          url = "https://medium.com/ontologynetwork/tagged/tech";
-          break;
-      }
-      window.location.href = url;
-    }
   }
 };
 </script>
