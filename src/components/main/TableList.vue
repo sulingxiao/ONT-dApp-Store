@@ -23,7 +23,7 @@
             $t("main.tl.total.volume") +
               (totals.DayOnt || 0) +
               " ONT, " +
-              (totals.DayOnt || 0) +
+              (totals.DayOng.toFixed(2) || 0) +
               " ONG"
           }}
         </div>
@@ -108,7 +108,7 @@
                       $t("main.tl.td.hour") +
                         item.DayOnt +
                         " ONT, " +
-                        item.DayOng +
+                        item.DayOng.toFixed(2) +
                         " ONG"
                     }}
                   </div>
@@ -117,14 +117,18 @@
                       $t("main.tl.td.days") +
                         item.WeekOnt +
                         " ONT, " +
-                        item.WeekOng +
+                        item.WeekOng.toFixed(2) +
                         " ONG"
                     }}
                   </div>
                 </td>
                 <td>
                   <div class="td-reward">
-                    {{ $t("main.tl.td.hour") + item.DayRewardOng + " ONG" }}
+                    {{
+                      $t("main.tl.td.hour") +
+                        item.DayRewardOng.toFixed(2) +
+                        " ONG"
+                    }}
                   </div>
                   <div class="td-reward">
                     {{ $t("main.tl.td.days") + item.WeekRewardOnt + " ONT" }}
