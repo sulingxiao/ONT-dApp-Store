@@ -4,13 +4,13 @@
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ name: 'DApp' }">{{
           $t("support.breadcrumb.home")
-          }}</el-breadcrumb-item>
+        }}</el-breadcrumb-item>
         <el-breadcrumb-item :to="{ name: 'Support' }"
-        >{{ $t("support.breadcrumb.plan") }}
+          >{{ $t("support.breadcrumb.plan") }}
         </el-breadcrumb-item>
         <el-breadcrumb-item>{{
           $t("support.breadcrumb.detail")
-          }}</el-breadcrumb-item>
+        }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
 
@@ -18,8 +18,16 @@
       <div class="spt-detail-tit">{{ $t("support.detail2.tit") }}</div>
 
       <div class="spt-detail-txt">
+        <a href="https://ont.io/#/dapp" target="_blank">{{
+          $t("support.detail.submit")
+        }}</a>
+      </div>
+
+      <div class="spt-detail-txt">
         {{ $t("support.detail2.txt1") }}
-        <span class="spt-detail-txt-focus">{{ $t("support.detail2.txt2") }}</span>
+        <span class="spt-detail-txt-focus">{{
+          $t("support.detail2.txt2")
+        }}</span>
         {{ $t("support.detail2.txt3") }}
       </div>
 
@@ -40,7 +48,9 @@
         <div>{{ $t("support.detail2.txt8") }}</div>
         <div class="spt-detail-txt-focus">{{ $t("support.detail2.txt9") }}</div>
         <div>{{ $t("support.detail2.txt10") }}</div>
-        <div class="spt-detail-txt-focus">{{ $t("support.detail2.txt11") }}</div>
+        <div class="spt-detail-txt-focus">
+          {{ $t("support.detail2.txt11") }}
+        </div>
         <div>{{ $t("support.detail2.txt12") }}</div>
         <div>{{ $t("support.detail2.txt13") }}</div>
         <div>{{ $t("support.detail2.txt14") }}</div>
@@ -60,7 +70,7 @@
         {{ $t("support.detail2.txt16") }}
       </div>
       <div class="spt-detail-example-img">
-        <img src="./../../assets/support/detail/detail2-1.png" alt="" />
+        <img :src="'/support/detail/2-1-' + $i18n.locale + '.png'" alt="" />
       </div>
 
       <div class="spt-detail-example">
@@ -76,7 +86,7 @@
         {{ $t("support.detail2.txt17") }}
       </div>
       <div class="spt-detail-example-img">
-        <img src="./../../assets/support/detail/detail2-2.png" alt="" />
+        <img :src="'/support/detail/2-2-' + $i18n.locale + '.png'" alt="" />
       </div>
     </div>
   </div>
@@ -127,7 +137,8 @@
     margin-top: 32px;
 
     img {
-      width: 80%;
+      max-height: 100%;
+      max-width: 100%;
     }
   }
 }

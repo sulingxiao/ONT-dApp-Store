@@ -123,7 +123,7 @@ export default {
       font-size: 18px;
       color: rgba(89, 89, 89, 1);
       margin-top: 94px;
-      min-height: 60px;
+      min-height: 85px;
     }
     .spt-btn-area {
       margin-top: 20px;

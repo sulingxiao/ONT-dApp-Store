@@ -51,7 +51,15 @@
                 <td class="first-th-td">
                   <div class="flex-row">
                     <div class="flex-col">
-                      <img class="tl-logo" :src="item.Logo" alt="" />
+                      <img
+                        v-if="item.Logo"
+                        class="tl-logo"
+                        :src="item.Logo"
+                        alt=""
+                      />
+                      <div v-else class="backup-logo">
+                        {{ item.Name.substring(0, 1) }}
+                      </div>
                     </div>
                     <div class="flex-col td-name-desc">
                       <div class="td-name">
@@ -216,7 +224,7 @@ export default {
   margin-top: 15px;
   margin-bottom: 15px;
 
-  .col {
+  div {
     font-size: 14px;
     color: rgba(74, 74, 74, 1);
   }
@@ -265,6 +273,16 @@ export default {
   }
   .tl-logo {
     width: 60px;
+    height: 60px;
+  }
+  .backup-logo {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(70, 159, 219, 1);
+    color: white;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
   }
   .td-name {
     font-size: 14px;

@@ -17,7 +17,14 @@
     <div class="detail-content-area">
       <div class="spt-detail-tit">{{ $t("support.detail1.tit") }}</div>
 
+      <div class="spt-detail-txt">
+        <a href="https://ont.io/#/dapp" target="_blank">{{
+          $t("support.detail.submit")
+        }}</a>
+      </div>
+
       <div class="spt-detail-txt">{{ $t("support.detail1.txt1") }}</div>
+      <div class="spt-detail-txt">{{ $t("support.detail1.txt2") }}</div>
 
       <div class="spt-detail-example">
         <span
@@ -28,9 +35,9 @@
         /></span>
         <span class="spt-d-e-tit">{{ $t("support.example") }}</span>
       </div>
-      <div class="spt-detail-txt">{{ $t("support.detail1.txt2") }}</div>
+      <div class="spt-detail-txt">{{ $t("support.detail1.txt3") }}</div>
       <div class="spt-detail-example-img">
-        <img src="./../../assets/support/detail/detail1-1.png" alt="" />
+        <img :src="'/support/detail/1-1-' + $i18n.locale + '.png'" alt="" />
       </div>
     </div>
   </div>
@@ -78,7 +85,8 @@
     margin-top: 32px;
 
     img {
-      width: 80%;
+      max-height: 100%;
+      max-width: 100%;
     }
   }
 }

@@ -20,6 +20,13 @@
       <div class="spt-detail-txt">{{ $t("support.detail4.txt1") }}</div>
       <div class="spt-detail-txt">{{ $t("support.detail4.txt2") }}</div>
       <div class="spt-detail-txt">{{ $t("support.detail4.txt3") }}</div>
+      <div class="spt-detail-txt">
+        {{ $t("support.detail4.txt4") }}
+        <a :href="$t('support.detail4.url2')" target="_blank">{{
+          $t("support.detail4.txt5")
+        }}</a
+        >{{ $t("support.detail4.txt6") }}
+      </div>
 
       <div class="spt-detail-example">
         <span
@@ -31,8 +38,8 @@
         <span class="spt-d-e-tit">{{ $t("support.detail4.tit1") }}</span>
       </div>
       <div class="spt-detail-txt">
-        <a :href="$t('support.detail4.txt4')" target="_blank">{{
-          $t("support.detail4.txt4")
+        <a :href="$t('support.detail4.url1')" target="_blank">{{
+          $t("support.detail4.url1")
         }}</a>
       </div>
     </div>
@@ -81,7 +88,8 @@
     margin-top: 32px;
 
     img {
-      width: 80%;
+      max-height: 100%;
+      max-width: 100%;
     }
   }
 }

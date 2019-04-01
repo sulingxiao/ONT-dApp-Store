@@ -40,7 +40,7 @@
         <span class="spt-d-e-tit">{{ $t("support.detail3.tit2") }}</span>
       </div>
       <div class="spt-detail-txt">
-        <a :href="$t('support.detail3.txt3')" target="_blank">{{
+        <a :href="$t('support.detail3.url1')" target="_blank">{{
           $t("support.detail3.txt3")
         }}</a>
       </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="spt-detail-txt">{{ $t("support.detail3.txt4") }}</div>
       <div class="spt-detail-example-img">
-        <img src="./../../assets/support/detail/detail3-1.png" alt="" />
+        <img :src="'/support/detail/3-1-' + $i18n.locale + '.png'" alt="" />
       </div>
       <div class="spt-detail-txt">
         <div>{{ $t("support.detail3.txt5") }}</div>
@@ -130,7 +130,8 @@
     margin-top: 32px;
 
     img {
-      width: 80%;
+      max-height: 100%;
+      max-width: 100%;
     }
   }
 }
