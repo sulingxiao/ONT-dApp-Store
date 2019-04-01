@@ -38,6 +38,9 @@
 </template>
 
 <style scoped>
+.navbar-toggler {
+  border: 0;
+}
 .navbar-logo {
   height: 22px;
   margin-right: 11px;

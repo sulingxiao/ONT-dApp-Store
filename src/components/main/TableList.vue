@@ -82,11 +82,7 @@
                           "
                           target="_blank"
                         >
-                          {{
-                            item.Description.length > 50
-                              ? item.Description.substring(0, 50) + "..."
-                              : item.Description
-                          }}</a
+                          {{ item.Description }}</a
                         >
                       </div>
                     </div>
@@ -268,7 +264,8 @@ export default {
   }
   .td-name-desc {
     margin-left: 12px;
-    width: 200px;
+    min-width: 200px;
+    max-width: 270px;
     word-wrap: break-word;
   }
   .tl-logo {
@@ -298,6 +295,9 @@ export default {
     font-weight: 300;
     color: rgba(74, 74, 74, 1);
     line-height: 18px;
+    white-space: nowrap; /* 强制不换行 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 超出末尾用...替代 */
   }
   .td-reward {
     font-size: 14px;

@@ -46,15 +46,15 @@ export default {
       total: {
         name: "dApp总数: ",
         txn: "24H交易数: ",
-        activeU: "24H活动用户数: ",
-        volume: "24H总量: "
+        activeU: "24H活跃用户数: ",
+        volume: "24H交易总量: "
       },
       th: {
         dApp: "dApp",
         c: "类型",
-        activeU: "活动用户",
-        txn: "交易",
-        volume: "总量",
+        activeU: "活跃用户",
+        txn: "交易数",
+        volume: "交易总量",
         reward: "奖励"
       },
       td: {
