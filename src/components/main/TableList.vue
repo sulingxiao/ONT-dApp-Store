@@ -36,9 +36,8 @@
           <table class="table table-hover tl-table">
             <thead>
               <tr>
-                <th class="first-th-td" scope="col">
-                  {{ $t("main.tl.th.dApp") }}
-                </th>
+                <th class="first-th-td" scope="col">#</th>
+                <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
                 <th scope="col">{{ $t("main.tl.th.c") }}</th>
                 <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
                 <th scope="col">{{ $t("main.tl.th.txn") }}</th>
@@ -48,7 +47,10 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in lists" :key="index">
-                <td class="first-th-td">
+                <td class="first-th-td" width="5%">
+                  {{ rankIndex + index + 1 }}
+                </td>
+                <td>
                   <div class="flex-row">
                     <div class="flex-col">
                       <img
@@ -166,6 +168,7 @@
           background
           layout="prev, pager, next"
           :page-size="pageSize"
+          :current-page="currentPage"
           :total="tlTotal"
         >
         </el-pagination>
@@ -178,6 +181,7 @@
 export default {
   data() {
     return {
+      currentPage: 1,
       pageSize: 10
     };
   },
@@ -194,10 +198,14 @@ export default {
     },
     tlTotal() {
       return this.$store.getters.dAppListsTotal || 0;
+    },
+    rankIndex() {
+      return (this.currentPage - 1) * this.pageSize;
     }
   },
   methods: {
     async handleCurrentChange(val) {
+      this.currentPage = val;
       await this.$store.dispatch("getDAppLists", { page: val });
     }
   }
@@ -242,7 +250,6 @@ export default {
     color: rgba(74, 74, 74, 1);
     border-top: 0;
     border-bottom: 1px solid #dee2e6;
-    min-width: 120px;
 
     div {
       line-height: 28px;
