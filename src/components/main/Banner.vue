@@ -1,10 +1,15 @@
 <template>
   <div class="banner-container">
-    <el-carousel :height="carouselHeight" indicator-position="outside">
+    <el-carousel
+      :type="type"
+      :height="carouselHeight"
+      indicator-position="outside"
+    >
       <el-carousel-item v-for="(banner, index) in banners" :key="index">
-        <a :href="banner.url" target="_blank"
+        <a v-if="banner.url" :href="banner.url" target="_blank"
           ><img :src="banner.img" alt=""
         /></a>
+        <img v-else :src="banner.img" alt="" />
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -22,16 +27,25 @@ export default {
         {
           url: "https://candy.ont.io/#/",
           img: "/banner/candy-box.jpg"
+        },
+        {
+          url: "",
+          img: "/banner/block-war.png"
         }
       ]
     };
   },
   computed: {
+    type() {
+      return window.innerWidth > 768 ? "card" : "";
+    },
     carouselHeight() {
-      if (window.innerWidth > 1100) {
-        return "410px";
+      if (window.innerWidth >= 1100) {
+        return "210px";
+      } else if (window.innerWidth < 1100 && window.innerWidth > 768) {
+        return (window.innerWidth / 5.8).toString() + "px";
       } else {
-        return (window.innerWidth / 2.6).toString() + "px";
+        return "125px";
       }
     }
   }

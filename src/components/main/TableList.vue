@@ -11,12 +11,12 @@
           {{ $t("main.tl.total.name") + (totals.Total || 0) }}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-          {{ $t("main.tl.total.txn") + (totals.DayTxCount || 0) }}
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
           {{
             $t("main.tl.total.activeU") + (totals.DayActiveAddressCount || 0)
           }}
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          {{ $t("main.tl.total.txn") + (totals.DayTxCount || 0) }}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
           {{
