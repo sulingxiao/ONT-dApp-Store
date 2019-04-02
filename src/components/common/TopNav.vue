@@ -33,11 +33,27 @@
       >
         {{ $t("navbar.submit") }}
       </a>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown change-lang-btn">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbardrop"
+            data-toggle="dropdown"
+          >
+            {{ $i18n.locale.toLocaleUpperCase() }}
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" @click="$i18n.locale = 'en'">EN</a>
+            <a class="dropdown-item" @click="$i18n.locale = 'zh'">ZH</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
 
-<style scoped>
+<style rel="stylesheet/scss" lang="scss" scoped>
 .navbar-toggler {
   border: 0;
 }
@@ -63,5 +79,21 @@
   border-radius: 4px;
   font-size: 14px;
   color: rgba(255, 255, 255, 1);
+}
+.change-lang-btn {
+  font-size: 14px;
+  color: rgba(70, 159, 219, 1);
+  margin-left: 15px;
+
+  a,
+  div {
+    font-size: 14px;
+    color: rgba(70, 159, 219, 1);
+  }
+  .nav-link {
+    padding-right: 0 !important;
+    font-size: 14px !important;
+    color: rgba(70, 159, 219, 1) !important;
+  }
 }
 </style>
