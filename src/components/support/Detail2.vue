@@ -34,7 +34,7 @@
         <span
           ><img
             class="spt-d-e-img"
-            src="./../../assets/support/detail/Rectangle.png"
+            src="../../../public/static/support/Rectangle.png"
             alt=""
         /></span>
         <span class="spt-d-e-tit">{{ $t("support.detail2.tit1") }}</span>
@@ -49,7 +49,7 @@
         <span
           ><img
             class="spt-d-e-img"
-            src="./../../assets/support/detail/Rectangle.png"
+            src="../../../public/static/support/Rectangle.png"
             alt=""
         /></span>
         <span class="spt-d-e-tit">{{ $t("support.detail2.tit2") }}</span>
@@ -73,7 +73,7 @@
         <span
           ><img
             class="spt-d-e-img"
-            src="./../../assets/support/detail/Rectangle.png"
+            src="../../../public/static/support/Rectangle.png"
             alt=""
         /></span>
         <span class="spt-d-e-tit">{{ $t("support.detail2.tit3") }}</span>

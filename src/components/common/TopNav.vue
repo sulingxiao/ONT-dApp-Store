@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light container">
     <router-link class="navbar-brand" :to="{ path: '/' }">
-      <img class="navbar-logo" src="../../assets/logo/Logo@2x.png" />
+      <img class="navbar-logo" :src="'/static/logo/blue.png'" />
       <span class="ont-navbar-txt">Ontology dApps</span>
     </router-link>
 

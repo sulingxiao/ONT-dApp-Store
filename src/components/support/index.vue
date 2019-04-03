@@ -38,28 +38,28 @@ export default {
         {
           name: this.$t("support.index.detail1.name"),
           nickname: this.$t("support.index.detail1.nickname"),
-          img: "/support/1.png",
+          img: "/static/support/1.png",
           desc: this.$t("support.index.detail1.desc"),
           url: "SupportDetail1"
         },
         {
           name: this.$t("support.index.detail2.name"),
           nickname: this.$t("support.index.detail2.nickname"),
-          img: "/support/2.png",
+          img: "/static/support/2.png",
           desc: this.$t("support.index.detail2.desc"),
           url: "SupportDetail2"
         },
         {
           name: this.$t("support.index.detail3.name"),
           nickname: this.$t("support.index.detail3.nickname"),
-          img: "/support/3.png",
+          img: "/static/support/3.png",
           desc: this.$t("support.index.detail3.desc"),
           url: "SupportDetail3"
         },
         {
           name: this.$t("support.index.detail4.name"),
           nickname: this.$t("support.index.detail4.nickname"),
-          img: "/support/4.png",
+          img: "/static/support/4.png",
           desc: this.$t("support.index.detail4.desc"),
           url: "SupportDetail4"
         }

@@ -22,15 +22,15 @@ export default {
       banners: [
         {
           url: "https://hyd-go.alfakingdom.com/",
-          img: "/banner/dragon.jpeg"
+          img: "/static/banner/dragon.jpeg"
         },
         {
           url: "https://candy.ont.io/#/",
-          img: "/banner/candy-box.jpg"
+          img: "/static/banner/candy-box.jpg"
         },
         {
           url: "",
-          img: "/banner/block-war.png"
+          img: "/static/banner/block-war.png"
         }
       ]
     };

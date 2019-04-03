@@ -16,22 +16,22 @@ const routes = [
     component: _import("support/index")
   },
   {
-    path: "/support/1",
+    path: "/static/support/1",
     name: "SupportDetail1",
     component: _import("support/Detail1")
   },
   {
-    path: "/support/2",
+    path: "/static/support/2",
     name: "SupportDetail2",
     component: _import("support/Detail2")
   },
   {
-    path: "/support/3",
+    path: "/static/support/3",
     name: "SupportDetail3",
     component: _import("support/Detail3")
   },
   {
-    path: "/support/4",
+    path: "/static/support/4",
     name: "SupportDetail4",
     component: _import("support/Detail4")
   },

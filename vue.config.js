@@ -1,93 +1,86 @@
 module.exports = {
-	// 基本路径
-	baseUrl: '/',
+  // 基本路径
+  baseUrl: "/",
 
-	// 输出文件目录
-	outputDir: 'dist',
+  // 输出文件目录
+  outputDir: "dist",
 
-	// eslint-loader 是否在保存的时候检查
-	lintOnSave: true,
+  // eslint-loader 是否在保存的时候检查
+  lintOnSave: true,
 
-	// use the full build with in-browser compiler?
+  // 配置js、css等文件夹的二级目录位置，不设置则会在dist下生成4个文件夹
+  assetsDir: "static",
 
-	// https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
-    // runtimeCompiler: false,
+  // use the full build with in-browser compiler?
 
-	// webpack配置
+  // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
+  // runtimeCompiler: false,
 
-	// see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-	chainWebpack: () => {
-	},
+  // webpack配置
 
-	configureWebpack: () => {
-	},
+  // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
+  chainWebpack: () => {},
 
-	// vue-loader 配置项
+  configureWebpack: () => {},
 
-	// https://vue-loader.vuejs.org/en/options.html
-	// vueLoader: {},
+  // vue-loader 配置项
 
-	// 生产环境是否生成 sourceMap 文件
-	productionSourceMap: true,
+  // https://vue-loader.vuejs.org/en/options.html
+  // vueLoader: {},
 
-	// css相关配置
-	css: {
+  // 生产环境是否生成 sourceMap 文件
+  productionSourceMap: true,
 
-		// 是否使用css分离插件 ExtractTextPlugin
-		extract: true,
+  // css相关配置
+  css: {
+    // 是否使用css分离插件 ExtractTextPlugin
+    extract: true,
 
-		// 开启 CSS source maps?
-		sourceMap: false,
+    // 开启 CSS source maps?
+    sourceMap: false,
 
-		// css预设器配置项
-		loaderOptions: {},
+    // css预设器配置项
+    loaderOptions: {},
 
-		// 启用 CSS modules for all css / pre-processor files.
-		modules: false
+    // 启用 CSS modules for all css / pre-processor files.
+    modules: false
+  },
 
-	},
+  // use thread-loader for babel & TS in production build
 
-	// use thread-loader for babel & TS in production build
+  // enabled by default if the machine has more than 1 cores
+  parallel: require("os").cpus().length > 1,
 
-	// enabled by default if the machine has more than 1 cores
-	parallel: require('os').cpus().length > 1,
+  // 是否启用dll
 
-	// 是否启用dll
+  // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
+  //dll: false,
 
-	// See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
-	 //dll: false,
+  // PWA 插件相关配置
 
-	// PWA 插件相关配置
+  // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
+  pwa: {},
 
-	// see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
-	pwa: {},
+  // webpack-dev-server 相关配置
+  devServer: {
+    open: process.platform === "darwin",
 
-	// webpack-dev-server 相关配置
-	devServer: {
+    host: "0.0.0.0",
 
-		open: process.platform === 'darwin',
+    port: 8080,
 
-		host: '0.0.0.0',
+    https: false,
 
-		port: 8080,
+    hotOnly: false,
 
-		https: false,
+    proxy: null, // 设置代理
 
-		hotOnly: false,
+    before: app => {}
+  },
 
-		proxy: null, // 设置代理
+  // 第三方插件配置
 
-		before: app => {
-		}
-
-	},
-
-	// 第三方插件配置
-
-	pluginOptions: {
-
-		// ...
-
-	}
-
+  pluginOptions: {
+    // ...
+  }
 };

@@ -24,7 +24,7 @@
         <span
           ><img
             class="spt-d-e-img"
-            src="./../../assets/support/detail/Rectangle.png"
+            src="../../../public/static/support/Rectangle.png"
             alt=""
         /></span>
         <span class="spt-d-e-tit">{{ $t("support.example") }}</span>

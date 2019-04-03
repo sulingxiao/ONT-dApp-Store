@@ -4,7 +4,7 @@
       <div class="footer-logo-title">
         <img
           class="footer-logo-img"
-          src="../../assets/logo/logo-footer@2x.png"
+          :src="'/static/logo/black.png'"
         />
         <label class="footer-logo-label">></label>
         <label class="footer-logo-text">{{ $t("footer.homeName") }}</label>
