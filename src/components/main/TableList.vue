@@ -43,11 +43,12 @@
                 <th scope="col">{{ $t("main.tl.th.txn") }}</th>
                 <th scope="col">{{ $t("main.tl.th.volume") }}</th>
                 <th scope="col">{{ $t("main.tl.th.reward") }}</th>
+                <th scope="col">{{ $t("main.tl.th.totalReward") }}</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(item, index) in lists" :key="index">
-                <td class="first-th-td" width="5%">
+                <td class="first-th-td td-text-justify">
                   {{ rankIndex + index + 1 }}
                 </td>
                 <td>
@@ -90,7 +91,7 @@
                     </div>
                   </div>
                 </td>
-                <td>
+                <td class="td-text-justify">
                   {{
                     item.Category.substring(0, 1).toUpperCase() +
                       item.Category.substring(1)
@@ -146,14 +147,12 @@
                 </td>
                 <td>
                   <div class="flex-row td-reward">
-                    <div class="flex-td-tit">
-                      <div>{{ $t("main.tl.td.hour") }}</div>
-                      <div>{{ $t("main.tl.td.days") }}</div>
-                    </div>
-                    <div class="flex-td-txt">
-                      <div>{{ item.DayRewardOng.toFixed(2) + " ONG" }}</div>
-                      <div>{{ item.WeekRewardOnt + " ONT" }}</div>
-                    </div>
+                    <div class="flex-td-txt-center">0</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex-row td-reward">
+                    <div class="flex-td-txt-center">0</div>
                   </div>
                 </td>
               </tr>
@@ -182,12 +181,14 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 10
+      pageSize: 5
     };
   },
   created() {
     this.$store.dispatch("getDAppTotals").then();
-    this.$store.dispatch("getDAppLists", { page: 1 }).then();
+    this.$store
+      .dispatch("getDAppLists", { size: this.pageSize, page: 1 })
+      .then();
   },
   computed: {
     totals() {
@@ -206,7 +207,10 @@ export default {
   methods: {
     async handleCurrentChange(val) {
       this.currentPage = val;
-      await this.$store.dispatch("getDAppLists", { page: val });
+      await this.$store.dispatch("getDAppLists", {
+        size: this.pageSize,
+        page: val
+      });
     }
   }
 };
@@ -244,12 +248,15 @@ export default {
     color: rgba(0, 0, 0, 1);
     margin-left: 0;
     border: 0;
+    white-space: nowrap; /* 强制不换行 */
+    padding: 15px 50px 15px 15px;
   }
   td {
     font-size: 14px;
     color: rgba(74, 74, 74, 1);
     border-top: 0;
     border-bottom: 1px solid #dee2e6;
+    padding: 15px 50px 15px 15px;
 
     div {
       line-height: 28px;
@@ -268,6 +275,10 @@ export default {
     text-align: right;
     margin-left: 3px;
     white-space: nowrap;
+  }
+  .flex-td-txt-center {
+    width: 100%;
+    text-align: center;
   }
   .td-name-desc {
     margin-left: 12px;
@@ -305,6 +316,9 @@ export default {
     white-space: nowrap; /* 强制不换行 */
     overflow: hidden;
     text-overflow: ellipsis; /* 超出末尾用...替代 */
+  }
+  .td-text-justify {
+    line-height: 55px;
   }
   .td-reward {
     font-size: 14px;

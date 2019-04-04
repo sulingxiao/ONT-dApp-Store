@@ -55,7 +55,8 @@ export default {
         activeU: "活跃用户",
         txn: "交易数",
         volume: "交易总量",
-        reward: "奖励"
+        reward: "周激励（美元）",
+        totalReward: "累计激励（美元）"
       },
       td: {
         hour: "24h:",

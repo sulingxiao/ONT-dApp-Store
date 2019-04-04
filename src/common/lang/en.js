@@ -55,7 +55,8 @@ export default {
         activeU: "Active users",
         txn: "Transactions",
         volume: "Volume",
-        reward: "Reward"
+        reward: "Weekly Reward (USD)",
+        totalReward: "Total Reward (USD)"
       },
       td: {
         hour: "24h:",

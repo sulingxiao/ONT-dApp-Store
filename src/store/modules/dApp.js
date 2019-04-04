@@ -75,7 +75,12 @@ export default {
       commit("setDAppTotals", ret.data.Result);
     },
     async getDAppLists({ commit }, params) {
-      let url = expURL + "explorer/contract/dappstore/10/" + params.page;
+      let url =
+        expURL +
+        "explorer/contract/dappstore/" +
+        params.size +
+        "/" +
+        params.page;
       // let url = cmsURL + "dapp-info/list";
       let ret = await axios.get(url);
       // let lists = dAppGroupBy(ret.data.data);

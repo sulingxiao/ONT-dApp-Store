@@ -29,7 +29,7 @@ export default {
           img: "/static/banner/candy-box.jpg"
         },
         {
-          url: "",
+          url: "https://blockwar.online",
           img: "/static/banner/block-war.png"
         }
       ]
