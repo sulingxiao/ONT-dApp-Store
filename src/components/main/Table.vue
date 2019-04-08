@@ -11,7 +11,7 @@
                 <tr>
                   <th class="first-th-td" scope="col">#</th>
                   <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
-                  <th scope="col">{{ $t("main.tl.th.c") }}</th>
+<!--                  <th scope="col">{{ $t("main.tl.th.c") }}</th>-->
                   <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
                   <th scope="col">{{ $t("main.tl.th.txn") }}</th>
                   <th scope="col">{{ $t("main.tl.th.volume") }}</th>
@@ -64,12 +64,12 @@
                       </div>
                     </div>
                   </td>
-                  <td class="td-text-justify">
-                    {{
-                      item.Category.substring(0, 1).toUpperCase() +
-                        item.Category.substring(1)
-                    }}
-                  </td>
+<!--                  <td class="td-text-justify">-->
+<!--                    {{-->
+<!--                      item.Category.substring(0, 1).toUpperCase() +-->
+<!--                        item.Category.substring(1)-->
+<!--                    }}-->
+<!--                  </td>-->
                   <td>
                     <div class="flex-row">
                       <div class="flex-td-tit">
@@ -206,14 +206,14 @@ export default {
     margin-left: 0;
     border: 0;
     white-space: nowrap; /* 强制不换行 */
-    padding: 15px 50px 15px 15px;
+    padding: 15px 30px 15px 15px;
   }
   td {
     font-size: 14px;
     color: rgba(74, 74, 74, 1);
     border-top: 0;
     border-bottom: 1px solid #dee2e6;
-    padding: 15px 50px 15px 15px;
+    padding: 15px 30px 15px 15px;
 
     div {
       line-height: 28px;

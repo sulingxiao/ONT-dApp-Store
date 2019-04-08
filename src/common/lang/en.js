@@ -187,5 +187,8 @@ export default {
       url1: "https://ont.io/#/dapp",
       url2: "https://ont.io/#/contactUs"
     }
+  },
+  tp: {
+    tit: "Third Party DApp Stores"
   }
 };

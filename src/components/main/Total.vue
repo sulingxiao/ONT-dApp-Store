@@ -43,7 +43,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" scoped>
+<style rel="stylesheet/scss" lang="scss" scoped>
 .tables-top {
   margin-top: 14px;
 }
