@@ -1,85 +1,91 @@
 <template>
-  <div class="container">
-    <div class="breadcrumb-area">
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ name: 'DApp' }">{{
-          $t("support.breadcrumb.home")
-        }}</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ name: 'Support' }"
-          >{{ $t("support.breadcrumb.plan") }}
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>{{
-          $t("support.breadcrumb.detail")
-        }}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="breadcrumb-area">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ name: 'DApp' }">{{
+              $t("support.breadcrumb.home")
+            }}</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'Support' }"
+              >{{ $t("support.breadcrumb.plan") }}
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>{{
+              $t("support.breadcrumb.detail")
+            }}</el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
 
-    <div class="detail-content-area">
-      <div class="spt-detail-tit">{{ $t("support.detail3.tit") }}</div>
+        <div class="detail-content-area">
+          <div class="spt-detail-tit">{{ $t("support.detail3.tit") }}</div>
 
-      <div class="spt-detail-txt">{{ $t("support.detail3.txt1") }}</div>
+          <div class="spt-detail-txt">{{ $t("support.detail3.txt1") }}</div>
 
-      <div class="spt-detail-example">
-        <span
-          ><img
-            class="spt-d-e-img"
-            src="../../../public/static/support/Rectangle.png"
-            alt=""
-        /></span>
-        <span class="spt-d-e-tit">{{ $t("support.detail3.tit1") }}</span>
-      </div>
-      <div class="spt-detail-txt">{{ $t("support.detail3.txt2") }}</div>
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.detail3.tit1") }}</span>
+          </div>
+          <div class="spt-detail-txt">{{ $t("support.detail3.txt2") }}</div>
 
-      <div class="spt-detail-example">
-        <span
-          ><img
-            class="spt-d-e-img"
-            src="../../../public/static/support/Rectangle.png"
-            alt=""
-        /></span>
-        <span class="spt-d-e-tit">{{ $t("support.detail3.tit2") }}</span>
-      </div>
-      <div class="spt-detail-txt">
-        <a :href="$t('support.detail3.url1')" target="_blank">{{
-          $t("support.detail3.txt3")
-        }}</a>
-      </div>
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.detail3.tit2") }}</span>
+          </div>
+          <div class="spt-detail-txt">
+            <a :href="$t('support.detail3.url1')" target="_blank">{{
+              $t("support.detail3.txt3")
+            }}</a>
+          </div>
 
-      <div class="spt-detail-example">
-        <span
-          ><img
-            class="spt-d-e-img"
-            src="../../../public/static/support/Rectangle.png"
-            alt=""
-        /></span>
-        <span class="spt-d-e-tit">{{ $t("support.detail3.tit3") }}</span>
-      </div>
-      <div class="spt-detail-txt">{{ $t("support.detail3.txt4") }}</div>
-      <div class="spt-detail-example-img">
-        <img :src="'/support/detail/3-1-' + $i18n.locale + '.png'" alt="" />
-      </div>
-      <div class="spt-detail-txt">
-        <div>{{ $t("support.detail3.txt5") }}</div>
-        <div>{{ $t("support.detail3.txt6") }}</div>
-        <div>{{ $t("support.detail3.txt7") }}</div>
-        <div>{{ $t("support.detail3.txt8") }}</div>
-      </div>
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.detail3.tit3") }}</span>
+          </div>
+          <div class="spt-detail-txt">{{ $t("support.detail3.txt4") }}</div>
+          <div class="spt-detail-example-img">
+            <img :src="'/support/detail/3-1-' + $i18n.locale + '.png'" alt="" />
+          </div>
+          <div class="spt-detail-txt">
+            <div>{{ $t("support.detail3.txt5") }}</div>
+            <div>{{ $t("support.detail3.txt6") }}</div>
+            <div>{{ $t("support.detail3.txt7") }}</div>
+            <div>{{ $t("support.detail3.txt8") }}</div>
+          </div>
 
-      <div class="spt-detail-example">
-        <span
-          ><img
-            class="spt-d-e-img"
-            src="../../../public/static/support/Rectangle.png"
-            alt=""
-        /></span>
-        <span class="spt-d-e-tit">{{ $t("support.detail3.tit4") }}</span>
-      </div>
-      <div class="spt-detail-txt">{{ $t("support.detail3.txt9") }}</div>
-      <div class="spt-detail-txt">
-        <div>{{ $t("support.detail3.txt10") }}</div>
-        <div>{{ $t("support.detail3.txt11") }}</div>
-        <div>{{ $t("support.detail3.txt12") }}</div>
-        <div class="spt-detail-txt-tips">{{ $t("support.detail3.txt13") }}</div>
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.detail3.tit4") }}</span>
+          </div>
+          <div class="spt-detail-txt">{{ $t("support.detail3.txt9") }}</div>
+          <div class="spt-detail-txt">
+            <div>{{ $t("support.detail3.txt10") }}</div>
+            <div>{{ $t("support.detail3.txt11") }}</div>
+            <div>{{ $t("support.detail3.txt12") }}</div>
+            <div class="spt-detail-txt-tips">
+              {{ $t("support.detail3.txt13") }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

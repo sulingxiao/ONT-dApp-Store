@@ -1,5 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light container">
+  <nav
+    class="navbar navbar-expand-lg navbar-expand-md navbar-light container-fluid"
+  >
     <router-link class="navbar-brand" :to="{ path: '/' }">
       <img class="navbar-logo" :src="'/static/logo/blue.png'" />
       <span class="ont-navbar-txt">Ontology dApps</span>
@@ -54,6 +56,11 @@
 </template>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+.navbar {
+  max-width: 1280px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 .navbar-toggler {
   border: 0;
 }

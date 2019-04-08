@@ -1,13 +1,14 @@
 <template>
   <div class="footer-background">
-    <div class="container footer-container mobile-container">
-      <div class="footer-logo-title">
-        <img
-          class="footer-logo-img"
-          :src="'/static/logo/black.png'"
-        />
-        <label class="footer-logo-label">></label>
-        <label class="footer-logo-text">{{ $t("footer.homeName") }}</label>
+    <div class="container-fluid footer-container mobile-container">
+      <div class="row">
+        <div class="col">
+          <div class="footer-logo-title">
+            <img class="footer-logo-img" :src="'/static/logo/black.png'" />
+            <label class="footer-logo-label">></label>
+            <label class="footer-logo-text">{{ $t("footer.homeName") }}</label>
+          </div>
+        </div>
       </div>
 
       <div class="row">
@@ -25,19 +26,25 @@
         </div>
       </div>
 
-      <div class="footer-line"></div>
+      <div class="row">
+        <div class="col">
+          <div class="footer-line"></div>
 
-      <div class="footer-copyright">
-        <span class="copyright-txt">Copyright © 2019 The Ontology Team</span>
-        <el-select class="pull-right" v-model="$i18n.locale" size="mini">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+          <div class="footer-copyright">
+            <span class="copyright-txt"
+              >Copyright © 2019 The Ontology Team</span
+            >
+            <el-select class="pull-right" v-model="$i18n.locale" size="mini">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+        </div>
       </div>
     </div>
   </div>

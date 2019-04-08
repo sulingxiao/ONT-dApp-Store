@@ -1,46 +1,50 @@
 <template>
-  <div class="container">
-    <div class="breadcrumb-area">
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ name: 'DApp' }">{{
-          $t("support.breadcrumb.home")
-        }}</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ name: 'Support' }"
-          >{{ $t("support.breadcrumb.plan") }}
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>{{
-          $t("support.breadcrumb.detail")
-        }}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="breadcrumb-area">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ name: 'DApp' }">{{
+              $t("support.breadcrumb.home")
+            }}</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'Support' }"
+              >{{ $t("support.breadcrumb.plan") }}
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>{{
+              $t("support.breadcrumb.detail")
+            }}</el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
 
-    <div class="detail-content-area">
-      <div class="spt-detail-tit">{{ $t("support.detail4.tit") }}</div>
+        <div class="detail-content-area">
+          <div class="spt-detail-tit">{{ $t("support.detail4.tit") }}</div>
 
-      <div class="spt-detail-txt">{{ $t("support.detail4.txt1") }}</div>
-      <div class="spt-detail-txt">{{ $t("support.detail4.txt2") }}</div>
-      <div class="spt-detail-txt">{{ $t("support.detail4.txt3") }}</div>
-      <div class="spt-detail-txt">
-        {{ $t("support.detail4.txt4") }}
-        <a :href="$t('support.detail4.url2')" target="_blank">{{
-          $t("support.detail4.txt5")
-        }}</a
-        >{{ $t("support.detail4.txt6") }}
-      </div>
+          <div class="spt-detail-txt">{{ $t("support.detail4.txt1") }}</div>
+          <div class="spt-detail-txt">{{ $t("support.detail4.txt2") }}</div>
+          <div class="spt-detail-txt">{{ $t("support.detail4.txt3") }}</div>
+          <div class="spt-detail-txt">
+            {{ $t("support.detail4.txt4") }}
+            <a :href="$t('support.detail4.url2')" target="_blank">{{
+              $t("support.detail4.txt5")
+            }}</a
+            >{{ $t("support.detail4.txt6") }}
+          </div>
 
-      <div class="spt-detail-example">
-        <span
-          ><img
-            class="spt-d-e-img"
-            src="../../../public/static/support/Rectangle.png"
-            alt=""
-        /></span>
-        <span class="spt-d-e-tit">{{ $t("support.detail4.tit1") }}</span>
-      </div>
-      <div class="spt-detail-txt">
-        <a :href="$t('support.detail4.url1')" target="_blank">{{
-          $t("support.detail4.url1")
-        }}</a>
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.detail4.tit1") }}</span>
+          </div>
+          <div class="spt-detail-txt">
+            <a :href="$t('support.detail4.url1')" target="_blank">{{
+              $t("support.detail4.url1")
+            }}</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

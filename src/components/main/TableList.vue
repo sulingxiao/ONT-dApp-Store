@@ -1,176 +1,178 @@
 <template>
   <div class="row table-list-container">
     <div class="col">
-      <div class="tables-top">
-        <span class="tl-table-tit">{{ $t("main.tl.name") }}</span>
-        <div class="tl-table-line"></div>
-      </div>
+      <div class="table-area">
+        <div class="tables-top">
+          <span class="tl-table-tit">{{ $t("main.tl.name") }}</span>
+          <div class="tl-table-line"></div>
+        </div>
 
-      <div class="row tl-total-info">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-          {{ $t("main.tl.total.name") + (totals.Total || 0) }}
+        <div class="row tl-total-info">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            {{ $t("main.tl.total.name") + (totals.Total || 0) }}
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            {{
+              $t("main.tl.total.activeU") + (totals.DayActiveAddressCount || 0)
+            }}
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            {{ $t("main.tl.total.txn") + (totals.DayTxCount || 0) }}
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            {{
+              $t("main.tl.total.volume") +
+                (totals.DayOng ? parseFloat(totals.DayOng).toFixed(2) : 0) +
+                " ONG, " +
+                (totals.DayOnt || 0) +
+                " ONT"
+            }}
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-          {{
-            $t("main.tl.total.activeU") + (totals.DayActiveAddressCount || 0)
-          }}
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-          {{ $t("main.tl.total.txn") + (totals.DayTxCount || 0) }}
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-          {{
-            $t("main.tl.total.volume") +
-              (totals.DayOng ? parseFloat(totals.DayOng).toFixed(2) : 0) +
-              " ONG, " +
-              (totals.DayOnt || 0) +
-              " ONT"
-          }}
-        </div>
-      </div>
 
-      <div class="tl-total-info-line"></div>
+        <div class="tl-total-info-line"></div>
 
-      <div class="row justify-content-center">
-        <div class="table-responsive">
-          <table class="table table-hover tl-table">
-            <thead>
-              <tr>
-                <th class="first-th-td" scope="col">#</th>
-                <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
-                <th scope="col">{{ $t("main.tl.th.c") }}</th>
-                <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
-                <th scope="col">{{ $t("main.tl.th.txn") }}</th>
-                <th scope="col">{{ $t("main.tl.th.volume") }}</th>
-                <th scope="col">{{ $t("main.tl.th.reward") }}</th>
-                <th scope="col">{{ $t("main.tl.th.totalReward") }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, index) in lists" :key="index">
-                <td class="first-th-td td-text-justify">
-                  {{ rankIndex + index + 1 }}
-                </td>
-                <td>
-                  <div class="flex-row">
-                    <div class="flex-col">
-                      <img
-                        v-if="item.Logo"
-                        class="tl-logo"
-                        :src="item.Logo"
-                        alt=""
-                      />
-                      <div v-else class="backup-logo">
-                        {{ item.Name.substring(0, 1) }}
+        <div class="row justify-content-center">
+          <div class="table-responsive">
+            <table class="table table-hover tl-table">
+              <thead>
+                <tr>
+                  <th class="first-th-td" scope="col">#</th>
+                  <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
+                  <th scope="col">{{ $t("main.tl.th.c") }}</th>
+                  <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
+                  <th scope="col">{{ $t("main.tl.th.txn") }}</th>
+                  <th scope="col">{{ $t("main.tl.th.volume") }}</th>
+                  <th scope="col">{{ $t("main.tl.th.reward") }}</th>
+                  <th scope="col">{{ $t("main.tl.th.totalReward") }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, index) in lists" :key="index">
+                  <td class="first-th-td td-text-justify">
+                    {{ rankIndex + index + 1 }}
+                  </td>
+                  <td>
+                    <div class="flex-row">
+                      <div class="flex-col">
+                        <img
+                          v-if="item.Logo"
+                          class="tl-logo"
+                          :src="item.Logo"
+                          alt=""
+                        />
+                        <div v-else class="backup-logo">
+                          {{ item.Name.substring(0, 1) }}
+                        </div>
+                      </div>
+                      <div class="flex-col td-name-desc">
+                        <div class="td-name">
+                          <a
+                            :href="
+                              'https://explorer.ont.io/contract/' +
+                                item.ContractHash +
+                                '/10/1'
+                            "
+                            target="_blank"
+                            >{{ item.Name }}</a
+                          >
+                        </div>
+                        <div class="td-desc">
+                          <a
+                            :href="
+                              'https://explorer.ont.io/contract/' +
+                                item.ContractHash +
+                                '/10/1'
+                            "
+                            target="_blank"
+                          >
+                            {{ item.Description }}</a
+                          >
+                        </div>
                       </div>
                     </div>
-                    <div class="flex-col td-name-desc">
-                      <div class="td-name">
-                        <a
-                          :href="
-                            'https://explorer.ont.io/contract/' +
-                              item.ContractHash +
-                              '/10/1'
-                          "
-                          target="_blank"
-                          >{{ item.Name }}</a
-                        >
+                  </td>
+                  <td class="td-text-justify">
+                    {{
+                      item.Category.substring(0, 1).toUpperCase() +
+                        item.Category.substring(1)
+                    }}
+                  </td>
+                  <td>
+                    <div class="flex-row">
+                      <div class="flex-td-tit">
+                        <div>{{ $t("main.tl.td.hour") }}</div>
+                        <div>{{ $t("main.tl.td.days") }}</div>
                       </div>
-                      <div class="td-desc">
-                        <a
-                          :href="
-                            'https://explorer.ont.io/contract/' +
-                              item.ContractHash +
-                              '/10/1'
-                          "
-                          target="_blank"
-                        >
-                          {{ item.Description }}</a
-                        >
+                      <div class="flex-td-txt">
+                        <div>{{ item.DayActiveAddressCount }}</div>
+                        <div>{{ item.WeekActiveAddressCount }}</div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td class="td-text-justify">
-                  {{
-                    item.Category.substring(0, 1).toUpperCase() +
-                      item.Category.substring(1)
-                  }}
-                </td>
-                <td>
-                  <div class="flex-row">
-                    <div class="flex-td-tit">
-                      <div>{{ $t("main.tl.td.hour") }}</div>
-                      <div>{{ $t("main.tl.td.days") }}</div>
-                    </div>
-                    <div class="flex-td-txt">
-                      <div>{{ item.DayActiveAddressCount }}</div>
-                      <div>{{ item.WeekActiveAddressCount }}</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="flex-row">
-                    <div class="flex-td-tit">
-                      <div>{{ $t("main.tl.td.hour") }}</div>
-                      <div>{{ $t("main.tl.td.days") }}</div>
-                    </div>
-                    <div class="flex-td-txt">
-                      <div>{{ item.DayTxCount }}</div>
-                      <div>{{ item.WeekTxCount }}</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="flex-row">
-                    <div class="flex-td-tit">
-                      <div>{{ $t("main.tl.td.hour") }}</div>
-                      <div>{{ $t("main.tl.td.days") }}</div>
-                    </div>
-                    <div class="flex-td-txt">
-                      <div>
-                        {{ item.DayOng.toFixed(2) + " ONG, " }}
+                  </td>
+                  <td>
+                    <div class="flex-row">
+                      <div class="flex-td-tit">
+                        <div>{{ $t("main.tl.td.hour") }}</div>
+                        <div>{{ $t("main.tl.td.days") }}</div>
                       </div>
-                      <div>
-                        {{ item.WeekOng.toFixed(2) + " ONG, " }}
+                      <div class="flex-td-txt">
+                        <div>{{ item.DayTxCount }}</div>
+                        <div>{{ item.WeekTxCount }}</div>
                       </div>
                     </div>
-                    <div class="flex-td-txt">
-                      <div>
-                        {{ item.DayOnt + " ONT" }}
+                  </td>
+                  <td>
+                    <div class="flex-row">
+                      <div class="flex-td-tit">
+                        <div>{{ $t("main.tl.td.hour") }}</div>
+                        <div>{{ $t("main.tl.td.days") }}</div>
                       </div>
-                      <div>
-                        {{ item.WeekOnt + " ONT" }}
+                      <div class="flex-td-txt">
+                        <div>
+                          {{ item.DayOng.toFixed(2) + " ONG, " }}
+                        </div>
+                        <div>
+                          {{ item.WeekOng.toFixed(2) + " ONG, " }}
+                        </div>
+                      </div>
+                      <div class="flex-td-txt">
+                        <div>
+                          {{ item.DayOnt + " ONT" }}
+                        </div>
+                        <div>
+                          {{ item.WeekOnt + " ONT" }}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="flex-row td-reward">
-                    <div class="flex-td-txt-center">0</div>
-                  </div>
-                </td>
-                <td>
-                  <div class="flex-row td-reward">
-                    <div class="flex-td-txt-center">0</div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                  <td>
+                    <div class="flex-row td-reward">
+                      <div class="flex-td-txt-center">0</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="flex-row td-reward">
+                      <div class="flex-td-txt-center">0</div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
 
-      <div class="row justify-content-center tl-pagination">
-        <el-pagination
-          @current-change="handleCurrentChange"
-          background
-          layout="prev, pager, next"
-          :page-size="pageSize"
-          :current-page="currentPage"
-          :total="tlTotal"
-        >
-        </el-pagination>
+        <div class="row justify-content-center tl-pagination">
+          <el-pagination
+            @current-change="handleCurrentChange"
+            background
+            layout="prev, pager, next"
+            :page-size="pageSize"
+            :current-page="currentPage"
+            :total="tlTotal"
+          >
+          </el-pagination>
+        </div>
       </div>
     </div>
   </div>
@@ -218,8 +220,12 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .table-list-container {
-  background-color: white;
-  margin: 48px 0 32px;
+  margin: 48px auto 32px !important;
+
+  .table-area {
+    background-color: white;
+    padding: 15px;
+  }
 }
 .tables-top {
   margin-top: 14px;
@@ -229,8 +235,7 @@ export default {
   color: rgba(70, 159, 219, 1);
 }
 .tl-total-info {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 30px -15px 30px !important;
 
   div {
     font-size: 14px;
@@ -333,7 +338,7 @@ export default {
   background: rgba(70, 159, 219, 1);
 }
 .tl-pagination {
-  margin: 24px 0;
+  margin: 24px auto !important;
 }
 /deep/ .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: #469fdb;

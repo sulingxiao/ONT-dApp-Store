@@ -1,6 +1,10 @@
 <template>
-  <div class="container support-container">
-    <div class="support-tit">{{ $t("support.index.name") }}</div>
+  <div class="container-fluid support-container">
+    <div class="row">
+      <div class="col">
+        <div class="support-tit">{{ $t("support.index.name") }}</div>
+      </div>
+    </div>
 
     <div class="row">
       <div

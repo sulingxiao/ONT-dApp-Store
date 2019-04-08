@@ -1,44 +1,48 @@
 <template>
-  <div class="container">
-    <div class="breadcrumb-area">
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ name: 'DApp' }">{{
-          $t("support.breadcrumb.home")
-        }}</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ name: 'Support' }"
-          >{{ $t("support.breadcrumb.plan") }}
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>{{
-          $t("support.breadcrumb.detail")
-        }}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="breadcrumb-area">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ name: 'DApp' }">{{
+              $t("support.breadcrumb.home")
+            }}</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'Support' }"
+              >{{ $t("support.breadcrumb.plan") }}
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>{{
+              $t("support.breadcrumb.detail")
+            }}</el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
 
-    <div class="detail-content-area">
-      <div class="spt-detail-tit">{{ $t("support.detail1.tit") }}</div>
+        <div class="detail-content-area">
+          <div class="spt-detail-tit">{{ $t("support.detail1.tit") }}</div>
 
-      <div class="spt-detail-txt">{{ $t("support.detail1.txt1") }}</div>
-      <div class="spt-detail-txt">{{ $t("support.detail1.txt2") }}</div>
+          <div class="spt-detail-txt">{{ $t("support.detail1.txt1") }}</div>
+          <div class="spt-detail-txt">{{ $t("support.detail1.txt2") }}</div>
 
-      <div class="spt-detail-example">
-        <span
-          ><img
-            class="spt-d-e-img"
-            src="../../../public/static/support/Rectangle.png"
-            alt=""
-        /></span>
-        <span class="spt-d-e-tit">{{ $t("support.example") }}</span>
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.example") }}</span>
+          </div>
+          <div class="spt-detail-txt">{{ $t("support.detail1.txt3") }}</div>
+          <div class="spt-detail-txt">{{ $t("support.detail1.txt4") }}</div>
+
+          <div class="spt-detail-txt">
+            <a href="https://ont.io/#/dapp" target="_blank">{{
+              $t("support.detail.submit")
+            }}</a>
+          </div>
+
+          <div class="spt-detail-txt">{{ $t("support.detail1.txt5") }}</div>
+        </div>
       </div>
-      <div class="spt-detail-txt">{{ $t("support.detail1.txt3") }}</div>
-      <div class="spt-detail-txt">{{ $t("support.detail1.txt4") }}</div>
-
-      <div class="spt-detail-txt">
-        <a href="https://ont.io/#/dapp" target="_blank">{{
-          $t("support.detail.submit")
-        }}</a>
-      </div>
-
-      <div class="spt-detail-txt">{{ $t("support.detail1.txt5") }}</div>
     </div>
   </div>
 </template>

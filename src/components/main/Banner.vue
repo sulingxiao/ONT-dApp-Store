@@ -1,17 +1,21 @@
 <template>
   <div class="banner-container">
-    <el-carousel
-      :type="type"
-      :height="carouselHeight"
-      indicator-position="outside"
-    >
-      <el-carousel-item v-for="(banner, index) in banners" :key="index">
-        <a v-if="banner.url" :href="banner.url" target="_blank"
-          ><img :src="banner.img" alt=""
-        /></a>
-        <img v-else :src="banner.img" alt="" />
-      </el-carousel-item>
-    </el-carousel>
+    <div class="row">
+      <div class="col">
+        <el-carousel
+          :type="type"
+          :height="carouselHeight"
+          indicator-position="outside"
+        >
+          <el-carousel-item v-for="(banner, index) in banners" :key="index">
+            <a v-if="banner.url" :href="banner.url" target="_blank"
+            ><img :src="banner.img" alt=""
+            /></a>
+            <img v-else :src="banner.img" alt="" />
+          </el-carousel-item>
+        </el-carousel>
+      </div>
+    </div>
   </div>
 </template>
 
