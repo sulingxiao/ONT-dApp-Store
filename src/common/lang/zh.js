@@ -17,7 +17,7 @@ export default {
     },
     dApps: {
       name: "dApps",
-      dl: "dApp列表",
+      dl: "dApp排行榜",
       submit: "提交dApp"
     },
     business: {
@@ -42,7 +42,7 @@ export default {
   },
   main: {
     tl: {
-      name: "dApp列表",
+      name: "dApp排行榜",
       total: {
         name: "dApp总数: ",
         txn: "24H交易数: ",

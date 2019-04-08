@@ -17,7 +17,7 @@ export default {
     },
     dApps: {
       name: "dApps",
-      dl: "dApps List",
+      dl: "dApp Rankings",
       submit: "Submit a dApp"
     },
     business: {
@@ -42,7 +42,7 @@ export default {
   },
   main: {
     tl: {
-      name: "dApp List",
+      name: "dApp Rankings",
       total: {
         name: "dApp Total: ",
         txn: "24h Transactions: ",
