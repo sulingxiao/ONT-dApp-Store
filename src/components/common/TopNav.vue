@@ -57,7 +57,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
-  max-width: 1280px;
+  max-width: 1440px;
   padding-right: 15px;
   padding-left: 15px;
 }

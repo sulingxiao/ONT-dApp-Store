@@ -7,7 +7,7 @@
 
 <script>
 import Banner from "./Banner";
-import TableList from "./TableList";
+import TableList from "./Table";
 
 export default {
   components: { Banner, TableList }

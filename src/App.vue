@@ -33,7 +33,7 @@ export default {
   padding-left: 0;
 }
 .row {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto !important;
 }
 </style>
