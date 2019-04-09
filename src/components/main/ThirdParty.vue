@@ -26,31 +26,28 @@ export default {
     return {
       logos1: [
         {
-          url: "https://dapp.review/",
+          url: "https://dappstore.tokenview.com/cn/ont/all",
+          img: "/static/tp/6.png"
+        },
+        {
+          url: "https://dapp.review/explore/ont",
           img: "/static/tp/1.png"
         },
         {
-          url: "https://dapptotal.com/",
-          img: "/static/tp/2.png"
-        },
-        {
-          url: "http://dappbirds.com",
-          img: "/static/tp/3.png"
+          url: "https://www.spider.store/en/ranking/ont/hot",
+          img: "/static/tp/5.png"
         }
       ],
       logos2: [
         {
-          url: "http://www.dapp.cc/",
+          url: "http://www.dapp.cc/dapp/index/mc_id/9/cate_id/0/type/0.html",
           img: "/static/tp/4.png"
         },
         {
-          url: "https://www.spider.store/",
-          img: "/static/tp/5.png"
+          url: "http://dappbirds.com/explore",
+          img: "/static/tp/3.png"
         },
-        {
-          url: "https://dappstore.tokenview.com/cn/ont/all",
-          img: "/static/tp/6.png"
-        }
+        { url: "", img: "" }
       ]
     };
   }
