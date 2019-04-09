@@ -11,7 +11,6 @@
                 <tr>
                   <th class="first-th-td" scope="col">#</th>
                   <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
-                  <!--                  <th scope="col">{{ $t("main.tl.th.c") }}</th>-->
                   <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
                   <th scope="col">{{ $t("main.tl.th.txn") }}</th>
                   <th scope="col">{{ $t("main.tl.th.volume") }}</th>
@@ -48,6 +47,10 @@
                             target="_blank"
                             >{{ item.Name }}</a
                           >
+                          <span class="category-span pull-right">{{
+                            item.Category.substring(0, 1).toUpperCase() +
+                              item.Category.substring(1)
+                          }}</span>
                         </div>
                         <div class="td-desc">
                           <a
@@ -64,12 +67,6 @@
                       </div>
                     </div>
                   </td>
-                  <!--                  <td class="td-text-justify">-->
-                  <!--                    {{-->
-                  <!--                      item.Category.substring(0, 1).toUpperCase() +-->
-                  <!--                        item.Category.substring(1)-->
-                  <!--                    }}-->
-                  <!--                  </td>-->
                   <td>
                     <div class="flex-row">
                       <div class="flex-td-tit">
@@ -281,8 +278,7 @@ export default {
   }
   .td-name-desc {
     margin-left: 12px;
-    min-width: 200px;
-    max-width: 270px;
+    width: 270px;
     word-wrap: break-word;
   }
   .tl-logo {
@@ -306,8 +302,16 @@ export default {
       color: rgba(70, 159, 219, 1);
     }
   }
+  .category-span {
+    background: rgba(70, 159, 219, 1);
+    color: white;
+    padding: 0 6px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
   .td-desc,
   .td-desc > a {
+    margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
     color: rgba(74, 74, 74, 1);
