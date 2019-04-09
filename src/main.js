@@ -13,6 +13,9 @@ import VeeValidate from "vee-validate";
 import zh from "./common/lang/zh";
 import en from "./common/lang/en";
 
+import Helper from "./helpers/helper";
+Vue.use(Helper);
+
 Vue.use(Element);
 Vue.use(VeeValidate);
 

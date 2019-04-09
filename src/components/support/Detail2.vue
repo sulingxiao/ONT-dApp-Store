@@ -58,17 +58,9 @@
           </div>
           <div class="spt-detail-txt">
             <div>{{ $t("support.detail2.txt6") }}</div>
-            <div>{{ $t("support.detail2.txt7") }}</div>
-          </div>
-          <div class="spt-detail-txt">
-            <div>{{ $t("support.detail2.txt8") }}</div>
-            <div>{{ $t("support.detail2.txt9") }}</div>
-            <div>{{ $t("support.detail2.txt10") }}</div>
-            <div>{{ $t("support.detail2.txt11") }}</div>
-            <div>{{ $t("support.detail2.txt12") }}</div>
-          </div>
-          <div class="spt-detail-txt">
-            <div>{{ $t("support.detail2.txt13") }}</div>
+            <div>
+              <i>{{ $t("support.detail2.txt7") }}</i>
+            </div>
           </div>
 
           <div class="spt-detail-example">
@@ -81,7 +73,21 @@
             <span class="spt-d-e-tit">{{ $t("support.detail2.tit3") }}</span>
           </div>
           <div class="spt-detail-txt">
-            {{ $t("support.detail2.txt14") }}
+            <div>{{ $t("support.detail2.txt8") }}</div>
+            <div>{{ $t("support.detail2.txt9") }}</div>
+          </div>
+
+          <div class="spt-detail-example">
+            <span
+              ><img
+                class="spt-d-e-img"
+                src="../../../public/static/support/Rectangle.png"
+                alt=""
+            /></span>
+            <span class="spt-d-e-tit">{{ $t("support.detail2.tit4") }}</span>
+          </div>
+          <div class="spt-detail-txt">
+            {{ $t("support.detail2.txt10") }}
           </div>
         </div>
       </div>

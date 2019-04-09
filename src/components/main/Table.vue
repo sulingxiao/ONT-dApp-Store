@@ -11,7 +11,7 @@
                 <tr>
                   <th class="first-th-td" scope="col">#</th>
                   <th scope="col">{{ $t("main.tl.th.dApp") }}</th>
-<!--                  <th scope="col">{{ $t("main.tl.th.c") }}</th>-->
+                  <!--                  <th scope="col">{{ $t("main.tl.th.c") }}</th>-->
                   <th scope="col">{{ $t("main.tl.th.activeU") }}</th>
                   <th scope="col">{{ $t("main.tl.th.txn") }}</th>
                   <th scope="col">{{ $t("main.tl.th.volume") }}</th>
@@ -64,12 +64,12 @@
                       </div>
                     </div>
                   </td>
-<!--                  <td class="td-text-justify">-->
-<!--                    {{-->
-<!--                      item.Category.substring(0, 1).toUpperCase() +-->
-<!--                        item.Category.substring(1)-->
-<!--                    }}-->
-<!--                  </td>-->
+                  <!--                  <td class="td-text-justify">-->
+                  <!--                    {{-->
+                  <!--                      item.Category.substring(0, 1).toUpperCase() +-->
+                  <!--                        item.Category.substring(1)-->
+                  <!--                    }}-->
+                  <!--                  </td>-->
                   <td>
                     <div class="flex-row">
                       <div class="flex-td-tit">
@@ -77,8 +77,20 @@
                         <div>{{ $t("main.tl.td.days") }}</div>
                       </div>
                       <div class="flex-td-txt">
-                        <div>{{ item.DayActiveAddressCount }}</div>
-                        <div>{{ item.WeekActiveAddressCount }}</div>
+                        <div>
+                          {{
+                            $HelperTools.toFinancialVal(
+                              item.DayActiveAddressCount
+                            )
+                          }}
+                        </div>
+                        <div>
+                          {{
+                            $HelperTools.toFinancialVal(
+                              item.WeekActiveAddressCount
+                            )
+                          }}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -89,8 +101,12 @@
                         <div>{{ $t("main.tl.td.days") }}</div>
                       </div>
                       <div class="flex-td-txt">
-                        <div>{{ item.DayTxCount }}</div>
-                        <div>{{ item.WeekTxCount }}</div>
+                        <div>
+                          {{ $HelperTools.toFinancialVal(item.DayTxCount) }}
+                        </div>
+                        <div>
+                          {{ $HelperTools.toFinancialVal(item.WeekTxCount) }}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -102,30 +118,56 @@
                       </div>
                       <div class="flex-td-txt">
                         <div>
-                          {{ item.DayOng.toFixed(2) + " ONG, " }}
+                          {{
+                            $HelperTools.toFinancialVal(
+                              item.DayOng.toFixed(2)
+                            ) + " ONG, "
+                          }}
                         </div>
                         <div>
-                          {{ item.WeekOng.toFixed(2) + " ONG, " }}
+                          {{
+                            $HelperTools.toFinancialVal(
+                              item.WeekOng.toFixed(2)
+                            ) + " ONG, "
+                          }}
                         </div>
                       </div>
                       <div class="flex-td-txt">
                         <div>
-                          {{ item.DayOnt + " ONT" }}
+                          {{
+                            $HelperTools.toFinancialVal(item.DayOnt) + " ONT"
+                          }}
                         </div>
                         <div>
-                          {{ item.WeekOnt + " ONT" }}
+                          {{
+                            $HelperTools.toFinancialVal(item.WeekOnt) + " ONT"
+                          }}
                         </div>
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="flex-row td-reward">
-                      <div class="flex-td-txt-center">0</div>
+                      <div class="flex-td-txt-center">
+                        {{
+                          item.ContractHash ===
+                          "cae215265a5e348bfd603b8db22893aa74b42417"
+                            ? "20,000"
+                            : "0"
+                        }}
+                      </div>
                     </div>
                   </td>
                   <td>
                     <div class="flex-row td-reward">
-                      <div class="flex-td-txt-center">0</div>
+                      <div class="flex-td-txt-center">
+                        {{
+                          item.ContractHash ===
+                          "cae215265a5e348bfd603b8db22893aa74b42417"
+                            ? "20,000"
+                            : "0"
+                        }}
+                      </div>
                     </div>
                   </td>
                 </tr>

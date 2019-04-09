@@ -117,8 +117,9 @@ export default {
     detail2: {
       tit: "“Worker Ant Scheme”: Extra Incentives for the Most Popular dApps",
       tit1: "Rules",
-      tit2: "Incentive Quota",
-      tit3: "REMEMBER",
+      tit2: "Incentive Condition",
+      tit3: "Incentive Rule",
+      tit4: "Remember",
       txt1:
         "The most popular dApps will receive extra incentives. You can find the ranking list on Ontology’s official dApp website: ",
       txt2: "https://dapp.ont.io/",
@@ -131,13 +132,9 @@ export default {
       txt6: "Daily quota: ONG 100,000,000/(360*14)= 19,841",
       txt7: "Weekly quota: ONT 100,000,000/1,080= 92,592",
       txt8:
-        "- Daily and weekly quotas are divided into four bands based on the number of valid dApps (the threshold: 0).",
-      txt9: "10/50（1-10）",
-      txt10: "15/50（11-15）",
-      txt11: "30/50（16-30）",
-      txt12: "The Entire Quota (31-50)",
-      txt13: "- Incentives will be given out at UTC time on the basis of T+1.",
-      txt14:
+        "- Daily and weekly quotas are divided into four bands based on the number of valid dApps (the threshold: 0).\r\n 10/50（1-10）\r\n 15/50（11-15）\r\n 30/50（16-30）\r\n The Entire Quota (31-50)",
+      txt9: "- Incentives will be given out at UTC time on the basis of T+1.",
+      txt10:
         "Any gambling dApps or dApps that falsified data will be excluded from the incentive program. We will disqualify any dApps we believe to be involved in data manipulation."
     },
     detail3: {
