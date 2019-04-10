@@ -58,7 +58,7 @@
           </div>
           <div class="spt-detail-txt">
             <div>{{ $t("support.detail2.txt6") }}</div>
-            <div>
+            <div class="spt-detail-txt-notice">
               <i>{{ $t("support.detail2.txt7") }}</i>
             </div>
           </div>
@@ -118,6 +118,9 @@
   }
   .spt-detail-txt-focus {
     color: #2fa3f1;
+  }
+  .spt-detail-txt-notice {
+    font-weight: 300;
   }
   .spt-detail-example {
     margin-top: 32px;

@@ -117,25 +117,25 @@ export default {
     detail2: {
       tit: "“Worker Ant Scheme”: Extra Incentives for the Most Popular dApps",
       tit1: "Rules",
-      tit2: "Incentive Condition",
+      tit2: "Requirements",
       tit3: "Incentive Rule",
       tit4: "Remember",
       txt1:
-        "The most popular dApps will receive extra incentives. You can find the ranking list on Ontology’s official dApp website: ",
+        "The most popular dApps will receive extra incentives. You can find the ranking on Ontology’s official dApp website: ",
       txt2: "https://dapp.ont.io/",
       txt3:
-        "1. 10% of the total amount of ONT and ONG will be given out as incentives",
+        "1. dApp ranking will be determined by the number of active users and transaction volume;",
       txt4:
-        "2. dApp ranking will be determined by the number of active users and transaction volume",
+        "2. The higher the ranking, the greater the incentive;",
       txt5:
-        "3. The more popular a dApp is, the more incentives it will receive",
-      txt6: "Daily quota: ONG 100,000,000/(360*14)= 19,841",
-      txt7: "Weekly quota: ONT 100,000,000/1,080= 92,592",
+        "3. Incentives will be given out in ONG.",
+      txt6: "The dApp must have more than 100 daily active users (DAU) or its 24-hour transaction volume (VOL) must exceed 4,500 USD.",
+      txt7: "Note: Data collection begins at 00:00 every Monday (UTC) and ends at 23:59 every Sunday (UTC). Daily active users refer to average weekly DAUs and daily transaction volume is the average daily transaction volume each week.",
       txt8:
-        "- Daily and weekly quotas are divided into four bands based on the number of valid dApps (the threshold: 0).\r\n 10/50（1-10）\r\n 15/50（11-15）\r\n 30/50（16-30）\r\n The Entire Quota (31-50)",
-      txt9: "- Incentives will be given out at UTC time on the basis of T+1.",
+        "If the number of qualified dApps in the ranking is under 20, the top 5 will share a prize pool of 20,000 USD in ONG each week based on their activity and daily transaction volume;",
+      txt9: "If the number of qualified dApps in the ranking is between 20 and 50, the top 10 will share a prize pool of 50,000 USD in ONG each week based on their activity and daily transaction volume.",
       txt10:
-        "Any gambling dApps or dApps that falsified data will be excluded from the incentive program. We will disqualify any dApps we believe to be involved in data manipulation."
+        "Gambling dApps or dApps that falsify data are not included in this incentive model. We will disqualify any dApps whose activity is found to be manipulated.."
     },
     detail3: {
       tit: "Angel investment scheme",
