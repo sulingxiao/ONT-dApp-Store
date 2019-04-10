@@ -178,6 +178,6 @@ export default {
     }
   },
   tp: {
-    tit: "第三方DApp统计"
+    tit: "第三方dApp统计"
   }
 };

@@ -186,6 +186,6 @@ export default {
     }
   },
   tp: {
-    tit: "Third Party DApp Stores"
+    tit: "Third Party dApp Stores"
   }
 };
