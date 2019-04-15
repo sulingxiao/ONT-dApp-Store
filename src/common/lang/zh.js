@@ -62,7 +62,8 @@ export default {
         hour: "24h:",
         days: "7days:"
       }
-    }
+    },
+    note: "说明：按照上一个自然日UTC+0时间区间统计24H交易和活跃地址。"
   },
   support: {
     index: {

@@ -62,7 +62,9 @@ export default {
         hour: "24h:",
         days: "7days:"
       }
-    }
+    },
+    note:
+      "Note: Data on 24-hour transaction and activity addresses from the previous day (UTC) is collected."
   },
   support: {
     index: {
@@ -125,15 +127,16 @@ export default {
       txt2: "https://dapp.ont.io/",
       txt3:
         "1. dApp ranking will be determined by the number of active users and transaction volume;",
-      txt4:
-        "2. The higher the ranking, the greater the incentive;",
-      txt5:
-        "3. Incentives will be given out in ONG.",
-      txt6: "The dApp must have more than 100 daily active users (DAU) or its 24-hour transaction volume (VOL) must exceed 4,500 USD.",
-      txt7: "Note: Data collection begins at 00:00 every Monday (UTC) and ends at 23:59 every Sunday (UTC). Daily active users refer to average weekly DAUs and daily transaction volume is the average daily transaction volume each week.",
+      txt4: "2. The higher the ranking, the greater the incentive;",
+      txt5: "3. Incentives will be given out in ONG.",
+      txt6:
+        "The dApp must have more than 100 daily active users (DAU) or its 24-hour transaction volume (VOL) must exceed 4,500 USD.",
+      txt7:
+        "Note: Data collection begins at 00:00 every Monday (UTC) and ends at 23:59 every Sunday (UTC). Daily active users refer to average weekly DAUs and daily transaction volume is the average daily transaction volume each week.",
       txt8:
         "If the number of qualified dApps in the ranking is under 20, the top 5 will share a prize pool of 20,000 USD in ONG each week based on their activity and daily transaction volume;",
-      txt9: "If the number of qualified dApps in the ranking is between 20 and 50, the top 10 will share a prize pool of 50,000 USD in ONG each week based on their activity and daily transaction volume.",
+      txt9:
+        "If the number of qualified dApps in the ranking is between 20 and 50, the top 10 will share a prize pool of 50,000 USD in ONG each week based on their activity and daily transaction volume.",
       txt10:
         "Gambling dApps or dApps that falsify data are not included in this incentive model. We will disqualify any dApps whose activity is found to be manipulated.."
     },

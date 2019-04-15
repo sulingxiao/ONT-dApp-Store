@@ -184,6 +184,8 @@
           >
           </el-pagination>
         </div>
+
+        <div class="row note-txt">{{ $t("main.note") }}</div>
       </div>
     </div>
   </div>
@@ -337,6 +339,12 @@ export default {
 }
 .tl-pagination {
   margin: 24px auto !important;
+}
+.note-txt {
+  margin: 8px 0 17px !important;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(74, 74, 74, 1);
 }
 /deep/ .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: #469fdb;
