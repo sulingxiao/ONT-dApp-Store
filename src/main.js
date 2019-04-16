@@ -12,14 +12,14 @@ import VueCookies from "vue-cookies";
 import VeeValidate from "vee-validate";
 import zh from "./common/lang/zh";
 import en from "./common/lang/en";
-
-import Helper from "./helpers/helper";
-Vue.use(Helper);
+import Helper from "./helpers/tools";
 
 Vue.use(Element);
+Vue.use(Helper);
 Vue.use(VeeValidate);
-
+Vue.use(VueCookies);
 Vue.use(VueI18n);
+
 const i18n = new VueI18n({
   locale: LangStorage.getLang("en"), // 语言标识
   messages: {
@@ -27,8 +27,6 @@ const i18n = new VueI18n({
     en: en
   }
 });
-
-Vue.use(VueCookies);
 
 Vue.config.productionTip = false;
 
