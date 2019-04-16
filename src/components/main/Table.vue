@@ -6,7 +6,7 @@
 
         <div class="row justify-content-center">
           <div class="table-responsive">
-            <table class="table table-hover tl-table">
+            <table class="table table-hover tl-table" v-loading="loading">
               <thead>
                 <tr>
                   <th class="first-th-td" scope="col">#</th>
@@ -190,13 +190,16 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 5
+      pageSize: 5,
+      loading: true
     };
   },
   created() {
     this.$store
       .dispatch("getDAppLists", { size: this.pageSize, page: 1 })
-      .then();
+      .then(() => {
+        this.loading = false;
+      });
   },
   computed: {
     lists() {
@@ -242,11 +245,13 @@ export default {
   },
   methods: {
     async handleCurrentChange(val) {
+      this.loading = true;
       this.currentPage = val;
       await this.$store.dispatch("getDAppLists", {
         size: this.pageSize,
         page: val
       });
+      this.loading = false;
     }
   }
 };
