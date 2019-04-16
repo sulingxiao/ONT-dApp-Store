@@ -7,35 +7,33 @@
 
     <div class="row tl-total-info">
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-        {{
-          $t("main.tl.total.name") +
-            ($HelperTools.toFinancialVal(totals.Total) || 0)
-        }}
+        {{ $t("main.tl.total.name") }}
+        <span class="total-count">{{
+          $HelperTools.toFinancialVal(totals.Total) || 0
+        }}</span>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-        {{
-          $t("main.tl.total.activeU") +
-            ($HelperTools.toFinancialVal(totals.DayActiveAddressCount) || 0)
-        }}
+        {{ $t("main.tl.total.activeU") }}
+        <span class="total-count">{{
+          $HelperTools.toFinancialVal(totals.DayActiveAddressCount) || 0
+        }}</span>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-        {{
-          $t("main.tl.total.txn") +
-            ($HelperTools.toFinancialVal(totals.DayTxCount) || 0)
-        }}
+        {{ $t("main.tl.total.txn") }}
+        <span class="total-count">{{
+          $HelperTools.toFinancialVal(totals.DayTxCount) || 0
+        }}</span>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-        {{
-          $t("main.tl.total.volume") +
-            (totals.DayOng
-              ? $HelperTools.toFinancialVal(
-                  parseFloat(totals.DayOng).toFixed(2)
-                )
-              : 0) +
+        {{ $t("main.tl.total.volume") }}
+        <span class="total-count">{{
+          (totals.DayOng
+            ? $HelperTools.toFinancialVal(parseFloat(totals.DayOng).toFixed(2))
+            : 0) +
             " ONG, " +
             (totals.DayOnt || 0) +
             " ONT"
-        }}
+        }}</span>
       </div>
     </div>
 
@@ -70,6 +68,9 @@ export default {
   div {
     font-size: 14px;
     color: rgba(74, 74, 74, 1);
+  }
+  .total-count {
+    color: rgba(70, 159, 219, 1);
   }
 }
 .tl-total-info-line {
