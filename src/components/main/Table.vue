@@ -146,24 +146,14 @@
                   <td>
                     <div class="flex-row td-reward">
                       <div class="flex-td-txt-center">
-                        {{
-                          item.ContractHash ===
-                          "cae215265a5e348bfd603b8db22893aa74b42417"
-                            ? "20,000"
-                            : "0"
-                        }}
+                        {{ $HelperTools.toFinancialVal(item.Reward) }}
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="flex-row td-reward">
                       <div class="flex-td-txt-center">
-                        {{
-                          item.ContractHash ===
-                          "cae215265a5e348bfd603b8db22893aa74b42417"
-                            ? "20,000"
-                            : "0"
-                        }}
+                        {{ $HelperTools.toFinancialVal(item.TotalReward) }}
                       </div>
                     </div>
                   </td>
@@ -209,7 +199,38 @@ export default {
   },
   computed: {
     lists() {
-      return this.$store.getters.dAppLists || {};
+      if (this.$store.getters.dAppLists) {
+        let tmpList = this.$store.getters.dAppLists;
+        for (let i in tmpList) {
+          switch (tmpList[i].ContractHash) {
+            case "cae215265a5e348bfd603b8db22893aa74b42417":
+              tmpList[i].Reward = 13454.4;
+              tmpList[i].TotalReward = 33454.4;
+              break;
+            case "81e9ad4bdcc91e439ef167cacb6da919f73842f6":
+              tmpList[i].Reward = 5306.06;
+              tmpList[i].TotalReward = 5306.06;
+              break;
+            case "573dd44ca1c691e6d224119ebdd762960089d826":
+              tmpList[i].Reward = 752.71;
+              tmpList[i].TotalReward = 752.71;
+              break;
+            case "aa0547aac7b9822167e2576f5c921ea0eb5ada7f":
+              tmpList[i].Reward = 486.83;
+              tmpList[i].TotalReward = 486.83;
+              break;
+            default:
+              tmpList[i].Reward = 0;
+              tmpList[i].TotalReward = 0;
+              break;
+          }
+        }
+        return tmpList;
+      } else {
+        return {};
+      }
+
+      // return this.$store.getters.dAppLists || {};
     },
     tlTotal() {
       return this.$store.getters.dAppListsTotal || 0;
