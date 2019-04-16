@@ -33,7 +33,9 @@
                           alt=""
                         />
                         <div v-else class="backup-logo">
-                          {{ item.Name.substring(0, 1) }}
+                          {{
+                            item.Name !== "" ? item.Name.substring(0, 1) : ""
+                          }}
                         </div>
                       </div>
                       <div class="flex-col td-name-desc">
@@ -48,8 +50,7 @@
                             >{{ item.Name }}</a
                           >
                           <span class="category-span pull-right">{{
-                            item.Category.substring(0, 1).toUpperCase() +
-                              item.Category.substring(1)
+                            item.Category
                           }}</span>
                         </div>
                         <div class="td-desc">
