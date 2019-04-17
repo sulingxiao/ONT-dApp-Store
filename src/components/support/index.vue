@@ -19,12 +19,7 @@
           <div class="spt-img"><img :src="item.img" alt="" /></div>
           <div class="spt-desc">{{ item.desc }}</div>
           <div class="spt-btn-area">
-            <button
-              v-if="index < 2"
-              type="button"
-              class="spt-btn"
-              @click="goToDetail(item.url)"
-            >
+            <button type="button" class="spt-btn" @click="goToDetail(item.url)">
               {{ $t("support.index.detail") }}
             </button>
           </div>

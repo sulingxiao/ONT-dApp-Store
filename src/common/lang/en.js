@@ -141,51 +141,80 @@ export default {
         "Gambling dApps or dApps that falsify data are not included in this incentive model. We will disqualify any dApps whose activity is found to be manipulated.."
     },
     detail3: {
-      tit: "Angel investment scheme",
-      tit1: "Reduce the burden of operational cash flow",
-      tit2: "Apply for the link",
-      tit3: "How does the program work?",
-      tit4: "Repayment plan of your choice",
+      tit: "“Angel Investment Scheme”: dApp development loan program",
       txt1:
-        "Ontology encourages developers to jump start building their dApps on Ontology. For developers who start developing without funding, the loan program provides financial support right from the beginning.",
-      txt2:
-        "Developers can use the loan borrowed from the Ontology Foundation for their initial phase of dApp development, testing, and operation until it is up and running smoothly.",
-      txt3: "Click here",
-      txt4: "Standard loan program process (as pictured above)",
-      txt5:
-        "1st milestone: After you submit plans and functions of the dApp project, the Ontology Technical Committee will evaluate the materials and determine the loan amount, installment milestones, progress control, and repayment agreements between you and the developer team. The Ontology Technical Committee will appoint a project coordinator to track the progress of the project with your team.",
-      txt6:
-        "2nd milestone: When the dApp development is 70% complete, the Ontology Technical Committee will review it. After evaluating the project, we will issue the first installment of your loan.",
-      txt7:
-        "3rd milestone: After the dApp is launched, the second installment will be issued.",
-      txt8:
-        "4th milestone: When the loan is due, you will need to pay back your loan in the method you choose.",
-      txt9: "",
-      txt10:
-        "The loan is issued in the form of ONT and we will record the equivalent USDT amount at the time of issuance (e.g. 10,000 ONT = 7,000 USDT). At the time of repayment, depending on the ONT price at the time, dApp developers can choose from two ways to pay back the loan:",
-      txt11:
-        "1) If the ONT price goes up developers can choose to return the equivalent USDT amount recorded at issuance.",
+        "For developers who start developing without funding, Ontology launched a customized loan program. After the loan application is approved, Ontology will provide developers with financial support for development and operation, and allow them to repay the loans in the method they choose.",
+      tit1: "How to apply:",
+      txt2: "Send the following information to ",
+      txt3: ":",
+      txt4: "1. Team name;",
+      txt5: "2. Team introduction;",
+      txt6: "3. Contact person and phone number;",
+      txt7: "4. The functions of your dApp;",
+      txt8: "5. Estimated number of days needed for development;",
+      txt9: "6. Estimated number of days needed for the loan;",
+      txt10: "7. Estimated loan amount needed.",
+      txt11: "Ontology will reply your email within 1-2 business days.",
+      tit2: "Loan Program Process:",
       txt12:
-        "2)  If the ONT price goes down developers can choose to return the same amount of ONT. ",
-      txt13: "* Gambling dApps are not included in this loan program.",
-      url1: "https://goo.gl/forms/Jk8NQp0CD0ijuiLV2"
+        "Loan Application -> Ontology Technical Committee evaluation (1-2 business days) -> Project Owner assigned and loan amount determined -> Development phase -> Project owner assesses progress -> Progress review (at 70% completion) -> First installment -> dApp launch -> Second installment -> dApp live phase -> Regular progress update by applicant -> Loan repayment due",
+      txt13: "1. Developers send their loan applications to ",
+      txt14:
+        "2. The Ontology Technical Committee evaluates applications and determines the loan amount;",
+      txt15:
+        "3. dApp enters development phase with support from Ontology throughout;",
+      txt16:
+        "4. When dApp development is 70% complete, the Ontology Technical Committee reviews it. After evaluating the project, we issue the first installment of your loan, which is 50% of the total loan amount;",
+      txt17:
+        "5. After the dApp is launched, the remaining 50% will be issued in the second installment;",
+      txt18:
+        "6. When the dApp is up and running and the loan is due, developers pay back their loans in the method they choose.",
+      tit3: "Loan issuance:",
+      txt19:
+        "The loan is issued in ONT and we will record the equivalent USDT amount at the time of issuance.",
+      tit4: "Repayment plan:",
+      txt20:
+        "At the time of repayment, depending on the ONT price at the time, dApp developers can choose from two ways to pay back the loan:",
+      txt21:
+        "1) Developers can choose to return the equivalent USDT amount recorded at issuance.",
+      txt22: "2) Developers can choose to return the same amount of ONT.",
+      txt23:
+        "* Please Note: Gambling dApps or dApps that falsify data are not included in this incentive scheme. The copyright and operations of dApps belong to their developers.",
+      email: "business@ont.io"
     },
     detail4: {
-      tit: "Developer support scheme",
-      tit1: "Apply for the link",
+      tit:
+        "Developer Support Scheme: Technical, marketing, and operation support",
       txt1:
-        "After providing developers with financial support for development and operation in Incentive Model A and B, we further hope to improve development efficiency and operational effectiveness through technical and marketing support.",
-      txt2:
-        "dApp developers can declare projects through the dApp page on our official website, and after the Technical department evaluates it, Ontology will assign a project owner to help develop and market the dApp throughout its life cycle.",
-      txt3:
-        "Developers who wish to participate in both the loan program and technical and market support must submit two applications to receive support for both.",
-      txt4:
-        "If you need technical & marketing support, please choose “Blockchain solutions inquiry” ",
-      txt5: "here",
-      txt6:
-        ", and tell us what specific support you need in “Your message” area.",
-      url1: "https://ont.io/#/dapp",
-      url2: "https://ont.io/#/contactUs"
+        "In addition to financial support for development and operation, the Ontology team further provides developers with technical, marketing, and operation support.",
+      tit1: "How to apply:",
+      txt2: "Send the following information to ",
+      txt3: ":",
+      txt4: "1. Team name;",
+      txt5: "2. Team introduction;",
+      txt6: "3. Contact person and phone number;",
+      txt7: "4. The functions of your dApp;",
+      txt8: "5. Estimated number of days needed for development;",
+      txt9: "Ontology will reply your email within 1-2 business days.",
+      txt10:
+        "After evaluating the application, Ontology will discuss with the dApp development team how to help market the dApp throughout its life cycle.",
+      tit2: "Example",
+      txt11: "HyperDragons Go! Launched on Ontology",
+      txt12:
+        "The gaming dApp HyperDragons Go! was officially launched on Ontology on December 25th, 2018. According to data on December 28th, the average daily growth rate of players in the first three days reached 272%, the average daily growth rate of active players was 919%, and the average daily growth rate of transactions was 756%.",
+      txt13:
+        "It only took the Ontology team five weeks to help move this game from Ethereum to Ontology. Our support in this process included:",
+      tit3: "Technical support",
+      txt14:
+        "1. Providing protocols to help HyperDragons Go! to achieve the scan-to-play feature (ONTO is the first mobile app that supports such feature);",
+      txt15: "2. Guidance on the use of the TS-SDK;",
+      txt16: "3. Coding instructions and auditing of smart contracts.",
+      tit4: "Marketing support",
+      txt17:
+        "1. Global community sharing: The news shared covered over 200,000 users over 36 channels on 11 social media platforms;",
+      txt18:
+        "2. Global marketing operations: event planning, poster design, news releases, community article writing and proofreading, real-time community maintenance, and feedback.",
+      email: "marketing@ont.io"
     }
   },
   tp: {

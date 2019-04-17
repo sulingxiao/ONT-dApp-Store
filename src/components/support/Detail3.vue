@@ -30,7 +30,23 @@
             /></span>
             <span class="spt-d-e-tit">{{ $t("support.detail3.tit1") }}</span>
           </div>
-          <div class="spt-detail-txt">{{ $t("support.detail3.txt2") }}</div>
+          <div class="spt-detail-txt">
+            {{ $t("support.detail3.txt2") }}
+            <a
+              :href="'mailto:' + $t('support.detail3.email')"
+              target="_blank"
+              >{{ $t("support.detail3.email") }}</a
+            >
+            {{ $t("support.detail3.txt3") }}
+            <div>{{ $t("support.detail3.txt4") }}</div>
+            <div>{{ $t("support.detail3.txt5") }}</div>
+            <div>{{ $t("support.detail3.txt6") }}</div>
+            <div>{{ $t("support.detail3.txt7") }}</div>
+            <div>{{ $t("support.detail3.txt8") }}</div>
+            <div>{{ $t("support.detail3.txt9") }}</div>
+            <div>{{ $t("support.detail3.txt10") }}</div>
+            <div>{{ $t("support.detail3.txt11") }}</div>
+          </div>
 
           <div class="spt-detail-example">
             <span
@@ -42,9 +58,24 @@
             <span class="spt-d-e-tit">{{ $t("support.detail3.tit2") }}</span>
           </div>
           <div class="spt-detail-txt">
-            <a :href="$t('support.detail3.url1')" target="_blank">{{
-              $t("support.detail3.txt3")
-            }}</a>
+            {{ $t("support.detail3.txt12") }}
+          </div>
+          <div class="spt-detail-txt">
+            <div>
+              {{ $t("support.detail3.txt13")
+              }}<span
+                ><a
+                  :href="'mailto:' + $t('support.detail3.email')"
+                  target="_blank"
+                  >{{ $t("support.detail3.email") }}</a
+                ></span
+              >
+            </div>
+            <div>{{ $t("support.detail3.txt14") }}</div>
+            <div>{{ $t("support.detail3.txt15") }}</div>
+            <div>{{ $t("support.detail3.txt16") }}</div>
+            <div>{{ $t("support.detail3.txt17") }}</div>
+            <div>{{ $t("support.detail3.txt18") }}</div>
           </div>
 
           <div class="spt-detail-example">
@@ -56,16 +87,7 @@
             /></span>
             <span class="spt-d-e-tit">{{ $t("support.detail3.tit3") }}</span>
           </div>
-          <div class="spt-detail-txt">{{ $t("support.detail3.txt4") }}</div>
-          <div class="spt-detail-example-img">
-            <img :src="'/support/detail/3-1-' + $i18n.locale + '.png'" alt="" />
-          </div>
-          <div class="spt-detail-txt">
-            <div>{{ $t("support.detail3.txt5") }}</div>
-            <div>{{ $t("support.detail3.txt6") }}</div>
-            <div>{{ $t("support.detail3.txt7") }}</div>
-            <div>{{ $t("support.detail3.txt8") }}</div>
-          </div>
+          <div class="spt-detail-txt">{{ $t("support.detail3.txt19") }}</div>
 
           <div class="spt-detail-example">
             <span
@@ -76,13 +98,14 @@
             /></span>
             <span class="spt-d-e-tit">{{ $t("support.detail3.tit4") }}</span>
           </div>
-          <div class="spt-detail-txt">{{ $t("support.detail3.txt9") }}</div>
           <div class="spt-detail-txt">
-            <div>{{ $t("support.detail3.txt10") }}</div>
-            <div>{{ $t("support.detail3.txt11") }}</div>
-            <div>{{ $t("support.detail3.txt12") }}</div>
+            <div>{{ $t("support.detail3.txt20") }}</div>
+            <div>{{ $t("support.detail3.txt21") }}</div>
+            <div>{{ $t("support.detail3.txt22") }}</div>
+          </div>
+          <div class="spt-detail-txt">
             <div class="spt-detail-txt-tips">
-              {{ $t("support.detail3.txt13") }}
+              {{ $t("support.detail3.txt23") }}
             </div>
           </div>
         </div>
@@ -114,6 +137,7 @@
   }
   .spt-detail-txt-tips {
     color: #d0021b;
+    font-size: 16px;
   }
   .spt-detail-example {
     margin-top: 32px;

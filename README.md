@@ -27,7 +27,7 @@ yarn fix
 ```
 
 [VueJS & WebStorm 使用eslint格式化代码](https://www.jianshu.com/p/687b6e96458a)
-快捷键：Command + Shift + p
+快捷键：Command + Option + Shift + p
 
 
 
