@@ -30,7 +30,7 @@
       </div>
       <a
         class="btn my-2 my-sm-0 support-btn"
-        href="https://ont.io/#/dapp"
+        href="https://ont.io/dapp"
         target="_blank"
       >
         {{ $t("navbar.submit") }}

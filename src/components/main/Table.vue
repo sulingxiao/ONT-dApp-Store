@@ -247,10 +247,8 @@ export default {
     async handleCurrentChange(val) {
       this.loading = true;
       this.currentPage = val;
-      await this.$store.dispatch("getDAppLists", {
-        size: this.pageSize,
-        page: val
-      });
+      let params = { size: this.pageSize, page: val };
+      await this.$store.dispatch("getDAppLists", params);
       this.loading = false;
     }
   }
