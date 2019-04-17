@@ -167,7 +167,6 @@ export default {
 }
 .footer-logo-text {
   font-size: 18px;
-  font-family: SourceSansPro-Regular, sans-serif;
 }
 .footer-logo-label {
   opacity: 0.2;
@@ -177,7 +176,6 @@ export default {
 }
 .footer-content-title {
   font-size: 16px;
-  font-family: SourceSansPro-Semibold, sans-serif;
   font-weight: 600;
   line-height: 20px;
   color: #02101c;
@@ -187,7 +185,6 @@ export default {
 }
 .footer-content-text {
   font-size: 14px;
-  font-family: SourceSansPro-Regular, sans-serif;
   font-weight: 400;
   line-height: 18px;
   cursor: pointer;
@@ -207,7 +204,6 @@ export default {
 }
 .footer-copyright {
   font-size: 14px;
-  font-family: SourceSansPro-Regular, sans-serif;
   font-weight: 400;
   color: rgba(170, 179, 180, 1);
   line-height: 18px;

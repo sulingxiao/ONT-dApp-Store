@@ -22,7 +22,7 @@ export default {
 
 <style>
 #app {
-  font-family: Nunito, sans-serif;
+  /*font-family: Nunito, sans-serif;*/
   color: #2c3e50;
   background: #fafafa;
 }
