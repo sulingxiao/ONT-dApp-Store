@@ -146,14 +146,14 @@
                   </td>
                   <td>
                     <div class="flex-row td-reward">
-                      <div class="flex-td-txt-center">
+                      <div class="flex-td-txt-center td-text-justify">
                         {{ $HelperTools.toFinancialVal(item.Reward) }}
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="flex-row td-reward">
-                      <div class="flex-td-txt-center">
+                      <div class="flex-td-txt-center td-text-justify">
                         {{ $HelperTools.toFinancialVal(item.TotalReward) }}
                       </div>
                     </div>
