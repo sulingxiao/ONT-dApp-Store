@@ -190,7 +190,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 5,
+      pageSize: 6,
       loading: true
     };
   },
@@ -207,21 +207,35 @@ export default {
         let tmpList = this.$store.getters.dAppLists;
         for (let i in tmpList) {
           switch (tmpList[i].ContractHash) {
+            // HyperDragons Go!
             case "cae215265a5e348bfd603b8db22893aa74b42417":
-              tmpList[i].Reward = 13454.4;
-              tmpList[i].TotalReward = 33454.4;
+              tmpList[i].Reward = 8036.97;
+              tmpList[i].TotalReward = 41491.37;
               break;
+            // 像素鸟
             case "81e9ad4bdcc91e439ef167cacb6da919f73842f6":
-              tmpList[i].Reward = 5306.06;
-              tmpList[i].TotalReward = 5306.06;
+              tmpList[i].Reward = 4767;
+              tmpList[i].TotalReward = 10073.06;
               break;
+            // 区块战争
             case "573dd44ca1c691e6d224119ebdd762960089d826":
-              tmpList[i].Reward = 752.71;
-              tmpList[i].TotalReward = 752.71;
+              tmpList[i].Reward = 4308.99;
+              tmpList[i].TotalReward = 5061.7;
               break;
+            // 2048 Enhanced
             case "aa0547aac7b9822167e2576f5c921ea0eb5ada7f":
-              tmpList[i].Reward = 486.83;
-              tmpList[i].TotalReward = 486.83;
+              tmpList[i].Reward = 936.69;
+              tmpList[i].TotalReward = 1423.52;
+              break;
+            // 爆爽弹一弹
+            case "5389914e9ad96cc8a15a3e961440334719270cf8":
+              tmpList[i].Reward = 1312.22;
+              tmpList[i].TotalReward = 1312.22;
+              break;
+            // Fishing Man
+            case "8c15299cc6843e808b42f1ffb9cff7ec36f81ea1":
+              tmpList[i].Reward = 638.12;
+              tmpList[i].TotalReward = 638.12;
               break;
             default:
               tmpList[i].Reward = 0;
