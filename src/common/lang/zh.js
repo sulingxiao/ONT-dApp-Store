@@ -205,5 +205,20 @@ export default {
   },
   tp: {
     tit: "第三方dApp统计"
+  },
+  bind: {
+    verify: {
+      tit: "dApp 绑定验证",
+      txt:
+        "DApp绑定验证供开发者使用。开发者在合约部署成功之后，将 dApp和ONT ID（之后的更新操作都通过该ONT ID完成），分红钱包（用于dApp激励）以及部署dApp的钱包绑定。",
+      ontId: "ONT ID：",
+      scHash: "合约哈希：",
+      scAddress: "部署合约地址：",
+      scAddressDesc:
+        "管理员会验证该部署地址是否和真实的部署合约地址一致，请正确填写。",
+      address: "接收激励地址：",
+      note: "注意： 若想要更换接收激励地址，重新提交绑定验证信息即可。",
+      submit: "提交"
+    }
   }
 };

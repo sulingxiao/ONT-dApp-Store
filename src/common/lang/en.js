@@ -219,5 +219,21 @@ export default {
   },
   tp: {
     tit: "Third Party dApp Stores"
+  },
+  bind: {
+    verify: {
+      tit: "DApp binding verification",
+      txt:
+        "DApp binding validation is available to developers. After the contract is successfully deployed, the developer will dApp and ONT ID (after the update operation is completed by the ONT ID), the dividend wallet (for dApp incentives), and the wallet binding for deploying the dApp.",
+      ontId: "ONT ID:",
+      scHash: "Contract Hash:",
+      scAddress: "Deployment contract address:",
+      scAddressDesc:
+        "The administrator will verify that the deployment address is consistent with the actual deployment contract address. Please fill in correctly.",
+      address: "Receiving an incentive address:",
+      note:
+        "Note: If you want to replace the receiving stimulus address, resubmit the binding verification information.",
+      submit: "Submit"
+    }
   }
 };

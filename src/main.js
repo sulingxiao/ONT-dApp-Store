@@ -14,9 +14,15 @@ import zh from "./common/lang/zh";
 import en from "./common/lang/en";
 import Helper from "./helpers/tools";
 
+// 解决【The computed property "fields" is already defined in data.】的冲突
+const VVConfig = {
+  errorBagName: "errorBags", // change if property conflicts.
+  fieldsBagName: "fieldBags"
+};
+
 Vue.use(Element);
 Vue.use(Helper);
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, VVConfig);
 Vue.use(VueCookies);
 Vue.use(VueI18n);
 

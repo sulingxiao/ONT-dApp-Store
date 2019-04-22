@@ -36,6 +36,21 @@ const routes = [
     component: _import("support/Detail4")
   },
   {
+    path: "/bind/verify",
+    name: "BindVerify",
+    component: _import("bind/Verify")
+  },
+  {
+    path: "/bind/node",
+    name: "BindNode",
+    component: _import("bind/Node")
+  },
+  {
+    path: "/bind/search",
+    name: "BindSearch",
+    component: _import("bind/Search")
+  },
+  {
     path: "/dapp-details/:id",
     name: "DAppDetails",
     component: _import("dappDetails")

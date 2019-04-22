@@ -6,6 +6,17 @@
       </div>
     </div>
 
+<!--    <div class="row">-->
+<!--      <div class="col" v-for="item in bindList" :key="item.name">-->
+<!--        <router-link :to="{ name: item.routerName }">-->
+<!--          <div class="bind-div">-->
+<!--            <div class="bind-tit">{{ item.name }}</div>-->
+<!--            <div class="bind-txt">{{ item.desc }}</div>-->
+<!--          </div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+<!--    </div>-->
+
     <div class="row">
       <div
         class="col-xl-6 col-lg-6 col-12"
@@ -32,6 +43,25 @@
 <script>
 export default {
   computed: {
+    bindList() {
+      return [
+        {
+          name: "dApp绑定验证",
+          desc: "文案文案文案文案文案文案文案文案文案文案文案",
+          routerName: "BindVerify"
+        },
+        {
+          name: "dApp节点绑定",
+          desc: "文案文案文案文案文案文案文案文案文案文案文案",
+          routerName: "BindNode"
+        },
+        {
+          name: "绑定信息查询",
+          desc: "文案文案文案文案文案文案文案文案文案文案文案",
+          routerName: "BindSearch"
+        }
+      ];
+    },
     supportList() {
       return [
         {
@@ -87,11 +117,28 @@ export default {
     );
     border-radius: 6px;
     opacity: 0.7994;
-    margin-bottom: 90px;
+    margin-bottom: 24px;
     padding: 50px 24px;
     font-size: 32px;
     color: rgba(255, 255, 255, 1);
     text-shadow: 0 2px 5px rgba(70, 159, 219, 1);
+  }
+
+  .bind-div {
+    background-color: white;
+    margin-bottom: 24px;
+    padding: 16px;
+
+    .bind-tit {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(70, 159, 219, 1);
+    }
+    .bind-txt {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(183, 200, 206, 1);
+    }
   }
 
   .spt-item {
