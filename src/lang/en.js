@@ -40,6 +40,11 @@ export default {
       explorer: "Explorer"
     }
   },
+  message: {
+    getCyanoInfoSuccess:
+      "The ONT ID and Account Address have been successfully obtained.",
+    bindWalletErr: "The ONT-ID and Wallet Address are already bound."
+  },
   main: {
     tl: {
       name: "dApp Rankings",

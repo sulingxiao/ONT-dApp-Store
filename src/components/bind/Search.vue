@@ -123,8 +123,17 @@ export default {
       };
       console.log(params);
 
-      // let result = await client.api.smartContract.invokeRead(params);
-      // console.log(result);
+      try {
+        // let result = await client.api.smartContract.invokeRead(params);
+        // console.log(result);
+        this.$message({
+          message: "Success",
+          type: "success"
+        });
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        this.$message.error(err.Result);
+      }
     }
   }
 };

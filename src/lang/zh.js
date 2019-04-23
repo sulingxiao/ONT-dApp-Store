@@ -40,6 +40,10 @@ export default {
       explorer: "浏览器"
     }
   },
+  message: {
+    getCyanoInfoSuccess: "ONT ID和Account Address已经获取成功",
+    bindWalletErr: "该ONT-ID和Wallet Address已经绑定"
+  },
   main: {
     tl: {
       name: "dApp排行榜",

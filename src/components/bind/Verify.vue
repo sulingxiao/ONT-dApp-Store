@@ -150,6 +150,10 @@ export default {
         await client.registerClient({});
         this.bindVerifyForm.ontId = await client.api.identity.getIdentity();
         this.bindVerifyForm.scAddress = await client.api.asset.getAccount();
+        this.$message({
+          message: this.$t("message.getCyanoInfoSuccess"),
+          type: "success"
+        });
       } catch (e) {
         if (e === "NO_IDENTITY") {
           this.alert(this.$t("bind.noIdentity"));
@@ -183,8 +187,21 @@ export default {
         };
         console.log(params);
 
-        // let result = await client.api.smartContract.invoke(params);
-        // console.log(result);
+        try {
+          // let result = await client.api.smartContract.invoke(params);
+          // console.log(result.result);
+          this.$message({
+            message: "Success",
+            type: "success"
+          });
+        } catch (e) {
+          let err = this.$HelperTools.strToJson(e);
+          if (err.Result.indexOf("vm execute state fault") !== -1) {
+            this.$message.error(this.$t("message.bindWalletErr"));
+          } else {
+            this.$message.error(err.Result);
+          }
+        }
 
         this.bindActive = 1;
       } else if (this.bindActive === 1) {
@@ -211,8 +228,18 @@ export default {
         };
         console.log(params);
 
-        // let result = await client.api.smartContract.invokeRead(params);
-        // console.log(result);
+        try {
+          // let result = await client.api.smartContract.invokeRead(params);
+          // console.log(result);
+          this.$message({
+            message: "Success",
+            type: "success"
+          });
+        } catch (e) {
+          let err = this.$HelperTools.strToJson(e);
+          this.$message.error(err.Result);
+        }
+
         this.bindActive = 2;
       } else {
         this.$alert(
