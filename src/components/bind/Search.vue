@@ -126,10 +126,7 @@ export default {
       try {
         // let result = await client.api.smartContract.invokeRead(params);
         // console.log(result);
-        this.$message({
-          message: "Success",
-          type: "success"
-        });
+        this.$message({ message: "Success", type: "success" });
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         this.$message.error(err.Result);

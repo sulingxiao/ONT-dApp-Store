@@ -145,19 +145,25 @@ export default {
       };
       console.log(params);
 
-      // let result = await client.api.smartContract.invokeRead(params);
-      // console.log(result);
+      try {
+        // let result = await client.api.smartContract.invokeRead(params);
+        // console.log(result);
+        this.$message({ message: "Success", type: "success" });
 
-      this.$alert(
-        this.$t("bind.node.confirmAlert.txt"),
-        this.$t("bind.node.confirmAlert.tit"),
-        {
-          confirmButtonText: this.$t("bind.node.confirmAlert.btn"),
-          callback: () => {
-            this.$router.push({ name: "Support" });
+        this.$alert(
+          this.$t("bind.node.confirmAlert.txt"),
+          this.$t("bind.node.confirmAlert.tit"),
+          {
+            confirmButtonText: this.$t("bind.node.confirmAlert.btn"),
+            callback: () => {
+              this.$router.push({ name: "Support" });
+            }
           }
-        }
-      );
+        );
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        this.$message.error(err.Result);
+      }
     }
   }
 };

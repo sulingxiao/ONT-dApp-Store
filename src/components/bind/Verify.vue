@@ -190,10 +190,7 @@ export default {
         try {
           // let result = await client.api.smartContract.invoke(params);
           // console.log(result.result);
-          this.$message({
-            message: "Success",
-            type: "success"
-          });
+          this.$message({ message: "Success", type: "success" });
         } catch (e) {
           let err = this.$HelperTools.strToJson(e);
           if (err.Result.indexOf("vm execute state fault") !== -1) {
@@ -231,10 +228,7 @@ export default {
         try {
           // let result = await client.api.smartContract.invokeRead(params);
           // console.log(result);
-          this.$message({
-            message: "Success",
-            type: "success"
-          });
+          this.$message({ message: "Success", type: "success" });
         } catch (e) {
           let err = this.$HelperTools.strToJson(e);
           this.$message.error(err.Result);
