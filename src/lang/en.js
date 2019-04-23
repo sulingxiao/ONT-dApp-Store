@@ -247,6 +247,10 @@ export default {
       tit: "DApp binding verification",
       txt:
         "DApp binding validation is available to developers. After the contract is successfully deployed, the developer will dApp and ONT ID (after the update operation is completed by the ONT ID), the dividend wallet (for dApp incentives), and the wallet binding for deploying the dApp.",
+      txt2: {
+        1: "Before binding, make sure you use the Chrome browser, install the cyano browser plugin and log in to the ONTID and the contract wallet address of your deployment. ",
+        2: "Click to download the Cyano plugin"
+      },
       ontId: "ONT ID:",
       scHash: "Contract Hash:",
       scAddress: "Deployment contract address:",

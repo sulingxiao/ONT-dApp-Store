@@ -232,6 +232,10 @@ export default {
       tit: "dApp 绑定验证",
       txt:
         "DApp绑定验证供开发者使用。开发者在合约部署成功之后，将 dApp和ONT ID（之后的更新操作都通过该ONT ID完成），分红钱包（用于dApp激励）以及部署dApp的钱包绑定。",
+      txt2: {
+        1: "绑定之前请确保您使用了chrome浏览器、安装了cyano浏览器插件并且登陆了您填写的ONTID和部署合约的钱包地址。",
+        2: "点击下载cyano插件"
+      },
       ontId: "ONT ID：",
       scHash: "合约哈希：",
       scAddress: "部署合约地址：",

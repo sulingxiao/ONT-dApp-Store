@@ -6,8 +6,7 @@
 
     <div class="row b-s-form">
       <el-form
-        label-position="left"
-        label-width="150px"
+        label-position="top"
         :model="bindSearchForm"
         :rules="bindSearchRules"
         ref="bindSearchForm"
@@ -19,7 +18,7 @@
           ></el-input>
         </el-form-item>
 
-        <el-form-item>
+        <el-form-item class="text-center">
           <el-button class="submit-btn" type="primary" @click="handleBinding">{{
             $t("bind.search.submit")
           }}</el-button>
@@ -30,23 +29,23 @@
     <div>
       <div class="row-line"></div>
       <div class="search-result">{{ $t("bind.search.result.name") }}</div>
-      <div class="row">
-        <div class="col-4 s-r-tit">{{ $t("bind.search.result.ontId") }}</div>
-        <div class="col-8 s-r-txt">{{ bindSearchResult.ontId }}</div>
+      <div class="">
+        <div class="row s-r-tit">{{ $t("bind.search.result.ontId") }}</div>
+        <div class="row s-r-txt">{{ bindSearchResult.ontId }}</div>
       </div>
-      <div class="row">
-        <div class="col-4 s-r-tit">{{ $t("bind.search.result.address") }}</div>
-        <div class="col-8 s-r-txt">{{ bindSearchResult.address }}</div>
+      <div class="">
+        <div class="row s-r-tit">{{ $t("bind.search.result.address") }}</div>
+        <div class="row s-r-txt">{{ bindSearchResult.address }}</div>
       </div>
-      <div class="row">
-        <div class="col-4 s-r-tit">{{ $t("bind.search.result.nodeName") }}</div>
-        <div class="col-8 s-r-txt">{{ bindSearchResult.nodeName }}</div>
+      <div class="">
+        <div class="row s-r-tit">{{ $t("bind.search.result.nodeName") }}</div>
+        <div class="row s-r-txt">{{ bindSearchResult.nodeName }}</div>
       </div>
-      <div class="row">
-        <div class="col-4 s-r-tit">
+      <div>
+        <div class="row s-r-tit">
           {{ $t("bind.search.result.nodePublicKey") }}
         </div>
-        <div class="col-8 s-r-txt">{{ bindSearchResult.nodePublicKey }}</div>
+        <div class="row s-r-txt">{{ bindSearchResult.nodePublicKey }}</div>
       </div>
     </div>
   </div>
@@ -111,9 +110,16 @@ export default {
       let params = {
         contract: this.contract.getBindedNode,
         method: "get_binded_node",
-        parameters: {
-          contract_hash: this.bindSearchForm.scHash
-        }
+        parameters: [
+          // contract_hash
+          {
+            type: "String",
+            value: this.bindSearchForm.scHash
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: false
       };
       console.log(params);
 
@@ -128,7 +134,7 @@ export default {
 .bind-search-container {
   width: 720px;
   margin: 64px auto;
-  padding: 90px;
+  padding: 20px 90px;
   background-color: white;
 
   /deep/ .el-form {
@@ -140,9 +146,8 @@ export default {
     .el-form-item__label {
       font-size: 14px;
       color: rgba(74, 74, 74, 1);
-    }
-    .el-form-item__error {
-      padding-top: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0;
     }
     .el-form-item__content {
       font-size: 12px;
@@ -164,7 +169,7 @@ export default {
     font-size: 14px;
     color: rgba(110, 111, 112, 1);
     line-height: 20px;
-    margin-top: 44px !important;
+    margin-top: 30px !important;
   }
   .b-s-form {
     margin-top: 32px !important;
@@ -198,12 +203,12 @@ export default {
   .s-r-tit {
     font-size: 14px;
     color: rgba(155, 155, 155, 1);
-    margin-top: 16px;
+    margin-top: 20px !important;
   }
   .s-r-txt {
     font-size: 14px;
     color: rgba(74, 74, 74, 1);
-    margin-top: 16px;
+    margin-top: 10px !important;
   }
 }
 </style>

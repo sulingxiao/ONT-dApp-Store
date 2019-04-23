@@ -5,11 +5,18 @@
     </div>
 
     <div class="row b-v-txt">{{ $t("bind.verify.txt") }}</div>
+    <div class="row b-v-txt2">
+      {{ $t("bind.verify.txt2.1")
+      }}<a
+        href="https://chrome.google.com/webstore/detail/cyano-wallet/dkdedlpgdmmkkfjabffeganieamfklkm"
+        target="_blank"
+        >{{ $t("bind.verify.txt2.2") }}</a
+      >
+    </div>
 
     <div class="row b-v-form">
       <el-form
-        label-position="left"
-        label-width="150px"
+        label-position="top"
         :model="bindVerifyForm"
         :rules="bindVerifyRules"
         ref="bindVerifyForm"
@@ -32,7 +39,7 @@
 
         <!-- Dialog -->
         <div class="bind-verify-dialog">
-          <el-form-item>
+          <el-form-item class="text-center">
             <el-button
               class="submit-btn"
               type="primary"
@@ -78,6 +85,7 @@
 
 <script>
 import { client } from "ontology-dapi";
+import { Crypto } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -91,7 +99,7 @@ export default {
       dialogVisible: false,
       bindActive: 0,
       contract: {
-        bind: "123123",
+        bind: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
         dAppBind: "skdfjka"
       }
     };
@@ -152,28 +160,54 @@ export default {
     },
     async bindNext() {
       if (this.bindActive === 0) {
+        // ONT ID 绑定 Address
         let params = {
           contract: this.contract.bind,
           method: "bind",
-          parameters: {
-            ontid: this.bindVerifyForm.ontId,
-            account: this.bindVerifyForm.scAddress
-          }
+          parameters: [
+            // ontid、account
+            {
+              type: "String",
+              value: this.bindVerifyForm.ontId
+            },
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(
+                this.bindVerifyForm.scAddress
+              ).serialize()
+            }
+          ],
+          gasPrice: "500",
+          gasLimit: "20000",
+          requireIdentity: false
         };
         console.log(params);
 
-        // let result = await client.api.smartContract.invokeRead(params);
+        // let result = await client.api.smartContract.invoke(params);
         // console.log(result);
+
         this.bindActive = 1;
       } else if (this.bindActive === 1) {
         let params = {
           contract: this.contract.dAppBind,
           method: "dapp_bind",
-          parameters: {
-            contract_hash: this.bindVerifyForm.scHash,
-            ontid: this.bindVerifyForm.ontId,
-            receive_account: this.bindVerifyForm.address
-          }
+          parameters: [
+            // contract_hash、ontid、receive_account
+            {
+              type: "String",
+              value: this.bindVerifyForm.scHash
+            },
+            { type: "String", value: this.bindVerifyForm.ontId },
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(
+                this.bindVerifyForm.scAddress
+              ).serialize()
+            }
+          ],
+          gasPrice: "500",
+          gasLimit: "20000",
+          requireIdentity: false
         };
         console.log(params);
 
@@ -213,7 +247,7 @@ export default {
 .bind-verify-container {
   width: 720px;
   margin: 64px auto;
-  padding: 90px;
+  padding: 20px 90px;
   background-color: white;
 
   /deep/ .el-form {
@@ -225,10 +259,8 @@ export default {
     .el-form-item__label {
       font-size: 14px;
       color: rgba(74, 74, 74, 1);
-      /*line-height: 14px;*/
-    }
-    .el-form-item__error {
-      padding-top: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0;
     }
     .el-form-item__content {
       font-size: 12px;
@@ -243,11 +275,20 @@ export default {
     color: rgba(74, 74, 74, 1);
     line-height: 30px;
   }
-  .b-v-txt {
+  .b-v-txt,
+  .b-v-txt2 {
     font-size: 14px;
     color: rgba(110, 111, 112, 1);
     line-height: 20px;
-    margin-top: 44px !important;
+    margin-top: 30px !important;
+  }
+  .b-v-txt2 {
+    margin-top: 10px !important;
+    display: -webkit-box;
+  }
+  .b-v-txt2 > a {
+    font-size: 14px;
+    color: rgba(70, 159, 219, 1);
   }
   .b-v-form {
     margin-top: 32px !important;

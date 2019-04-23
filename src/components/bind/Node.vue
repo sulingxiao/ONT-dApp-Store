@@ -8,8 +8,7 @@
 
     <div class="row b-n-form">
       <el-form
-        label-position="left"
-        label-width="150px"
+        label-position="top"
         :model="bindNodeForm"
         :rules="bindNodeRules"
         ref="bindNodeForm"
@@ -43,7 +42,7 @@
 
         <div class="b-n-note">{{ $t("bind.node.note") }}</div>
 
-        <el-form-item>
+        <el-form-item class="text-center">
           <el-button class="submit-btn" type="primary" @click="handleBinding">{{
             $t("bind.node.submit")
           }}</el-button>
@@ -128,11 +127,21 @@ export default {
       let params = {
         contract: this.contract.nodeBind,
         method: "node_bind",
-        parameters: {
-          contract_hash: this.bindNodeForm.scHash,
-          node_name: this.bindNodeForm.nodeName,
-          node_pubkey: this.bindNodeForm.nodePublicKey
-        }
+        parameters: [
+          // contract_hash、node_name、node_pubkey
+          {
+            type: "String",
+            value: this.bindNodeForm.scHash
+          },
+          { type: "String", value: this.bindNodeForm.nodeName },
+          {
+            type: "String",
+            value: this.bindNodeForm.nodePublicKey
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: false
       };
       console.log(params);
 
@@ -158,7 +167,7 @@ export default {
 .bind-node-container {
   width: 720px;
   margin: 64px auto;
-  padding: 90px;
+  padding: 20px 90px;
   background-color: white;
 
   /deep/ .el-form {
@@ -170,9 +179,8 @@ export default {
     .el-form-item__label {
       font-size: 14px;
       color: rgba(74, 74, 74, 1);
-    }
-    .el-form-item__error {
-      padding-top: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0;
     }
     .el-form-item__content {
       font-size: 12px;
@@ -194,7 +202,7 @@ export default {
     font-size: 14px;
     color: rgba(110, 111, 112, 1);
     line-height: 20px;
-    margin-top: 44px !important;
+    margin-top: 30px !important;
   }
   .b-n-form {
     margin-top: 32px !important;
