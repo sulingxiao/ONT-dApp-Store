@@ -218,7 +218,9 @@ const HelperTools = {
 
       try {
         data = JSON.parse(data);
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
     }
 
     return data;
