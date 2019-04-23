@@ -222,6 +222,36 @@ const HelperTools = {
     }
 
     return data;
+  },
+
+  /**
+   * 获取当前浏览系统的信息
+   */
+  getSystemInfo() {
+    let sys = {};
+    let ua = navigator.userAgent.toLowerCase();
+    let re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+    let m = ua.match(re);
+    sys.browser = m[1].replace(/version/, "'safari");
+    sys.ver = m[2];
+    sys.isMobile = ua.indexOf("mobile") > -1;
+
+    return sys;
+  },
+
+  /**
+   * 根据首字母对数组中某一个对象的value进行排序。
+   *
+   * @param array
+   * @param key
+   * @return {*}
+   */
+  sortArrList(array, key) {
+    return array.sort(function(a, b) {
+      let x = a[key];
+      let y = b[key];
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
   }
 };
 

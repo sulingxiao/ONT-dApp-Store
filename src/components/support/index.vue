@@ -6,16 +6,16 @@
       </div>
     </div>
 
-<!--    <div class="row">-->
-<!--      <div class="col" v-for="item in bindList" :key="item.name">-->
-<!--        <router-link :to="{ name: item.routerName }">-->
-<!--          <div class="bind-div">-->
-<!--            <div class="bind-tit">{{ item.name }}</div>-->
-<!--            <div class="bind-txt">{{ item.desc }}</div>-->
-<!--          </div>-->
-<!--        </router-link>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="row">
+      <div class="col" v-for="item in bindList" :key="item.name">
+        <router-link :to="{ name: item.routerName }">
+          <div class="bind-div">
+            <div class="bind-tit">{{ item.name }}</div>
+            <div class="bind-txt">{{ item.desc }}</div>
+          </div>
+        </router-link>
+      </div>
+    </div>
 
     <div class="row">
       <div
@@ -46,18 +46,18 @@ export default {
     bindList() {
       return [
         {
-          name: "dApp绑定验证",
-          desc: "文案文案文案文案文案文案文案文案文案文案文案",
+          name: this.$t("support.index.bindBtn.verify.tit"),
+          desc: this.$t("support.index.bindBtn.verify.txt"),
           routerName: "BindVerify"
         },
         {
-          name: "dApp节点绑定",
-          desc: "文案文案文案文案文案文案文案文案文案文案文案",
+          name: this.$t("support.index.bindBtn.node.tit"),
+          desc: this.$t("support.index.bindBtn.node.txt"),
           routerName: "BindNode"
         },
         {
-          name: "绑定信息查询",
-          desc: "文案文案文案文案文案文案文案文案文案文案文案",
+          name: this.$t("support.index.bindBtn.search.tit"),
+          desc: this.$t("support.index.bindBtn.search.txt"),
           routerName: "BindSearch"
         }
       ];

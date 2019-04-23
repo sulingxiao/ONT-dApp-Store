@@ -69,6 +69,23 @@ export default {
   support: {
     index: {
       name: "“The Renaissance” Incentive Plan",
+      bindBtn: {
+        verify: {
+          tit: "dApp binding verification",
+          txt:
+            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+        },
+        node: {
+          tit: "dApp node binding",
+          txt:
+            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+        },
+        search: {
+          tit: "Binding information query",
+          txt:
+            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+        }
+      },
       detail1: {
         name: "Split the profits",
         nickname: "Early bird scheme",
@@ -221,6 +238,11 @@ export default {
     tit: "Third Party dApp Stores"
   },
   bind: {
+    noIdentity:
+      "There is no account (IDENTITY) in your Cyano Wallet, please login or create.",
+    ruleMsg: {
+      required: "This is required"
+    },
     verify: {
       tit: "DApp binding verification",
       txt:
@@ -233,7 +255,53 @@ export default {
       address: "Receiving an incentive address:",
       note:
         "Note: If you want to replace the receiving stimulus address, resubmit the binding verification information.",
-      submit: "Submit"
+      submit: "Submit",
+      next: "Next",
+      active: {
+        tit1: "ONT ID binding wallet",
+        tit2: "ONT ID binding dApp",
+        tit3: "Waiting for administrator review"
+      },
+      confirmAlert: {
+        tit: "dApp Binding Verification",
+        txt: "Verification has been submitted successfully!",
+        btn: "Confirm"
+      },
+      confirmQuit:
+        "Your verification information has not been submitted to the administrator for review. After exiting the verification process, dApp binding verification is required. Confirm exit?"
+    },
+    node: {
+      tit: "dApp node binding",
+      txt:
+        "Please complete the dApp binding verification before binding the node",
+      scHash: "Contract Hash:",
+      nodeName: "Node Name:",
+      nodePublicKey: "Node Public Key:",
+      note: "Note: The binding node can get the node fee sharing revenue.",
+      submit: "Binding",
+      placeholder: {
+        nodeName: "Please select a node"
+      },
+      confirmAlert: {
+        tit: "dApp Node Binding",
+        txt: "The dApp node is successfully bound!",
+        btn: "Confirm"
+      }
+    },
+    search: {
+      tit: "Binding information query",
+      scHash: "Contract hash",
+      submit: "Search",
+      placeholder: {
+        scHash: "Please enter the contract hash you are looking for."
+      },
+      result: {
+        name: "Search Result",
+        ontId: "ONT ID:",
+        address: "Receiving the Incentive Address:",
+        nodeName: "Binded Nodes:",
+        nodePublicKey: "Node Public Key:"
+      }
     }
   }
 };

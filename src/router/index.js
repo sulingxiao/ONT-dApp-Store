@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Helper from "./../helpers/tools";
 
 const _import = file => () => import("@/components/" + file + ".vue");
 Vue.use(Router);
@@ -62,6 +63,25 @@ const router = new Router({
   routes: routes,
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 };
+  }
+});
+
+// 有3个页面需要dApi，只能使用Chrome浏览器
+router.beforeEach((to, from, next) => {
+  if (
+    to.name === "BindVerify" ||
+    to.name === "BindNode" ||
+    to.name === "BindSearch"
+  ) {
+    let sys = Helper.HelperTools.getSystemInfo();
+    if (sys.browser !== "chrome" || sys.isMobile) {
+      alert("该页面仅支持在电脑端使用Chrome浏览器打开。");
+      next(false);
+    } else {
+      next();
+    }
+  } else {
+    next();
   }
 });
 

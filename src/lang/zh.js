@@ -68,6 +68,23 @@ export default {
   support: {
     index: {
       name: '"文艺复兴"激励计划',
+      bindBtn: {
+        verify: {
+          tit: "dApp绑定验证",
+          txt:
+            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+        },
+        node: {
+          tit: "dApp节点绑定",
+          txt:
+            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+        },
+        search: {
+          tit: "绑定信息查询",
+          txt:
+            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+        }
+      },
       detail1: {
         name: "节点大让利",
         nickname: "早鸟计划",
@@ -207,6 +224,10 @@ export default {
     tit: "第三方dApp统计"
   },
   bind: {
+    noIdentity: "您的Cyano Wallet中没有账户（IDENTITY），请登录或创建。",
+    ruleMsg: {
+      required: "这项内容是必填项"
+    },
     verify: {
       tit: "dApp 绑定验证",
       txt:
@@ -218,7 +239,52 @@ export default {
         "管理员会验证该部署地址是否和真实的部署合约地址一致，请正确填写。",
       address: "接收激励地址：",
       note: "注意： 若想要更换接收激励地址，重新提交绑定验证信息即可。",
-      submit: "提交"
+      submit: "提交",
+      next: "下一步",
+      active: {
+        tit1: "ONT ID绑定钱包",
+        tit2: "ONT ID绑定dApp",
+        tit3: "等待管理员审核"
+      },
+      confirmAlert: {
+        tit: "dApp绑定验证",
+        txt: "验证内容已经提交成功！",
+        btn: "确定"
+      },
+      confirmQuit:
+        "您的验证信息尚未提交给管理员审核，退出验证流程后需重新进行DApp绑定验证。确认退出？"
+    },
+    node: {
+      tit: "dApp节点绑定",
+      txt: "绑定节点之前请先完成dApp绑定验证",
+      scHash: "合约哈希：",
+      nodeName: "节点名称：",
+      nodePublicKey: "节点公钥：",
+      note: "说明： 绑定节点可以获得节点手续费分成收益。",
+      submit: "绑定",
+      placeholder: {
+        nodeName: "请选择节点"
+      },
+      confirmAlert: {
+        tit: "dApp节点绑定",
+        txt: "dApp节点绑定成功！",
+        btn: "确定"
+      }
+    },
+    search: {
+      tit: "绑定信息查询",
+      scHash: "合约哈希",
+      submit: "查询",
+      placeholder: {
+        scHash: "请输入您要查询的合约哈希"
+      },
+      result: {
+        name: "查询结果",
+        ontId: "ONT ID：",
+        address: "接收激励地址：",
+        nodeName: "绑定的节点：",
+        nodePublicKey: "节点公钥："
+      }
     }
   }
 };
