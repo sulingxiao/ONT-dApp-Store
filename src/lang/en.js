@@ -266,6 +266,7 @@ export default {
         "Note: If you want to replace the receiving stimulus address, resubmit the binding verification information.",
       submit: "Submit",
       next: "Next",
+      bindList: "The ONT ID has been bound to the address list: ",
       active: {
         tit1: "ONT ID binding wallet",
         tit2: "ONT ID binding dApp",

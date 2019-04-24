@@ -249,6 +249,7 @@ export default {
       note: "注意： 若想要更换接收激励地址，重新提交绑定验证信息即可。",
       submit: "提交",
       next: "下一步",
+      bindList: "该ONT ID已经绑定地址列表：",
       active: {
         tit1: "ONT ID绑定钱包",
         tit2: "ONT ID绑定dApp",

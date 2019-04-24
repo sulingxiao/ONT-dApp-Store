@@ -254,6 +254,21 @@ const HelperTools = {
       let y = b[key];
       return x < y ? -1 : x > y ? 1 : 0;
     });
+  },
+
+  /**
+   * 将json map的string值转成对象
+   *
+   * @param strMap
+   * @return {any}
+   * @private
+   */
+  strMapToObj(strMap) {
+    let obj = Object.create(null);
+    for (let [k, v] of strMap) {
+      obj[k] = v;
+    }
+    return obj;
   }
 };
 

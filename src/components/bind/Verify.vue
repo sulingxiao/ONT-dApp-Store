@@ -57,8 +57,13 @@
             :close-on-press-escape="false"
             :before-close="handleClose"
           >
-            <div>
-              {{ bindVerifyForm }}
+            <div v-if="bindList !== []">
+              <div>
+                <b>{{ $t("bind.verify.bindList") }}</b>
+              </div>
+              <div v-for="(addr, index) in bindList" :key="index">
+                {{ ++index + ": " + addr }}
+              </div>
             </div>
             <div class="bind-verify-steps">
               <el-steps
@@ -85,7 +90,7 @@
 
 <script>
 import { client } from "ontology-dapi";
-import { Crypto } from "ontology-ts-sdk";
+import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -101,7 +106,9 @@ export default {
       contract: {
         bind: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
         dAppBind: "skdfjka"
-      }
+      },
+      bindList: [],
+      cyanoReady: false
     };
   },
   computed: {
@@ -150,90 +157,30 @@ export default {
         await client.registerClient({});
         this.bindVerifyForm.ontId = await client.api.identity.getIdentity();
         this.bindVerifyForm.scAddress = await client.api.asset.getAccount();
+        this.cyanoReady = true; // Cyano已经登录好ont id和wallet了
         this.$message({
           message: this.$t("message.getCyanoInfoSuccess"),
           type: "success"
         });
+        this.bindList = await this.bindWalletInvokeRead();
       } catch (e) {
         if (e === "NO_IDENTITY") {
-          this.alert(this.$t("bind.noIdentity"));
+          this.$alert(this.$t("bind.noIdentity"));
         } else {
           console.log(e);
         }
       }
     },
     async bindNext() {
+      if (!this.cyanoReady) {
+        await this.initClient();
+      }
+
       if (this.bindActive === 0) {
-        // ONT ID 绑定 Address
-        let params = {
-          contract: this.contract.bind,
-          method: "bind",
-          parameters: [
-            // ontid、account
-            {
-              type: "String",
-              value: this.bindVerifyForm.ontId
-            },
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(
-                this.bindVerifyForm.scAddress
-              ).serialize()
-            }
-          ],
-          gasPrice: "500",
-          gasLimit: "20000",
-          requireIdentity: false
-        };
-        console.log(params);
-
-        try {
-          // let result = await client.api.smartContract.invoke(params);
-          // console.log(result.result);
-          this.$message({ message: "Success", type: "success" });
-        } catch (e) {
-          let err = this.$HelperTools.strToJson(e);
-          if (err.Result.indexOf("vm execute state fault") !== -1) {
-            this.$message.error(this.$t("message.bindWalletErr"));
-          } else {
-            this.$message.error(err.Result);
-          }
-        }
-
+        await this.bindWallet();
         this.bindActive = 1;
       } else if (this.bindActive === 1) {
-        let params = {
-          contract: this.contract.dAppBind,
-          method: "dapp_bind",
-          parameters: [
-            // contract_hash、ontid、receive_account
-            {
-              type: "String",
-              value: this.bindVerifyForm.scHash
-            },
-            { type: "String", value: this.bindVerifyForm.ontId },
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(
-                this.bindVerifyForm.scAddress
-              ).serialize()
-            }
-          ],
-          gasPrice: "500",
-          gasLimit: "20000",
-          requireIdentity: false
-        };
-        console.log(params);
-
-        try {
-          // let result = await client.api.smartContract.invokeRead(params);
-          // console.log(result);
-          this.$message({ message: "Success", type: "success" });
-        } catch (e) {
-          let err = this.$HelperTools.strToJson(e);
-          this.$message.error(err.Result);
-        }
-
+        await this.bindDApp();
         this.bindActive = 2;
       } else {
         this.$alert(
@@ -247,6 +194,93 @@ export default {
             }
           }
         );
+      }
+    },
+    async bindWalletInvokeRead() {
+      // ONT ID 绑定 Address 的预执行
+      let params = {
+        contract: this.contract.bind,
+        method: "get_binded_wallet",
+        parameters: [{ type: "String", value: this.bindVerifyForm.ontId }] // ontid
+      };
+      let ret = await client.api.smartContract.invokeRead(params);
+
+      // 将KEY值转换成地址
+      let retArr = [];
+      if (ret) {
+        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+        ret = this.$HelperTools.strMapToObj(ret);
+        for (let retKey in ret) {
+          retArr.push(new Crypto.Address(utils.str2hexstr(retKey)).toBase58());
+        }
+      }
+
+      return retArr;
+    },
+    async bindWallet() {
+      // ONT ID 绑定 Address
+      let params = {
+        contract: this.contract.bind,
+        method: "bind",
+        parameters: [
+          // ontid、account
+          {
+            type: "String",
+            value: this.bindVerifyForm.ontId
+          },
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(this.bindVerifyForm.scAddress).serialize()
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: false
+      };
+      console.log(params);
+
+      try {
+        let result = await client.api.smartContract.invoke(params);
+        console.log(result.result);
+        this.$message({ message: "Success", type: "success" });
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        if (err.Result.indexOf("vm execute state fault") !== -1) {
+          this.$message.error(this.$t("message.bindWalletErr"));
+        } else {
+          this.$message.error(err.Result);
+        }
+      }
+    },
+    async bindDApp() {
+      let params = {
+        contract: this.contract.dAppBind,
+        method: "dapp_bind",
+        parameters: [
+          // contract_hash、ontid、receive_account
+          {
+            type: "String",
+            value: this.bindVerifyForm.scHash
+          },
+          { type: "String", value: this.bindVerifyForm.ontId },
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(this.bindVerifyForm.scAddress).serialize()
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: false
+      };
+      console.log(params);
+
+      try {
+        // let result = await client.api.smartContract.invokeRead(params);
+        // console.log(result);
+        this.$message({ message: "Success", type: "success" });
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        this.$message.error(err.Result);
       }
     },
     async handleSubmit() {
