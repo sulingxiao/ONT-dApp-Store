@@ -105,7 +105,7 @@ export default {
       bindActive: 0,
       contract: {
         bind: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
-        dAppBind: "skdfjka"
+        dAppBind: "c57a78b3394eabe01aeaef113f6665e96bac7656"
       },
       bindList: [],
       cyanoReady: false
@@ -177,11 +177,13 @@ export default {
       }
 
       if (this.bindActive === 0) {
-        await this.bindWallet();
-        this.bindActive = 1;
+        if (await this.bindWallet()) {
+          this.bindActive = 1;
+        }
       } else if (this.bindActive === 1) {
-        await this.bindDApp();
-        this.bindActive = 2;
+        if (await this.bindDApp()) {
+          this.bindActive = 2;
+        }
       } else {
         this.$alert(
           this.$t("bind.verify.confirmAlert.txt"),
@@ -237,19 +239,20 @@ export default {
         gasLimit: "20000",
         requireIdentity: false
       };
-      console.log(params);
 
       try {
-        let result = await client.api.smartContract.invoke(params);
-        console.log(result.result);
+        await client.api.smartContract.invoke(params);
         this.$message({ message: "Success", type: "success" });
+        return true;
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         if (err.Result.indexOf("vm execute state fault") !== -1) {
           this.$message.error(this.$t("message.bindWalletErr"));
+          return true;
         } else {
           this.$message.error(err.Result);
         }
+        return false;
       }
     },
     async bindDApp() {
@@ -259,13 +262,13 @@ export default {
         parameters: [
           // contract_hash、ontid、receive_account
           {
-            type: "String",
-            value: this.bindVerifyForm.scHash
+            type: "ByteArray",
+            value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
           },
           { type: "String", value: this.bindVerifyForm.ontId },
           {
             type: "ByteArray",
-            value: new Crypto.Address(this.bindVerifyForm.scAddress).serialize()
+            value: new Crypto.Address(this.bindVerifyForm.address).serialize()
           }
         ],
         gasPrice: "500",
@@ -275,12 +278,15 @@ export default {
       console.log(params);
 
       try {
-        // let result = await client.api.smartContract.invokeRead(params);
-        // console.log(result);
+        let result = await client.api.smartContract.invoke(params);
+        console.log(result);
         this.$message({ message: "Success", type: "success" });
+        return true;
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         this.$message.error(err.Result);
+        console.log(err);
+        return false;
       }
     },
     async handleSubmit() {
@@ -361,7 +367,7 @@ export default {
 
   .bind-verify-dialog {
     .bind-verify-steps {
-      margin: 80px 0;
+      margin: 80px 0 50px;
     }
     .submit-btn {
       width: 220px;
