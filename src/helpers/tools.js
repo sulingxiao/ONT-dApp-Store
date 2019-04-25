@@ -203,11 +203,12 @@ const HelperTools = {
    * 处理string to json
    *
    * @param data
-   * @return {any}
+   * @return {Object}
    */
   strToJson(data) {
     if (
       typeof data !== "object" &&
+      typeof data !== "number" &&
       typeof data !== "undefined" &&
       data !== null &&
       data !== ""

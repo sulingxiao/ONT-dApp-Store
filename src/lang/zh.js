@@ -230,7 +230,8 @@ export default {
   bind: {
     noIdentity: "您的Cyano Wallet中没有账户（IDENTITY），请登录或创建。",
     ruleMsg: {
-      required: "这项内容是必填项"
+      required: "这项内容是必填项",
+      length: "该项长度必须为："
     },
     verify: {
       tit: "dApp 绑定验证",

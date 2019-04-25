@@ -11,7 +11,7 @@
         <router-link :to="{ name: item.routerName }">
           <div class="bind-div">
             <div class="bind-tit">{{ item.name }}</div>
-            <div class="bind-txt">{{ item.desc }}</div>
+            <div class="bind-txt" v-if="viewDesc">{{ item.desc }}</div>
           </div>
         </router-link>
       </div>
@@ -43,6 +43,9 @@
 <script>
 export default {
   computed: {
+    viewDesc() {
+      return window.innerWidth > 768;
+    },
     bindList() {
       return [
         {

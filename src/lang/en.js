@@ -246,7 +246,8 @@ export default {
     noIdentity:
       "There is no account (IDENTITY) in your Cyano Wallet, please login or create.",
     ruleMsg: {
-      required: "This is required"
+      required: "This is required",
+      length: "The length must be: "
     },
     verify: {
       tit: "DApp binding verification",

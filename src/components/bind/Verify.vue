@@ -57,7 +57,7 @@
             :close-on-press-escape="false"
             :before-close="handleClose"
           >
-            <div v-if="bindList !== []">
+            <div v-if="bindList.length > 0">
               <div>
                 <b>{{ $t("bind.verify.bindList") }}</b>
               </div>
@@ -122,6 +122,12 @@ export default {
             required: true,
             trigger: "blur",
             message: this.$t("bind.ruleMsg.required")
+          },
+          {
+            min: 42,
+            max: 42,
+            trigger: "blur",
+            message: this.$t("bind.ruleMsg.length") + "42"
           }
         ],
         scHash: [
@@ -129,6 +135,12 @@ export default {
             required: true,
             trigger: "blur",
             message: this.$t("bind.ruleMsg.required")
+          },
+          {
+            min: 40,
+            max: 40,
+            trigger: "blur",
+            message: this.$t("bind.ruleMsg.length") + "40"
           }
         ],
         scAddress: [
@@ -136,6 +148,12 @@ export default {
             required: true,
             trigger: "blur",
             message: this.$t("bind.ruleMsg.required")
+          },
+          {
+            min: 34,
+            max: 34,
+            trigger: "blur",
+            message: this.$t("bind.ruleMsg.length") + "34"
           }
         ],
         address: [
@@ -143,6 +161,12 @@ export default {
             required: true,
             trigger: "blur",
             message: this.$t("bind.ruleMsg.required")
+          },
+          {
+            min: 34,
+            max: 34,
+            trigger: "blur",
+            message: this.$t("bind.ruleMsg.length") + "34"
           }
         ]
       };
@@ -172,30 +196,38 @@ export default {
       }
     },
     async bindNext() {
-      if (!this.cyanoReady) {
-        await this.initClient();
-      }
-
-      if (this.bindActive === 0) {
-        if (await this.bindWallet()) {
-          this.bindActive = 1;
-        }
-      } else if (this.bindActive === 1) {
-        if (await this.bindDApp()) {
-          this.bindActive = 2;
+      if (this.cyanoReady) {
+        switch (this.bindActive) {
+          case 0:
+            if (
+              this.bindList[this.bindList.length - 1] ===
+                this.bindVerifyForm.scAddress ||
+              (await this.bindWallet())
+            ) {
+              this.bindActive = 1;
+            }
+            break;
+          case 1:
+            if (await this.bindDApp()) {
+              this.bindActive = 2;
+            }
+            break;
+          default:
+            this.$alert(
+              this.$t("bind.verify.confirmAlert.txt"),
+              this.$t("bind.verify.confirmAlert.tit"),
+              {
+                confirmButtonText: this.$t("bind.verify.confirmAlert.btn"),
+                callback: () => {
+                  this.dialogVisible = false;
+                  this.$router.push({ name: "Support" });
+                }
+              }
+            );
+            break;
         }
       } else {
-        this.$alert(
-          this.$t("bind.verify.confirmAlert.txt"),
-          this.$t("bind.verify.confirmAlert.tit"),
-          {
-            confirmButtonText: this.$t("bind.verify.confirmAlert.btn"),
-            callback: () => {
-              this.dialogVisible = false;
-              this.$router.push({ name: "Support" });
-            }
-          }
-        );
+        await this.initClient();
       }
     },
     async bindWalletInvokeRead() {
@@ -219,29 +251,36 @@ export default {
 
       return retArr;
     },
+    /**
+     * 【ONT ID】绑定【发布合约的Address】
+     *
+     * @return {Promise<boolean>}
+     */
     async bindWallet() {
-      // ONT ID 绑定 Address
-      let params = {
-        contract: this.contract.bind,
-        method: "bind",
-        parameters: [
-          // ontid、account
-          {
-            type: "String",
-            value: this.bindVerifyForm.ontId
-          },
-          {
-            type: "ByteArray",
-            value: new Crypto.Address(this.bindVerifyForm.scAddress).serialize()
-          }
-        ],
-        gasPrice: "500",
-        gasLimit: "20000",
-        requireIdentity: false
-      };
-
       try {
+        let params = {
+          contract: this.contract.bind,
+          method: "bind",
+          parameters: [
+            // ontid、account
+            {
+              type: "String",
+              value: this.bindVerifyForm.ontId
+            },
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(
+                this.bindVerifyForm.scAddress
+              ).serialize()
+            }
+          ],
+          gasPrice: "500",
+          gasLimit: "20000",
+          requireIdentity: false
+        };
+
         await client.api.smartContract.invoke(params);
+
         this.$message({ message: "Success", type: "success" });
         return true;
       } catch (e) {
@@ -255,37 +294,43 @@ export default {
         return false;
       }
     },
+    /**
+     * 【ONT ID】（已绑【发布合约的Address】）、【奖励领取Address】、【合约】互相绑定
+     *
+     * @return {Promise<boolean>}
+     */
     async bindDApp() {
-      let params = {
-        contract: this.contract.dAppBind,
-        method: "dapp_bind",
-        parameters: [
-          // contract_hash、ontid、receive_account
-          {
-            type: "ByteArray",
-            value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
-          },
-          { type: "String", value: this.bindVerifyForm.ontId },
-          {
-            type: "ByteArray",
-            value: new Crypto.Address(this.bindVerifyForm.address).serialize()
-          }
-        ],
-        gasPrice: "500",
-        gasLimit: "20000",
-        requireIdentity: false
-      };
-      console.log(params);
-
       try {
+        let params = {
+          contract: this.contract.dAppBind,
+          method: "dapp_bind",
+          parameters: [
+            // contract_hash、ontid、receive_account
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
+            },
+            { type: "String", value: this.bindVerifyForm.ontId },
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(this.bindVerifyForm.address).serialize()
+            }
+          ],
+          gasPrice: "500",
+          gasLimit: "20000",
+          requireIdentity: false
+        };
+        console.log(params);
+
         let result = await client.api.smartContract.invoke(params);
         console.log(result);
+
         this.$message({ message: "Success", type: "success" });
         return true;
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
-        this.$message.error(err.Result);
         console.log(err);
+        this.$message.error(err.Result || err.toString());
         return false;
       }
     },
@@ -367,7 +412,7 @@ export default {
 
   .bind-verify-dialog {
     .bind-verify-steps {
-      margin: 80px 0 50px;
+      margin: 80px 0 0;
     }
     .submit-btn {
       width: 220px;

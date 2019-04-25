@@ -83,6 +83,12 @@ export default {
             required: true,
             trigger: "blur",
             message: this.$t("bind.ruleMsg.required")
+          },
+          {
+            min: 40,
+            max: 40,
+            trigger: "blur",
+            message: this.$t("bind.ruleMsg.length") + "40"
           }
         ],
         optionIndex: [
