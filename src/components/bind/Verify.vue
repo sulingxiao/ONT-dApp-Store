@@ -228,22 +228,29 @@ export default {
       }
     },
     async bindWalletInvokeRead() {
-      // ONT ID 绑定 Address 的预执行
-      let params = {
-        contract: CONTRACT_HASH.bindWallet,
-        method: "get_binded_wallet",
-        parameters: [{ type: "String", value: this.bindVerifyForm.ontId }] // ontid
-      };
-      let ret = await client.api.smartContract.invokeRead(params);
-
-      // 将KEY值转换成地址
       let retArr = [];
-      if (ret) {
-        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-        ret = this.$HelperTools.strMapToObj(ret);
-        for (let retKey in ret) {
-          retArr.push(new Crypto.Address(utils.str2hexstr(retKey)).toBase58());
+
+      try {
+        // ONT ID 绑定 Address 的预执行
+        let params = {
+          contract: CONTRACT_HASH.bindWallet,
+          method: "get_binded_wallet",
+          parameters: [{ type: "String", value: this.bindVerifyForm.ontId }] // ontid
+        };
+        let ret = await client.api.smartContract.invokeRead(params);
+
+        // 将KEY值转换成地址
+        if (ret) {
+          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+          ret = this.$HelperTools.strMapToObj(ret);
+          for (let retKey in ret) {
+            retArr.push(
+              new Crypto.Address(utils.str2hexstr(retKey)).toBase58()
+            );
+          }
         }
+      } catch (e) {
+        console.log(e);
       }
 
       return retArr;
@@ -317,7 +324,6 @@ export default {
           gasLimit: "20000",
           requireIdentity: false
         };
-        console.log(params);
 
         let result = await client.api.smartContract.invoke(params);
         console.log(result);

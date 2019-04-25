@@ -158,7 +158,6 @@ export default {
           gasLimit: "20000",
           requireIdentity: false
         };
-        console.log(params);
 
         let result = await client.api.smartContract.invoke(params);
         console.log(result);
