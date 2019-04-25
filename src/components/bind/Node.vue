@@ -53,8 +53,9 @@
 </template>
 
 <script>
+import { CONTRACT_HASH, NODE_LIST } from "@/utils/const";
 import { client } from "ontology-dapi";
-import { NODE_LIST } from "@/utils/const";
+import { Crypto } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -69,9 +70,6 @@ export default {
       users: {
         account: "",
         ontId: ""
-      },
-      contract: {
-        nodeBind: "skdfjka"
       }
     };
   },
@@ -130,30 +128,40 @@ export default {
     },
     async handleBinding() {
       await this.$refs.bindNodeForm.validate();
-      let params = {
-        contract: this.contract.nodeBind,
-        method: "node_bind",
-        parameters: [
-          // contract_hash、node_name、node_pubkey
-          {
-            type: "String",
-            value: this.bindNodeForm.scHash
-          },
-          { type: "String", value: this.bindNodeForm.nodeName },
-          {
-            type: "String",
-            value: this.bindNodeForm.nodePublicKey
-          }
-        ],
-        gasPrice: "500",
-        gasLimit: "20000",
-        requireIdentity: false
-      };
-      console.log(params);
-
+      await this.bindNode();
+    },
+    /**
+     * 绑定节点信息：将合约hash、节点名称、节点公钥绑定
+     *
+     * @return {Promise<void>}
+     */
+    async bindNode() {
       try {
-        // let result = await client.api.smartContract.invokeRead(params);
-        // console.log(result);
+        let params = {
+          contract: CONTRACT_HASH.bindDApp,
+          method: "node_bind",
+          parameters: [
+            // contract_hash、node_name、node_pubkey
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(this.bindNodeForm.scHash).serialize()
+            },
+            { type: "String", value: this.bindNodeForm.nodeName },
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(
+                this.bindNodeForm.nodePublicKey
+              ).serialize()
+            }
+          ],
+          gasPrice: "500",
+          gasLimit: "20000",
+          requireIdentity: false
+        };
+        console.log(params);
+
+        let result = await client.api.smartContract.invoke(params);
+        console.log(result);
         this.$message({ message: "Success", type: "success" });
 
         this.$alert(
@@ -168,7 +176,8 @@ export default {
         );
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
-        this.$message.error(err.Result);
+        console.log(err);
+        this.$message.error(err.Result || err.toString());
       }
     }
   }

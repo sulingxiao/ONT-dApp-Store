@@ -4,8 +4,6 @@ import store from "./store/index";
 import App from "./App.vue";
 import Element from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import elementEnLocale from "element-ui/lib/locale/lang/en"; // element-ui lang
-import elementZhLocale from "element-ui/lib/locale/lang/zh-CN"; // element-ui lang
 import $ from "jquery";
 import "font-awesome/css/font-awesome.css";
 import i18n from "./lang";

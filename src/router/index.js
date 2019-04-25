@@ -76,7 +76,7 @@ router.beforeEach((to, from, next) => {
     let sys = Helper.HelperTools.getSystemInfo();
     if (sys.browser !== "chrome" || sys.isMobile) {
       alert("该页面仅支持在电脑端使用Chrome浏览器打开。");
-      next(false);
+      next({ name: "Support" });
     } else {
       next();
     }

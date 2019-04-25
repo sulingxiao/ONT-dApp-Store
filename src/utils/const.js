@@ -1,3 +1,8 @@
+export const CONTRACT_HASH = {
+  bindWallet: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
+  bindDApp: "455330a54a504074c3c9aa0f7d31b371f639e0af"
+};
+
 export const NODE_LIST = [
   {
     nodename: "Trio Bravo",

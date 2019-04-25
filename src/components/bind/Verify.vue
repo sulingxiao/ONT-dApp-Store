@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { CONTRACT_HASH } from "@/utils/const";
 import { client } from "ontology-dapi";
 import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
@@ -103,10 +104,6 @@ export default {
       },
       dialogVisible: false,
       bindActive: 0,
-      contract: {
-        bind: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
-        dAppBind: "c57a78b3394eabe01aeaef113f6665e96bac7656"
-      },
       bindList: [],
       cyanoReady: false
     };
@@ -233,7 +230,7 @@ export default {
     async bindWalletInvokeRead() {
       // ONT ID 绑定 Address 的预执行
       let params = {
-        contract: this.contract.bind,
+        contract: CONTRACT_HASH.bindWallet,
         method: "get_binded_wallet",
         parameters: [{ type: "String", value: this.bindVerifyForm.ontId }] // ontid
       };
@@ -259,7 +256,7 @@ export default {
     async bindWallet() {
       try {
         let params = {
-          contract: this.contract.bind,
+          contract: CONTRACT_HASH.bindWallet,
           method: "bind",
           parameters: [
             // ontid、account
@@ -302,7 +299,7 @@ export default {
     async bindDApp() {
       try {
         let params = {
-          contract: this.contract.dAppBind,
+          contract: CONTRACT_HASH.bindDApp,
           method: "dapp_bind",
           parameters: [
             // contract_hash、ontid、receive_account

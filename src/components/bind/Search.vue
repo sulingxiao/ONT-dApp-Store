@@ -52,13 +52,15 @@
 </template>
 
 <script>
+import { CONTRACT_HASH } from "@/utils/const";
 import { client } from "ontology-dapi";
+import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
 export default {
   data() {
     return {
       bindSearchForm: {
-        scHash: ""
+        scHash: "455330a54a504074c3c9aa0f7d31b371f639e0af"
       },
       bindSearchResult: {
         ontId: "None",
@@ -71,7 +73,7 @@ export default {
         ontId: ""
       },
       contract: {
-        getBindedNode: "skdfjka"
+        getBindedNode: "455330a54a504074c3c9aa0f7d31b371f639e0af"
       }
     };
   },
@@ -113,29 +115,79 @@ export default {
     },
     async handleBinding() {
       await this.$refs.bindSearchForm.validate();
-      let params = {
-        contract: this.contract.getBindedNode,
-        method: "get_binded_node",
-        parameters: [
-          // contract_hash
-          {
-            type: "String",
-            value: this.bindSearchForm.scHash
-          }
-        ],
-        gasPrice: "500",
-        gasLimit: "20000",
-        requireIdentity: false
-      };
-      console.log(params);
-
+      await this.searchBindedDApp();
+      await this.searchBindedNode();
+    },
+    /**
+     * 查询该合约已经绑定的dApp信息
+     *
+     * @return {Promise<void>}
+     */
+    async searchBindedDApp() {
       try {
-        // let result = await client.api.smartContract.invokeRead(params);
-        // console.log(result);
+        let params = {
+          contract: CONTRACT_HASH.bindDApp,
+          method: "get_binded_dapp",
+          parameters: [
+            // contract_hash
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(this.bindSearchForm.scHash).serialize()
+            }
+          ]
+        };
+
+        let ret = await client.api.smartContract.invokeRead(params);
+        if (ret) {
+          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+          ret = this.$HelperTools.strMapToObj(ret);
+
+          this.bindSearchResult.ontId = utils.hexstr2str(ret.ontid);
+          this.bindSearchResult.address = new Crypto.Address(
+            ret.receive_account
+          ).toBase58();
+        }
+
         this.$message({ message: "Success", type: "success" });
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
-        this.$message.error(err.Result);
+        console.log(err);
+        this.$message.error(err.Result || err.toString());
+      }
+    },
+    /**
+     * 查询该合约已经绑定的节点信息
+     *
+     * @return {Promise<void>}
+     */
+    async searchBindedNode() {
+      try {
+        let params = {
+          contract: CONTRACT_HASH.bindDApp,
+          method: "get_binded_node",
+          parameters: [
+            // contract_hash
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(this.bindSearchForm.scHash).serialize()
+            }
+          ]
+        };
+
+        let ret = await client.api.smartContract.invokeRead(params);
+        if (ret) {
+          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+          ret = this.$HelperTools.strMapToObj(ret);
+
+          this.bindSearchResult.nodeName = utils.hexstr2str(ret.node_name);
+          this.bindSearchResult.nodePublicKey = ret.node_pubkey;
+        }
+
+        this.$message({ message: "Success", type: "success" });
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        console.log(err);
+        this.$message.error(err.Result || err.toString());
       }
     }
   }
@@ -221,6 +273,7 @@ export default {
     font-size: 14px;
     color: rgba(74, 74, 74, 1);
     margin-top: 10px !important;
+    word-break: break-all;
   }
 }
 </style>
