@@ -78,17 +78,16 @@ export default {
         verify: {
           tit: "dApp binding verification",
           txt:
-            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+            "Account address binding and verification review for receiving incentives in participating in the incentive plan."
         },
         node: {
           tit: "dApp node binding",
           txt:
-            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+            "After the dApp binds the node, it can accept the node's fee redemption."
         },
         search: {
           tit: "Binding information query",
-          txt:
-            "文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊文案找人方啊啊啊"
+          txt: "Can query the results of binding verification and node binding"
         }
       },
       detail1: {

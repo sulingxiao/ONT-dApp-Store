@@ -129,8 +129,8 @@ export default {
 
   .bind-div {
     background-color: white;
-    margin-bottom: 24px;
     padding: 16px;
+    height: 100%;
 
     .bind-tit {
       font-size: 16px;
@@ -147,6 +147,7 @@ export default {
   .spt-item {
     background-color: white;
     padding: 32px;
+    margin-top: 24px;
     margin-bottom: 40px;
 
     .spt-nickname {
@@ -194,6 +195,7 @@ export default {
         border-radius: 4px;
         font-size: 14px;
         color: rgba(255, 255, 255, 1);
+        cursor: pointer;
       }
     }
   }
