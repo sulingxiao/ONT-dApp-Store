@@ -40,6 +40,9 @@ export default {
       explorer: "浏览器"
     }
   },
+  alert: {
+    chrome: "该页面仅支持在电脑端使用Chrome浏览器打开。"
+  },
   message: {
     getCyanoInfoSuccess: "ONT ID和Account Address已经获取成功",
     bindWalletErr: "该ONT-ID和Wallet Address已经绑定"

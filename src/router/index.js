@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Helper from "./../helpers/tools";
+import i18n from "@/lang";
 
 const _import = file => () => import("@/components/" + file + ".vue");
 Vue.use(Router);
@@ -75,7 +76,7 @@ router.beforeEach((to, from, next) => {
   ) {
     let sys = Helper.HelperTools.getSystemInfo();
     if (sys.browser !== "chrome" || sys.isMobile) {
-      alert("该页面仅支持在电脑端使用Chrome浏览器打开。");
+      alert(i18n.t("alert.chrome"));
       next({ name: "Support" });
     } else {
       next();

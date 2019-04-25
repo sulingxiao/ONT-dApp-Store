@@ -7,7 +7,7 @@
     </div>
 
     <div class="row">
-      <div class="col" v-for="item in bindList" :key="item.name">
+      <div class="col-4" v-for="item in bindList" :key="item.name">
         <router-link :to="{ name: item.routerName }">
           <div class="bind-div">
             <div class="bind-tit">{{ item.name }}</div>

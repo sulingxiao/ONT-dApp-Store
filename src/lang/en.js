@@ -40,6 +40,10 @@ export default {
       explorer: "Explorer"
     }
   },
+  alert: {
+    chrome:
+      "This page is only supported on the computer side using the Chrome browser to open."
+  },
   message: {
     getCyanoInfoSuccess:
       "The ONT ID and Account Address have been successfully obtained.",
