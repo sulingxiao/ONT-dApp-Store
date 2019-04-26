@@ -114,6 +114,8 @@ export default {
       await this.$refs.bindSearchForm.validate();
       await this.searchBindedDApp();
       await this.searchBindedNode();
+
+      this.$message({ message: "Success", type: "success" });
     },
     /**
      * 查询该合约已经绑定的dApp信息
@@ -144,8 +146,6 @@ export default {
             ret.receive_account
           ).toBase58();
         }
-
-        this.$message({ message: "Success", type: "success" });
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         console.log(err);
@@ -179,8 +179,6 @@ export default {
           this.bindSearchResult.nodeName = utils.hexstr2str(ret.node_name);
           this.bindSearchResult.nodePublicKey = ret.node_pubkey;
         }
-
-        this.$message({ message: "Success", type: "success" });
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         console.log(err);
