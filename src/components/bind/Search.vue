@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       bindSearchForm: {
-        scHash: "455330a54a504074c3c9aa0f7d31b371f639e0af"
+        scHash: ""
       },
       bindSearchResult: {
         ontId: "None",

@@ -156,7 +156,7 @@ export default {
           ],
           gasPrice: "500",
           gasLimit: "20000",
-          requireIdentity: false
+          requireIdentity: true
         };
 
         await client.api.smartContract.invoke(params);

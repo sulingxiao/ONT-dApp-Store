@@ -108,9 +108,9 @@ export default {
     return {
       bindVerifyForm: {
         ontId: "",
-        scHash: "cae215265a5e348bfd603b8db22893aa74b42417",
+        scHash: "",
         scAddress: "",
-        address: "ARVfyvrsSMwtNTnh9rDQhGCv5Udo2YTxec"
+        address: ""
       },
       bindSearchResult: { ontId: "", address: "" },
       dialogVisible: false,
@@ -380,7 +380,7 @@ export default {
           ],
           gasPrice: "500",
           gasLimit: "20000",
-          requireIdentity: false
+          requireIdentity: true
         };
 
         let ret = await client.api.smartContract.invoke(params);
