@@ -149,9 +149,9 @@ export default {
             { type: "String", value: this.bindNodeForm.nodeName },
             {
               type: "ByteArray",
-              value: new Crypto.Address(
+              value: new Crypto.PublicKey(
                 this.bindNodeForm.nodePublicKey
-              ).serialize()
+              ).serializeHex()
             }
           ],
           gasPrice: "500",
@@ -159,10 +159,9 @@ export default {
           requireIdentity: false
         };
 
-        let result = await client.api.smartContract.invoke(params);
-        console.log(result);
-        this.$message({ message: "Success", type: "success" });
+        await client.api.smartContract.invoke(params);
 
+        this.$message({ message: "Success", type: "success" });
         this.$alert(
           this.$t("bind.node.confirmAlert.txt"),
           this.$t("bind.node.confirmAlert.tit"),

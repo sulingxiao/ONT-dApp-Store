@@ -65,6 +65,7 @@
                 {{ ++index + ": " + addr }}
               </div>
             </div>
+
             <div class="bind-verify-steps">
               <el-steps
                 :active="bindActive"
@@ -76,6 +77,15 @@
                 <el-step :title="$t('bind.verify.active.tit3')"></el-step>
               </el-steps>
             </div>
+
+            <div
+              v-if="this.bindId"
+              style="margin-top: 80px;word-break: break-all;color: red;"
+            >
+              <p><b>Approve所需的dapp_bind_id（提供测试使用）：</b></p>
+              <div>{{ this.bindId }}</div>
+            </div>
+
             <span slot="footer" class="dialog-footer">
               <el-button class="submit-btn" type="primary" @click="bindNext">{{
                 $t("bind.verify.next")
@@ -98,14 +108,16 @@ export default {
     return {
       bindVerifyForm: {
         ontId: "",
-        scHash: "",
+        scHash: "cae215265a5e348bfd603b8db22893aa74b42417",
         scAddress: "",
-        address: ""
+        address: "ARVfyvrsSMwtNTnh9rDQhGCv5Udo2YTxec"
       },
+      bindSearchResult: { ontId: "", address: "" },
       dialogVisible: false,
       bindActive: 0,
       bindList: [],
-      cyanoReady: false
+      cyanoReady: false,
+      bindId: ""
     };
   },
   computed: {
@@ -205,6 +217,7 @@ export default {
             }
             break;
           case 1:
+            await this.searchBindedDApp();
             if (await this.bindDApp()) {
               this.bindActive = 2;
             }
@@ -299,17 +312,62 @@ export default {
       }
     },
     /**
+     * 查询该合约已经绑定的dApp信息
+     *
+     * @return {Promise<void>}
+     */
+    async searchBindedDApp() {
+      try {
+        let params = {
+          contract: CONTRACT_HASH.bindDApp,
+          method: "get_binded_dapp",
+          parameters: [
+            // contract_hash
+            {
+              type: "ByteArray",
+              value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
+            }
+          ]
+        };
+
+        let ret = await client.api.smartContract.invokeRead(params);
+        if (ret) {
+          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+          ret = this.$HelperTools.strMapToObj(ret);
+
+          this.bindSearchResult.ontId = utils.hexstr2str(ret.ontid);
+          this.bindSearchResult.address = new Crypto.Address(
+            ret.receive_account
+          ).toBase58();
+        }
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        console.log(err);
+        this.$message.error(err.Result || err.toString());
+      }
+    },
+    /**
      * 【ONT ID】（已绑【发布合约的Address】）、【奖励领取Address】、【合约】互相绑定
      *
      * @return {Promise<boolean>}
      */
     async bindDApp() {
+      // 根据返回内容判断是否已经绑定和更新
+      let method = "dapp_bind";
+      if (this.bindSearchResult.ontId === this.bindVerifyForm.ontId) {
+        if (this.bindSearchResult.address === this.bindVerifyForm.address) {
+          return true;
+        } else {
+          method = "update_dapp_bind";
+        }
+      }
+
       try {
         let params = {
           contract: CONTRACT_HASH.bindDApp,
-          method: "dapp_bind",
+          method: method,
           parameters: [
-            // contract_hash、ontid、receive_account
+            // contract_hash、ontid、receive_account(or new_receive_account)
             {
               type: "ByteArray",
               value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
@@ -325,8 +383,10 @@ export default {
           requireIdentity: false
         };
 
-        let result = await client.api.smartContract.invoke(params);
-        console.log(result);
+        let ret = await client.api.smartContract.invoke(params);
+        if (ret) {
+          this.bindId = ret.result[0][2];
+        }
 
         this.$message({ message: "Success", type: "success" });
         return true;

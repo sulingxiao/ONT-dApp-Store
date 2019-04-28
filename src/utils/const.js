@@ -1,6 +1,6 @@
 export const CONTRACT_HASH = {
   bindWallet: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
-  bindDApp: "455330a54a504074c3c9aa0f7d31b371f639e0af"
+  bindDApp: "99e743085b948b129814ea1df128ae01019f8106"
 };
 
 export const NODE_LIST = [
