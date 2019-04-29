@@ -1,6 +1,8 @@
 export const CONTRACT_HASH = {
-  bindWallet: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b",
-  bindDApp: "174a0431f2b3ccdf41843362f53e6c195438812d"
+  bindWallet: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b", // 测试网
+  bindDApp: "174a0431f2b3ccdf41843362f53e6c195438812d" // 测试网
+  // bindWallet: "99dd1b1e454a912ab69b60d46c0cc805fe0e3658", // 主网
+  // bindDApp: "939053a288f44eb560cad17c36df5ad34dafca2c" // 主网
 };
 
 export const NODE_LIST = [
