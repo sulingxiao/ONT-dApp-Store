@@ -300,7 +300,11 @@ export default {
         tit: "dApp Node Binding",
         txt: "The dApp node is successfully bound!",
         btn: "Confirm"
-      }
+      },
+      confirmGoToBind:
+        "You have not completed the DAPP binding verification. Do you want to bind authentication?",
+      confirmBinded:
+        "You have completed the binding verification of the dApp. Confirm the binding node?"
     },
     search: {
       tit: "Binding information query",

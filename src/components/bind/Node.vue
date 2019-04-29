@@ -96,6 +96,9 @@ export default {
           }
         ]
       };
+    },
+    bindSearchResult() {
+      return this.$store.getters.bindedDApp || {};
     }
   },
   created() {
@@ -127,7 +130,16 @@ export default {
     },
     async handleBinding() {
       await this.$refs.nodeForm.validate();
-      await this.bindNode();
+      await this.$store.dispatch("getBindedDApp", this.nodeForm.scHash);
+      if (this.bindSearchResult.ontId) {
+        this.$confirm(this.$t("bind.node.confirmBinded")).then(async () => {
+          await this.bindNode();
+        });
+      } else {
+        this.$confirm(this.$t("bind.node.confirmGoToBind")).then(async () => {
+          this.$router.push({ name: "BindVerify" });
+        });
+      }
     },
     async bindNode() {
       try {

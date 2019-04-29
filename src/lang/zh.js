@@ -279,7 +279,9 @@ export default {
         tit: "dApp节点绑定",
         txt: "dApp节点绑定成功！",
         btn: "确定"
-      }
+      },
+      confirmGoToBind: "您还未完成dApp的绑定验证。是否去绑定验证？",
+      confirmBinded: "您已完成dApp的绑定验证。确认绑定节点？"
     },
     search: {
       tit: "绑定信息查询",
