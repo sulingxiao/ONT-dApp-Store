@@ -17,6 +17,31 @@ export default {
   },
   actions: {
     /**
+     *【ONT ID】绑定【发布合约的Address】
+     *
+     * @param commit
+     * @param data
+     * @return {Promise<void>}
+     */
+    async setBindWallet({ commit }, data) {
+      let params = {
+        contract: CONTRACT_HASH.bindWallet,
+        method: "bind",
+        parameters: [
+          { type: "String", value: data.ontId },
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(data.address).serialize()
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: false
+      };
+
+      await client.api.smartContract.invoke(params);
+    },
+    /**
      * 查询该ONT ID已经绑定的Wallet列表
      *
      * @param commit

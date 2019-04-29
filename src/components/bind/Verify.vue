@@ -99,9 +99,7 @@
 </template>
 
 <script>
-import { CONTRACT_HASH } from "@/utils/const";
 import { client } from "ontology-dapi";
-import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -244,33 +242,12 @@ export default {
         await this.initClient();
       }
     },
-    /**
-     * 【ONT ID】绑定【发布合约的Address】
-     *
-     * @return {Promise<boolean>}
-     */
     async bindWallet() {
       try {
-        let params = {
-          contract: CONTRACT_HASH.bindWallet,
-          method: "bind",
-          parameters: [
-            // ontid、account
-            {
-              type: "String",
-              value: this.verifyForm.ontId
-            },
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.verifyForm.scAddress).serialize()
-            }
-          ],
-          gasPrice: "500",
-          gasLimit: "20000",
-          requireIdentity: false
-        };
-
-        await client.api.smartContract.invoke(params);
+        await this.$store.dispatch("setBindWallet", {
+          ontId: this.verifyForm.ontId,
+          address: this.verifyForm.scAddress
+        });
 
         this.$message({ message: "Success", type: "success" });
         return true;
@@ -285,46 +262,25 @@ export default {
         return false;
       }
     },
-    /**
-     * 【ONT ID】（已绑【发布合约的Address】）、【奖励领取Address】、【合约】互相绑定
-     *
-     * @return {Promise<boolean>}
-     */
     async bindDApp() {
       // 根据返回内容判断是否已经绑定和更新
-      let method = "dapp_bind";
-      if (this.bindSearchResult.ontId === this.verifyForm.ontId) {
-        if (this.bindSearchResult.address === this.verifyForm.address) {
-          return true;
-        } else {
-          method = "update_dapp_bind";
-        }
-      }
-
       try {
-        let params = {
-          contract: CONTRACT_HASH.bindDApp,
-          method: method,
-          parameters: [
-            // contract_hash、ontid、receive_account(or new_receive_account)
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.verifyForm.scHash).serialize()
-            },
-            { type: "String", value: this.verifyForm.ontId },
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.verifyForm.address).serialize()
-            }
-          ],
-          gasPrice: "500",
-          gasLimit: "20000",
-          requireIdentity: true
-        };
-
-        let ret = await client.api.smartContract.invoke(params);
-        if (ret) {
-          this.bindId = ret.result[0][2];
+        if (this.bindSearchResult.ontId === this.verifyForm.ontId) {
+          if (this.bindSearchResult.address === this.verifyForm.address) {
+            return true;
+          } else {
+            this.bindId = await this.$store.dispatch("putBindDApp", {
+              scHash: this.verifyForm.scHash,
+              ontId: this.verifyForm.ontId,
+              address: this.verifyForm.scAddress
+            });
+          }
+        } else {
+          this.bindId = await this.$store.dispatch("setBindDApp", {
+            scHash: this.verifyForm.scHash,
+            ontId: this.verifyForm.ontId,
+            address: this.verifyForm.scAddress
+          });
         }
 
         this.$message({ message: "Success", type: "success" });

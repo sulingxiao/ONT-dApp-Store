@@ -53,9 +53,8 @@
 </template>
 
 <script>
-import { CONTRACT_HASH, NODE_LIST } from "@/utils/const";
+import { NODE_LIST } from "@/utils/const";
 import { client } from "ontology-dapi";
-import { Crypto } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -130,37 +129,13 @@ export default {
       await this.$refs.nodeForm.validate();
       await this.bindNode();
     },
-    /**
-     * 绑定节点信息：将合约hash、节点名称、节点公钥绑定
-     *
-     * @return {Promise<void>}
-     */
     async bindNode() {
       try {
-        let params = {
-          contract: CONTRACT_HASH.bindDApp,
-          method: "node_bind",
-          parameters: [
-            // contract_hash、node_name、node_pubkey
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.nodeForm.scHash).serialize()
-            },
-            { type: "String", value: this.nodeForm.nodeName },
-            {
-              type: "ByteArray",
-              value: new Crypto.PublicKey(
-                this.nodeForm.nodePublicKey
-              ).serializeHex()
-            }
-          ],
-          gasPrice: "500",
-          gasLimit: "20000",
-          requireIdentity: true
-        };
-
-        await client.api.smartContract.invoke(params);
-
+        await this.$store.dispatch("setBindNode", {
+          scHash: this.nodeForm.scHash,
+          ontId: this.nodeForm.nodeName,
+          address: this.nodeForm.nodePublicKey
+        });
         this.$message({ message: "Success", type: "success" });
         this.$alert(
           this.$t("bind.node.confirmAlert.txt"),

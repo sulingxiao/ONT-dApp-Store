@@ -5,52 +5,45 @@ import Tools from "@/utils/tools";
 
 export default {
   state: {
-    bindedDAppInfo: {},
     bindedNodeInfo: {}
   },
   getters: {
-    bindedDApp: state => state.bindedDAppInfo,
     bindedNode: state => state.bindedNodeInfo
   },
   mutations: {
-    setBindedDApp(state, payload) {
-      state.bindedDAppInfo = payload;
-    },
     setBindedNode(state, payload) {
       state.bindedNodeInfo = payload;
     }
   },
   actions: {
     /**
-     * 查询该合约已经绑定的dApp信息
+     * 绑定节点信息：将合约hash、节点名称、节点公钥绑定
      *
      * @param commit
-     * @param scHash
+     * @param data: contract_hash、node_name、node_pubkey
      * @return {Promise<void>}
      */
-    async getBindedDApp({ commit }, scHash) {
-      let data = {};
+    async setBindNode({ commit }, data) {
       let params = {
         contract: CONTRACT_HASH.bindDApp,
-        method: "get_binded_dapp",
+        method: "node_bind",
         parameters: [
           {
             type: "ByteArray",
-            value: new Crypto.Address(scHash).serialize()
+            value: new Crypto.Address(data.scHash).serialize()
+          },
+          { type: "String", value: data.nodeName },
+          {
+            type: "ByteArray",
+            value: new Crypto.PublicKey(data.nodePublicKey).serializeHex()
           }
-        ]
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: true
       };
 
-      let ret = await client.api.smartContract.invokeRead(params);
-      if (ret) {
-        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-        ret = Tools.$HelperTools.strMapToObj(ret);
-
-        data.ontId = utils.hexstr2str(ret.ontid);
-        data.address = new Crypto.Address(ret.receive_account).toBase58();
-      }
-
-      commit("setBindedDApp", data);
+      await client.api.smartContract.invoke(params);
     },
     /**
      * 查询该合约已经绑定的节点信息
