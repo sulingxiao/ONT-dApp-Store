@@ -253,11 +253,15 @@ export default {
         return true;
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
-        if (err.Result.indexOf("vm execute state fault") !== -1) {
-          this.$message.error(this.$t("message.bindWalletErr"));
-          return true;
+        if (err.Result) {
+          if (err.Result.indexOf("vm execute state fault") !== -1) {
+            this.$message.error(this.$t("message.bindWalletErr"));
+            return true;
+          } else {
+            this.$message.error(err.Result);
+          }
         } else {
-          this.$message.error(err.Result);
+          this.$message.error(err.toString());
         }
         return false;
       }
