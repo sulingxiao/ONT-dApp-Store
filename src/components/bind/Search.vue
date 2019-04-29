@@ -114,6 +114,7 @@ export default {
       await this.$refs.searchForm.validate();
 
       try {
+        await this.$store.dispatch("delBindedDApp");
         await this.$store.dispatch("getBindedDApp", this.searchForm.scHash);
         await this.$store.dispatch("getBindedNode", this.searchForm.scHash);
 

@@ -101,13 +101,22 @@ export default {
       let ret = await client.api.smartContract.invokeRead(params);
       if (ret) {
         ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-        ret = Tools.$HelperTools.strMapToObj(ret);
+        ret = Tools.HelperTools.strMapToObj(ret);
 
         data.ontId = utils.hexstr2str(ret.ontid);
         data.address = new Crypto.Address(ret.receive_account).toBase58();
       }
 
       commit("setBindedDApp", data);
+    },
+    /**
+     * 清空上一次查询信息
+     *
+     * @param commit
+     * @return {Promise<void>}
+     */
+    async delBindedDApp({ commit }) {
+      commit("setBindedDApp", {});
     }
   }
 };
