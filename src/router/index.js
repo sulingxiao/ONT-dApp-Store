@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Helper from "./../helpers/tools";
+import Helper from "../utils/tools";
 import i18n from "@/lang";
 
 const _import = file => () => import("@/components/" + file + ".vue");

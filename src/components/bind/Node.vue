@@ -9,16 +9,16 @@
     <div class="row b-n-form">
       <el-form
         label-position="top"
-        :model="bindNodeForm"
-        :rules="bindNodeRules"
-        ref="bindNodeForm"
+        :model="nodeForm"
+        :rules="nodeRules"
+        ref="nodeForm"
       >
         <el-form-item prop="scHash" :label="$t('bind.node.scHash')">
-          <el-input v-model="bindNodeForm.scHash"></el-input>
+          <el-input v-model="nodeForm.scHash"></el-input>
         </el-form-item>
         <el-form-item prop="optionIndex" :label="$t('bind.node.nodeName')">
           <el-select
-            v-model="bindNodeForm.optionIndex"
+            v-model="nodeForm.optionIndex"
             :placeholder="$t('bind.node.placeholder.nodeName')"
           >
             <el-option
@@ -32,7 +32,7 @@
         </el-form-item>
         <el-form-item :label="$t('bind.node.nodePublicKey')">
           <el-input
-            v-model="bindNodeForm.nodePublicKey"
+            v-model="nodeForm.nodePublicKey"
             type="textarea"
             autosize
             resize="none"
@@ -61,7 +61,7 @@ export default {
   data() {
     return {
       nodeOption: NODE_LIST,
-      bindNodeForm: {
+      nodeForm: {
         scHash: "",
         optionIndex: "",
         nodeName: "",
@@ -74,7 +74,7 @@ export default {
     };
   },
   computed: {
-    bindNodeRules() {
+    nodeRules() {
       return {
         scHash: [
           {
@@ -107,9 +107,9 @@ export default {
     );
   },
   watch: {
-    "bindNodeForm.optionIndex": function(newV, oldV) {
-      this.bindNodeForm.nodeName = this.nodeOption[newV].nodename;
-      this.bindNodeForm.nodePublicKey = this.nodeOption[newV].publickey;
+    "nodeForm.optionIndex": function(newV, oldV) {
+      this.nodeForm.nodeName = this.nodeOption[newV].nodename;
+      this.nodeForm.nodePublicKey = this.nodeOption[newV].publickey;
     }
   },
   methods: {
@@ -127,7 +127,7 @@ export default {
       }
     },
     async handleBinding() {
-      await this.$refs.bindNodeForm.validate();
+      await this.$refs.nodeForm.validate();
       await this.bindNode();
     },
     /**
@@ -144,13 +144,13 @@ export default {
             // contract_hash、node_name、node_pubkey
             {
               type: "ByteArray",
-              value: new Crypto.Address(this.bindNodeForm.scHash).serialize()
+              value: new Crypto.Address(this.nodeForm.scHash).serialize()
             },
-            { type: "String", value: this.bindNodeForm.nodeName },
+            { type: "String", value: this.nodeForm.nodeName },
             {
               type: "ByteArray",
               value: new Crypto.PublicKey(
-                this.bindNodeForm.nodePublicKey
+                this.nodeForm.nodePublicKey
               ).serializeHex()
             }
           ],

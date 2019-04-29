@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import LangStorage from "./../../helpers/lang";
+import LangStorage from "../../utils/lang";
 
 export default {
   data() {

@@ -9,7 +9,7 @@ import "font-awesome/css/font-awesome.css";
 import i18n from "./lang";
 import VueCookies from "vue-cookies";
 import VeeValidate from "vee-validate";
-import Helper from "./helpers/tools";
+import Tools from "./utils/tools";
 
 // 解决【The computed property "fields" is already defined in data.】的冲突
 const VVConfig = {
@@ -17,7 +17,7 @@ const VVConfig = {
   fieldsBagName: "fieldBags"
 };
 
-Vue.use(Helper);
+Vue.use(Tools);
 Vue.use(VeeValidate, VVConfig);
 Vue.use(VueCookies);
 Vue.use(Element, {

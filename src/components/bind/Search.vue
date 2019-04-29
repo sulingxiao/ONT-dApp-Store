@@ -7,14 +7,14 @@
     <div class="row b-s-form">
       <el-form
         label-position="top"
-        :model="bindSearchForm"
-        :rules="bindSearchRules"
-        ref="bindSearchForm"
+        :model="searchForm"
+        :rules="searchRules"
+        ref="searchForm"
       >
         <el-form-item prop="scHash" :label="$t('bind.search.scHash')">
           <el-input
             :placeholder="$t('bind.search.placeholder.scHash')"
-            v-model="bindSearchForm.scHash"
+            v-model="searchForm.scHash"
           ></el-input>
         </el-form-item>
 
@@ -52,21 +52,13 @@
 </template>
 
 <script>
-import { CONTRACT_HASH } from "@/utils/const";
 import { client } from "ontology-dapi";
-import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
 export default {
   data() {
     return {
-      bindSearchForm: {
-        scHash: ""
-      },
-      bindSearchResult: {
-        ontId: "None",
-        address: "None",
-        nodeName: "None",
-        nodePublicKey: "None"
+      searchForm: {
+        scHash: "cae215265a5e348bfd603b8db22893aa74b42417"
       },
       users: {
         account: "",
@@ -75,7 +67,7 @@ export default {
     };
   },
   computed: {
-    bindSearchRules() {
+    searchRules() {
       return {
         scHash: [
           {
@@ -90,6 +82,14 @@ export default {
             message: this.$t("bind.ruleMsg.length") + "40"
           }
         ]
+      };
+    },
+    bindSearchResult() {
+      return {
+        ontId: this.$store.getters.bindedDApp.ontId || "None",
+        address: this.$store.getters.bindedDApp.address || "None",
+        nodeName: this.$store.getters.bindedNode.nodeName || "None",
+        nodePublicKey: this.$store.getters.bindedNode.nodePublicKey || "None"
       };
     }
   },
@@ -111,74 +111,13 @@ export default {
       }
     },
     async handleBinding() {
-      await this.$refs.bindSearchForm.validate();
-      await this.searchBindedDApp();
-      await this.searchBindedNode();
+      await this.$refs.searchForm.validate();
 
-      this.$message({ message: "Success", type: "success" });
-    },
-    /**
-     * 查询该合约已经绑定的dApp信息
-     *
-     * @return {Promise<void>}
-     */
-    async searchBindedDApp() {
       try {
-        let params = {
-          contract: CONTRACT_HASH.bindDApp,
-          method: "get_binded_dapp",
-          parameters: [
-            // contract_hash
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.bindSearchForm.scHash).serialize()
-            }
-          ]
-        };
+        await this.$store.dispatch("getBindedDApp", this.searchForm.scHash);
+        await this.$store.dispatch("getBindedNode", this.searchForm.scHash);
 
-        let ret = await client.api.smartContract.invokeRead(params);
-        if (ret) {
-          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-          ret = this.$HelperTools.strMapToObj(ret);
-
-          this.bindSearchResult.ontId = utils.hexstr2str(ret.ontid);
-          this.bindSearchResult.address = new Crypto.Address(
-            ret.receive_account
-          ).toBase58();
-        }
-      } catch (e) {
-        let err = this.$HelperTools.strToJson(e);
-        console.log(err);
-        this.$message.error(err.Result || err.toString());
-      }
-    },
-    /**
-     * 查询该合约已经绑定的节点信息
-     *
-     * @return {Promise<void>}
-     */
-    async searchBindedNode() {
-      try {
-        let params = {
-          contract: CONTRACT_HASH.bindDApp,
-          method: "get_binded_node",
-          parameters: [
-            // contract_hash
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.bindSearchForm.scHash).serialize()
-            }
-          ]
-        };
-
-        let ret = await client.api.smartContract.invokeRead(params);
-        if (ret) {
-          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-          ret = this.$HelperTools.strMapToObj(ret);
-
-          this.bindSearchResult.nodeName = utils.hexstr2str(ret.node_name);
-          this.bindSearchResult.nodePublicKey = ret.node_pubkey;
-        }
+        this.$message({ message: "Success", type: "success" });
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         console.log(err);

@@ -17,22 +17,22 @@
     <div class="row b-v-form">
       <el-form
         label-position="top"
-        :model="bindVerifyForm"
-        :rules="bindVerifyRules"
-        ref="bindVerifyForm"
+        :model="verifyForm"
+        :rules="verifyRules"
+        ref="verifyForm"
       >
         <el-form-item prop="ontId" :label="$t('bind.verify.ontId')">
-          <el-input v-model="bindVerifyForm.ontId"></el-input>
+          <el-input v-model="verifyForm.ontId"></el-input>
         </el-form-item>
         <el-form-item prop="scHash" :label="$t('bind.verify.scHash')">
-          <el-input v-model="bindVerifyForm.scHash"></el-input>
+          <el-input v-model="verifyForm.scHash"></el-input>
         </el-form-item>
         <el-form-item prop="scAddress" :label="$t('bind.verify.scAddress')">
-          <el-input v-model="bindVerifyForm.scAddress"></el-input>
+          <el-input v-model="verifyForm.scAddress"></el-input>
           <div class="sub-title">{{ $t("bind.verify.scAddressDesc") }}</div>
         </el-form-item>
         <el-form-item prop="address" :label="$t('bind.verify.address')">
-          <el-input v-model="bindVerifyForm.address"></el-input>
+          <el-input v-model="verifyForm.address"></el-input>
         </el-form-item>
 
         <div class="b-v-note">{{ $t("bind.verify.note") }}</div>
@@ -57,7 +57,7 @@
             :close-on-press-escape="false"
             :before-close="handleClose"
           >
-            <div v-if="bindList.length > 0">
+            <div v-show="bindList.length > 0">
               <div>
                 <b>{{ $t("bind.verify.bindList") }}</b>
               </div>
@@ -106,16 +106,14 @@ import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 export default {
   data() {
     return {
-      bindVerifyForm: {
+      verifyForm: {
         ontId: "",
         scHash: "",
         scAddress: "",
         address: ""
       },
-      bindSearchResult: { ontId: "", address: "" },
       dialogVisible: false,
       bindActive: 0,
-      bindList: [],
       cyanoReady: false,
       bindId: ""
     };
@@ -124,7 +122,7 @@ export default {
     title() {
       return this.$t("bind.verify.tit");
     },
-    bindVerifyRules() {
+    verifyRules() {
       return {
         ontId: [
           {
@@ -179,6 +177,12 @@ export default {
           }
         ]
       };
+    },
+    bindList() {
+      return this.$store.getters.bindedWallet || [];
+    },
+    bindSearchResult() {
+      return this.$store.getters.bindedDApp || {};
     }
   },
   created() {
@@ -188,14 +192,14 @@ export default {
     async initClient() {
       try {
         await client.registerClient({});
-        this.bindVerifyForm.ontId = await client.api.identity.getIdentity();
-        this.bindVerifyForm.scAddress = await client.api.asset.getAccount();
+        this.verifyForm.ontId = await client.api.identity.getIdentity();
+        this.verifyForm.scAddress = await client.api.asset.getAccount();
         this.cyanoReady = true; // Cyano已经登录好ont id和wallet了
         this.$message({
           message: this.$t("message.getCyanoInfoSuccess"),
           type: "success"
         });
-        this.bindList = await this.bindWalletInvokeRead();
+        await this.$store.dispatch("getBindedWallet", this.verifyForm.ontId);
       } catch (e) {
         if (e === "NO_IDENTITY") {
           this.$alert(this.$t("bind.noIdentity"));
@@ -210,14 +214,14 @@ export default {
           case 0:
             if (
               this.bindList[this.bindList.length - 1] ===
-                this.bindVerifyForm.scAddress ||
+                this.verifyForm.scAddress ||
               (await this.bindWallet())
             ) {
               this.bindActive = 1;
             }
             break;
           case 1:
-            await this.searchBindedDApp();
+            await this.$store.dispatch("getBindedDApp", this.verifyForm.scHash);
             if (await this.bindDApp()) {
               this.bindActive = 2;
             }
@@ -240,34 +244,6 @@ export default {
         await this.initClient();
       }
     },
-    async bindWalletInvokeRead() {
-      let retArr = [];
-
-      try {
-        // ONT ID 绑定 Address 的预执行
-        let params = {
-          contract: CONTRACT_HASH.bindWallet,
-          method: "get_binded_wallet",
-          parameters: [{ type: "String", value: this.bindVerifyForm.ontId }] // ontid
-        };
-        let ret = await client.api.smartContract.invokeRead(params);
-
-        // 将KEY值转换成地址
-        if (ret) {
-          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-          ret = this.$HelperTools.strMapToObj(ret);
-          for (let retKey in ret) {
-            retArr.push(
-              new Crypto.Address(utils.str2hexstr(retKey)).toBase58()
-            );
-          }
-        }
-      } catch (e) {
-        console.log(e);
-      }
-
-      return retArr;
-    },
     /**
      * 【ONT ID】绑定【发布合约的Address】
      *
@@ -282,13 +258,11 @@ export default {
             // ontid、account
             {
               type: "String",
-              value: this.bindVerifyForm.ontId
+              value: this.verifyForm.ontId
             },
             {
               type: "ByteArray",
-              value: new Crypto.Address(
-                this.bindVerifyForm.scAddress
-              ).serialize()
+              value: new Crypto.Address(this.verifyForm.scAddress).serialize()
             }
           ],
           gasPrice: "500",
@@ -312,41 +286,6 @@ export default {
       }
     },
     /**
-     * 查询该合约已经绑定的dApp信息
-     *
-     * @return {Promise<void>}
-     */
-    async searchBindedDApp() {
-      try {
-        let params = {
-          contract: CONTRACT_HASH.bindDApp,
-          method: "get_binded_dapp",
-          parameters: [
-            // contract_hash
-            {
-              type: "ByteArray",
-              value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
-            }
-          ]
-        };
-
-        let ret = await client.api.smartContract.invokeRead(params);
-        if (ret) {
-          ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
-          ret = this.$HelperTools.strMapToObj(ret);
-
-          this.bindSearchResult.ontId = utils.hexstr2str(ret.ontid);
-          this.bindSearchResult.address = new Crypto.Address(
-            ret.receive_account
-          ).toBase58();
-        }
-      } catch (e) {
-        let err = this.$HelperTools.strToJson(e);
-        console.log(err);
-        this.$message.error(err.Result || err.toString());
-      }
-    },
-    /**
      * 【ONT ID】（已绑【发布合约的Address】）、【奖励领取Address】、【合约】互相绑定
      *
      * @return {Promise<boolean>}
@@ -354,8 +293,8 @@ export default {
     async bindDApp() {
       // 根据返回内容判断是否已经绑定和更新
       let method = "dapp_bind";
-      if (this.bindSearchResult.ontId === this.bindVerifyForm.ontId) {
-        if (this.bindSearchResult.address === this.bindVerifyForm.address) {
+      if (this.bindSearchResult.ontId === this.verifyForm.ontId) {
+        if (this.bindSearchResult.address === this.verifyForm.address) {
           return true;
         } else {
           method = "update_dapp_bind";
@@ -370,12 +309,12 @@ export default {
             // contract_hash、ontid、receive_account(or new_receive_account)
             {
               type: "ByteArray",
-              value: new Crypto.Address(this.bindVerifyForm.scHash).serialize()
+              value: new Crypto.Address(this.verifyForm.scHash).serialize()
             },
-            { type: "String", value: this.bindVerifyForm.ontId },
+            { type: "String", value: this.verifyForm.ontId },
             {
               type: "ByteArray",
-              value: new Crypto.Address(this.bindVerifyForm.address).serialize()
+              value: new Crypto.Address(this.verifyForm.address).serialize()
             }
           ],
           gasPrice: "500",
@@ -398,7 +337,7 @@ export default {
       }
     },
     async handleSubmit() {
-      await this.$refs.bindVerifyForm.validate();
+      await this.$refs.verifyForm.validate();
       this.dialogVisible = true;
     },
     handleClose(done) {
