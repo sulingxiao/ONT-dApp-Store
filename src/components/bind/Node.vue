@@ -133,8 +133,8 @@ export default {
       try {
         await this.$store.dispatch("setBindNode", {
           scHash: this.nodeForm.scHash,
-          ontId: this.nodeForm.nodeName,
-          address: this.nodeForm.nodePublicKey
+          nodeName: this.nodeForm.nodeName,
+          nodePublicKey: this.nodeForm.nodePublicKey
         });
         this.$message({ message: "Success", type: "success" });
         this.$alert(
