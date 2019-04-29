@@ -122,7 +122,7 @@ export default {
         if (e === "NO_IDENTITY") {
           this.alert(this.$t("bind.noIdentity"));
         } else {
-          console.log(e);
+          this.$message.error(e.toString());
         }
       }
     },
@@ -174,7 +174,6 @@ export default {
         );
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
-        console.log(err);
         this.$message.error(err.Result || err.toString());
       }
     }

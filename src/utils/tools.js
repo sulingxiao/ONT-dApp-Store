@@ -219,9 +219,8 @@ const HelperTools = {
 
       try {
         data = JSON.parse(data);
-      } catch (e) {
-        console.log(e);
-      }
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
     }
 
     return data;
