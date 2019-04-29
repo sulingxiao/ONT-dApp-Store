@@ -276,14 +276,14 @@ export default {
             this.bindId = await this.$store.dispatch("putBindDApp", {
               scHash: this.verifyForm.scHash,
               ontId: this.verifyForm.ontId,
-              address: this.verifyForm.scAddress
+              address: this.verifyForm.address
             });
           }
         } else {
           this.bindId = await this.$store.dispatch("setBindDApp", {
             scHash: this.verifyForm.scHash,
             ontId: this.verifyForm.ontId,
-            address: this.verifyForm.scAddress
+            address: this.verifyForm.address
           });
         }
 
