@@ -252,7 +252,7 @@ export default {
       submit: "提交",
       next: "下一步",
       bindList: "该ONT ID已经绑定地址列表：",
-      approve: "dApp Bind ID（审批所需参数，请妥善保存，并提交给管理员）：s",
+      approve: "dApp Bind ID（审批所需参数，请妥善保存）：",
       active: {
         tit1: "ONT ID绑定钱包",
         tit2: "ONT ID绑定dApp",

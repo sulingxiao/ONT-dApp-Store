@@ -274,7 +274,7 @@ export default {
       next: "Next",
       bindList: "The ONT ID has been bound to the address list: ",
       approve:
-        "dApp Bind ID ( Approve the required parameters, please save them and submit them to the administrator. ): ",
+        "dApp Bind ID ( Approve the required parameters, please save them properly ): ",
       active: {
         tit1: "ONT ID binding wallet",
         tit2: "ONT ID binding dApp",
