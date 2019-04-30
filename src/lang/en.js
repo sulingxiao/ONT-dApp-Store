@@ -248,6 +248,8 @@ export default {
   bind: {
     noIdentity:
       "There is no account (IDENTITY) in your Cyano Wallet, please login or create.",
+    mainOrTest:
+      "Please confirm whether Cyano current network settings are the main network.",
     ruleMsg: {
       required: "This is required",
       length: "The length must be: "
@@ -271,6 +273,8 @@ export default {
       submit: "Submit",
       next: "Next",
       bindList: "The ONT ID has been bound to the address list: ",
+      approve:
+        "dApp Bind ID ( Approve the required parameters, please save them and submit them to the administrator. ): ",
       active: {
         tit1: "ONT ID binding wallet",
         tit2: "ONT ID binding dApp",

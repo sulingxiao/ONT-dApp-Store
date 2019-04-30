@@ -82,7 +82,9 @@
               v-if="this.bindId"
               style="margin-top: 80px;word-break: break-all;color: red;"
             >
-              <p><b>Approve所需的dapp_bind_id（提供测试使用）：</b></p>
+              <p>
+                <b>{{ $t("bind.verify.approve") }}</b>
+              </p>
               <div>{{ this.bindId }}</div>
             </div>
 
@@ -112,7 +114,7 @@ export default {
       },
       dialogVisible: false,
       bindActive: 0,
-      cyanoReady: false,
+      allReady: false,
       bindId: ""
     };
   },
@@ -192,22 +194,25 @@ export default {
         await client.registerClient({});
         this.verifyForm.ontId = await client.api.identity.getIdentity();
         this.verifyForm.scAddress = await client.api.asset.getAccount();
-        this.cyanoReady = true; // Cyano已经登录好ont id和wallet了
         this.$message({
           message: this.$t("message.getCyanoInfoSuccess"),
           type: "success"
         });
         await this.$store.dispatch("getBindedWallet", this.verifyForm.ontId);
+        this.allReady = true; // Cyano已经登录好ont id和wallet了；且处于正确的网络
       } catch (e) {
-        if (e === "NO_IDENTITY") {
+        let err = this.$HelperTools.strToJson(e);
+        this.$message.error(err.Result || err.toString());
+
+        if (e.indexOf("Get contract code from db fail") !== -1) {
+          this.$alert(this.$t("bind.mainOrTest"));
+        } else if (e === "NO_IDENTITY") {
           this.$alert(this.$t("bind.noIdentity"));
-        } else {
-          this.$message.error(e.toString());
         }
       }
     },
     async bindNext() {
-      if (this.cyanoReady) {
+      if (this.allReady) {
         switch (this.bindActive) {
           case 0:
             if (

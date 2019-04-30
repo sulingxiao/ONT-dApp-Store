@@ -229,6 +229,7 @@ export default {
   },
   bind: {
     noIdentity: "您的Cyano Wallet中没有账户（IDENTITY），请登录或创建。",
+    mainOrTest: "请确认Cyano的当前网络设置是否为主网",
     ruleMsg: {
       required: "这项内容是必填项",
       length: "该项长度必须为："
@@ -251,6 +252,7 @@ export default {
       submit: "提交",
       next: "下一步",
       bindList: "该ONT ID已经绑定地址列表：",
+      approve: "dApp Bind ID（审批所需参数，请妥善保存，并提交给管理员）：s",
       active: {
         tit1: "ONT ID绑定钱包",
         tit2: "ONT ID绑定dApp",

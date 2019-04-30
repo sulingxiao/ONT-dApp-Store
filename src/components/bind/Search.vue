@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       searchForm: {
-        scHash: "cae215265a5e348bfd603b8db22893aa74b42417"
+        scHash: ""
       },
       users: {
         account: "",
