@@ -7,6 +7,31 @@ export const CONTRACT_HASH = {
 
 export const NODE_LIST = [
   {
+    nodename: "Gravity",
+    publickey:
+      "022daa39fd3ed4ec04b543dbaa5f938c559bcdb7bd1989aa1b49ef1dff6f124e65"
+  },
+  {
+    nodename: "BlockData",
+    publickey:
+      "0238385342621b943d9c718b4c87d04b6ecdbb130614f0aafec832e6a76ac7dfa1"
+  },
+  {
+    nodename: "Sesameseed",
+    publickey:
+      "02a1728e405744106ae42d224bb16229c2e143bad39343bf83f2f3990fe0d427d0"
+  },
+  {
+    nodename: "Bitwires",
+    publickey:
+      "03b4bc9a6d7bda58f47de8a435d920091b7b7527c986eea8ca6fffcea0aad505bd"
+  },
+  {
+    nodename: "Blocks",
+    publickey:
+      "03e58f4e67bf61cdc61495c5242bcf3396a1b34cda193e67ba979168e80d4ce872"
+  },
+  {
     nodename: "Trio Bravo",
     publickey:
       "0287fe995c6f27ad0c1a7640f9cc6c2537ed47126cc430e738d96f0390583ac2d2",

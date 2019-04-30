@@ -257,7 +257,7 @@ export default {
       txt:
         "You first need to bind your dApp to be eligible for dApp incentives. After your dApp contract is successfully deployed, your ONT ID (future changes will be made using this ONT ID), dividend wallet (for receiving dApp incentives), and deployment wallet need to be bound.",
       txt2: {
-        1: "Before binding, please make sure you are using a Chrome browser, have installed the Cyano wallet browser plugin, and are logged into your ONT ID and deployment contract address.",
+        1: "Before binding, please make sure you are using a Chrome browser, have installed the Cyano wallet browser plugin, and are logged into your ONT ID and deployment contract address. ",
         2: "If you do not already have Cyano, click here to download the Cyano plugin."
       },
       ontId: "ONT ID:",
