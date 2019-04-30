@@ -190,7 +190,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 6,
+      pageSize: 10,
       loading: true
     };
   },
@@ -209,33 +209,43 @@ export default {
           switch (tmpList[i].ContractHash) {
             // HyperDragons Go!
             case "cae215265a5e348bfd603b8db22893aa74b42417":
-              tmpList[i].Reward = 8036.97;
-              tmpList[i].TotalReward = 41491.37;
+              tmpList[i].Reward = 4457.95;
+              tmpList[i].TotalReward = 45949.32;
               break;
             // 像素鸟
             case "81e9ad4bdcc91e439ef167cacb6da919f73842f6":
-              tmpList[i].Reward = 4767;
-              tmpList[i].TotalReward = 10073.06;
+              tmpList[i].Reward = 3597.7;
+              tmpList[i].TotalReward = 13670.76;
               break;
             // 区块战争
             case "573dd44ca1c691e6d224119ebdd762960089d826":
-              tmpList[i].Reward = 4308.99;
-              tmpList[i].TotalReward = 5061.7;
+              tmpList[i].Reward = 4604.7;
+              tmpList[i].TotalReward = 9666.4;
               break;
             // 2048 Enhanced
             case "aa0547aac7b9822167e2576f5c921ea0eb5ada7f":
-              tmpList[i].Reward = 936.69;
+              tmpList[i].Reward = 0;
               tmpList[i].TotalReward = 1423.52;
               break;
             // 爆爽弹一弹
             case "5389914e9ad96cc8a15a3e961440334719270cf8":
-              tmpList[i].Reward = 1312.22;
-              tmpList[i].TotalReward = 1312.22;
+              tmpList[i].Reward = 3389.13;
+              tmpList[i].TotalReward = 4701.35;
               break;
             // Fishing Man
             case "8c15299cc6843e808b42f1ffb9cff7ec36f81ea1":
-              tmpList[i].Reward = 638.12;
+              tmpList[i].Reward = 0;
               tmpList[i].TotalReward = 638.12;
+              break;
+            // 枪手总动员
+            case "e6209479c1380c937fe9a4ce35fe952a83f301f2":
+              tmpList[i].Reward = 2704.85;
+              tmpList[i].TotalReward = 2704.85;
+              break;
+            // 熊本冲
+            case "b8dc52617afb3e0f1e3509cb6dfebe071dea974d":
+              tmpList[i].Reward = 1245.67;
+              tmpList[i].TotalReward = 1245.67;
               break;
             default:
               tmpList[i].Reward = 0;
