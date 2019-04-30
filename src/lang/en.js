@@ -46,7 +46,7 @@ export default {
   },
   message: {
     getCyanoInfoSuccess:
-      "The ONT ID and Account Address have been successfully obtained.",
+      "The ONT ID and Account Address have been successfully obtained. ",
     bindWalletErr: "The ONT-ID and Wallet Address are already bound."
   },
   main: {

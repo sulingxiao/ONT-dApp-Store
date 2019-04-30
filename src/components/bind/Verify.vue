@@ -192,8 +192,10 @@ export default {
         await client.registerClient({});
         this.verifyForm.ontId = await client.api.identity.getIdentity();
         this.verifyForm.scAddress = await client.api.asset.getAccount();
+        let netConf = await client.api.network.getNetwork();
+        netConf = " [ " + netConf.type + " : " + netConf.address + " ]";
         this.$message({
-          message: this.$t("message.getCyanoInfoSuccess"),
+          message: this.$t("message.getCyanoInfoSuccess") + netConf,
           type: "success"
         });
         this.allReady = true; // Cyano已经登录好ont id和wallet了；且处于正确的网络
@@ -438,9 +440,21 @@ export default {
     },
     async handleSubmit() {
       await this.$refs.verifyForm.validate();
-      this.bindActive = 0; // 初始化行为
-      await this.getBindedWallet(this.verifyForm.ontId); // 获取bindList
-      this.dialogVisible = true;
+      try {
+        await this.getBindedWallet(this.verifyForm.ontId); // 获取bindList
+
+        this.bindActive = 0; // 初始化行为
+        this.dialogVisible = true;
+      } catch (e) {
+        let err = this.$HelperTools.strToJson(e);
+        this.$message.error(err.Result || err.toString());
+
+        if (e.indexOf("Get contract code from db fail") !== -1) {
+          this.$alert(this.$t("bind.mainOrTest"));
+        } else if (e === "NO_IDENTITY") {
+          this.$alert(this.$t("bind.noIdentity"));
+        }
+      }
     },
     handleClose(done) {
       this.$confirm(this.$t("bind.verify.confirmQuit"))
