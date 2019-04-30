@@ -98,9 +98,18 @@ export default {
           }
         ]
       };
+    },
+    nodeOptions() {
+      let tmpList = this.$store.getters.candidateList;
+      if (tmpList.length) {
+        return this.$HelperTools.sortArrList(tmpList, "Name");
+      } else {
+        return {};
+      }
     }
   },
   created() {
+    // this.$store.dispatch("getCandidates").then(); // TODO：通过接口获取，目前接口数据还未整理完毕
     this.initClient();
     this.nodeOption = this.$HelperTools.sortArrList(
       this.nodeOption,
