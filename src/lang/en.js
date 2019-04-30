@@ -80,18 +80,16 @@ export default {
       name: "“The Renaissance” Incentive Plan",
       bindBtn: {
         verify: {
-          tit: "dApp binding verification",
-          txt:
-            "Account address binding and verification review for receiving incentives in participating in the incentive plan."
+          tit: "dApp binding",
+          txt: "Receive your dApp incentives by binding your dApp here."
         },
         node: {
           tit: "dApp node binding",
-          txt:
-            "After the dApp binds the node, it can accept the node's fee redemption."
+          txt: "Bind your dApp to a node to receive node dividend incentives."
         },
         search: {
-          tit: "Binding information query",
-          txt: "Can query the results of binding verification and node binding"
+          tit: "Bound information query",
+          txt: "Check your dApp binding status here."
         }
       },
       detail1: {

@@ -232,7 +232,7 @@ const HelperTools = {
   getSystemInfo() {
     let sys = {};
     let ua = navigator.userAgent.toLowerCase();
-    let re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+    let re = /(msie|firefox|chrome|opera|version|edge).*?([\d.]+)/;
     let m = ua.match(re);
     sys.browser = m[1].replace(/version/, "'safari");
     sys.ver = m[2];
