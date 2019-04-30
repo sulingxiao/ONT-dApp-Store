@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
     to.name === "BindNode" ||
     to.name === "BindSearch"
   ) {
-    let sys = Helper.HelperTools.getSystemInfo();
+    let sys = Helper.HelperTools.getSysInfo();
     if (sys.browser !== "chrome" || sys.isMobile) {
       alert(i18n.t("alert.chrome"));
       next({ name: "Support" });

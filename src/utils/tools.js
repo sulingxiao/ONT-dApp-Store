@@ -229,13 +229,26 @@ const HelperTools = {
   /**
    * 获取当前浏览系统的信息
    */
-  getSystemInfo() {
+  getSysInfo() {
     let sys = {};
+
     let ua = navigator.userAgent.toLowerCase();
-    let re = /(msie|firefox|chrome|opera|version|edge).*?([\d.]+)/;
-    let m = ua.match(re);
-    sys.browser = m[1].replace(/version/, "'safari");
-    sys.ver = m[2];
+
+    let isOpera = ua.indexOf("opera") > -1;
+    let isIE =
+      ua.indexOf("compatible") > -1 && ua.indexOf("msie") > -1 && !isOpera;
+    let isEdge = ua.indexOf("edge") > -1;
+    let isFF = ua.indexOf("firefox") > -1;
+    let isSafari = ua.indexOf("safari") > -1 && ua.indexOf("chrome") === -1;
+    let isChrome = ua.indexOf("chrome") > -1 && ua.indexOf("safari") > -1;
+
+    if (isIE) sys.browser = "ie";
+    else if (isOpera) sys.browser = "opera";
+    else if (isEdge) sys.browser = "edge";
+    else if (isFF) sys.browser = "firefox";
+    else if (isSafari) sys.browser = "safari";
+    else if (isChrome) sys.browser = "chrome";
+
     sys.isMobile = ua.indexOf("mobile") > -1;
 
     return sys;
