@@ -246,83 +246,80 @@ export default {
     tit: "Third Party dApp Stores"
   },
   bind: {
-    noIdentity:
-      "There is no account (IDENTITY) in your Cyano Wallet, please login or create.",
-    mainOrTest:
-      "Please confirm whether Cyano current network settings are the main network.",
+    noIdentity: "Please first login to Cyano or create a wallet",
+    mainOrTest: "Please make sure your Cyano is set to MainNet",
     ruleMsg: {
-      required: "This is required",
-      length: "The length must be: "
+      required: "Required",
+      length: "Character length must be:"
     },
     verify: {
-      tit: "DApp binding verification",
+      tit: "dApp binding",
       txt:
-        "DApp binding validation is available to developers. After the contract is successfully deployed, the developer will dApp and ONT ID (after the update operation is completed by the ONT ID), the dividend wallet (for dApp incentives), and the wallet binding for deploying the dApp.",
+        "You first need to bind your dApp to be eligible for dApp incentives. After your dApp contract is successfully deployed, your ONT ID (future changes will be made using this ONT ID), dividend wallet (for receiving dApp incentives), and deployment wallet need to be bound.",
       txt2: {
-        1: "Before binding, make sure you use the Chrome browser, install the cyano browser plugin and log in to the ONTID and the contract wallet address of your deployment. ",
-        2: "Click to download the Cyano plugin"
+        1: "Before binding, please make sure you are using a Chrome browser, have installed the Cyano wallet browser plugin, and are logged into your ONT ID and deployment contract address.",
+        2: "If you do not already have Cyano, click here to download the Cyano plugin."
       },
       ontId: "ONT ID:",
-      scHash: "Contract Hash:",
-      scAddress: "Deployment contract address:",
+      scHash: "dApp contract hash:",
+      scAddress: "dApp deployment contract address:",
       scAddressDesc:
-        "The administrator will verify that the deployment address is consistent with the actual deployment contract address. Please fill in correctly.",
-      address: "Receiving an incentive address:",
+        "The administrator will verify whether the deployment contract address is a correct contract address. Please fill this in correctly.",
+      address: "Dividend wallet (for receiving dApp incentives):",
       note:
-        "Note: If you want to replace the receiving stimulus address, resubmit the binding verification information.",
+        "Note: If you want to change the dividend address after submitting it, please resubmit dApp binding.",
       submit: "Submit",
       next: "Next",
-      bindList: "The ONT ID has been bound to the address list: ",
+      bindList: "ONT ID and deployment contract address successfully bound",
       approve:
-        "dApp Bind ID ( Approve the required parameters, please save them properly ): ",
+        "Bound dApp ID (you can save this for your own record, but it is not necessary): ",
       active: {
-        tit1: "ONT ID binding wallet",
-        tit2: "ONT ID binding dApp",
+        tit1: "ONT ID and wallet bound",
+        tit2: "ONT ID and dApp bound",
         tit3: "Waiting for administrator review"
       },
       confirmAlert: {
-        tit: "dApp Binding Verification",
-        txt: "Verification has been submitted successfully!",
+        tit: "dApp binding",
+        txt: "Bind request has been submitted successfully!",
         btn: "Confirm"
       },
       confirmQuit:
-        "Your verification information has not been submitted to the administrator for review. After exiting the verification process, dApp binding verification is required. Confirm exit?"
+        "Your dApp binding request has not been submitted to the administrator for review. Confirm exit?"
     },
     node: {
       tit: "dApp node binding",
-      txt:
-        "Please complete the dApp binding verification before binding the node",
-      scHash: "Contract Hash:",
-      nodeName: "Node Name:",
-      nodePublicKey: "Node Public Key:",
-      note: "Note: The binding node can get the node fee sharing revenue.",
-      submit: "Binding",
+      txt: "Please complete dApp binding before completing node binding.",
+      scHash: "Contract hash:",
+      nodeName: "Node name:",
+      nodePublicKey: "Node public key:",
+      note:
+        "Note: You will receive incentives from this node after binding with it..",
+      submit: "Bind",
       placeholder: {
         nodeName: "Please select a node"
       },
       confirmAlert: {
-        tit: "dApp Node Binding",
-        txt: "The dApp node is successfully bound!",
-        btn: "Confirm"
+        tit: "dApp node binding",
+        txt: "dApp node successfully bound!",
+        btn: "OK"
       },
       confirmGoToBind:
-        "You have not completed the DAPP binding verification. Do you want to bind authentication?",
-      confirmBinded:
-        "You have completed the binding verification of the dApp. Confirm the binding node?"
+        "You have not completed dApp binding. Go to dApp binding?",
+      confirmBinded: "You have completed dApp binding. Confirm node binding?"
     },
     search: {
-      tit: "Binding information query",
+      tit: "Bound information query",
       scHash: "Contract hash",
       submit: "Search",
       placeholder: {
-        scHash: "Please enter the contract hash you are looking for."
+        scHash: "Please enter the contract hash you are looking for"
       },
       result: {
-        name: "Search Result",
+        name: "Search results",
         ontId: "ONT ID:",
-        address: "Receiving the Incentive Address:",
-        nodeName: "Binded Nodes:",
-        nodePublicKey: "Node Public Key:"
+        address: "Dividend wallet:",
+        nodeName: "Bound node:",
+        nodePublicKey: "Node public key:"
       }
     }
   }
