@@ -196,7 +196,6 @@ export default {
           message: this.$t("message.getCyanoInfoSuccess"),
           type: "success"
         });
-        await this.getBindedWallet(this.verifyForm.ontId);
         this.allReady = true; // Cyano已经登录好ont id和wallet了；且处于正确的网络
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
@@ -439,6 +438,8 @@ export default {
     },
     async handleSubmit() {
       await this.$refs.verifyForm.validate();
+      this.bindActive = 0; // 初始化行为
+      await this.getBindedWallet(this.verifyForm.ontId); // 获取bindList
       this.dialogVisible = true;
     },
     handleClose(done) {
