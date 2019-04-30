@@ -101,7 +101,9 @@
 </template>
 
 <script>
+import { CONTRACT_HASH } from "@/utils/const";
 import { client } from "ontology-dapi";
+import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -112,6 +114,8 @@ export default {
         scAddress: "",
         address: ""
       },
+      bindList: [],
+      bindSearchResult: {},
       dialogVisible: false,
       bindActive: 0,
       allReady: false,
@@ -177,12 +181,6 @@ export default {
           }
         ]
       };
-    },
-    bindList() {
-      return this.$store.getters.bindedWallet || [];
-    },
-    bindSearchResult() {
-      return this.$store.getters.bindedDApp || {};
     }
   },
   created() {
@@ -198,7 +196,7 @@ export default {
           message: this.$t("message.getCyanoInfoSuccess"),
           type: "success"
         });
-        await this.$store.dispatch("getBindedWallet", this.verifyForm.ontId);
+        await this.getBindedWallet(this.verifyForm.ontId);
         this.allReady = true; // Cyano已经登录好ont id和wallet了；且处于正确的网络
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
@@ -224,7 +222,7 @@ export default {
             }
             break;
           case 1:
-            await this.$store.dispatch("getBindedDApp", this.verifyForm.scHash);
+            await this.getBindedDApp(this.verifyForm.scHash);
             if (await this.bindDApp()) {
               this.bindActive = 2;
             }
@@ -249,7 +247,7 @@ export default {
     },
     async bindWallet() {
       try {
-        await this.$store.dispatch("setBindWallet", {
+        await this.setBindWallet({
           ontId: this.verifyForm.ontId,
           address: this.verifyForm.scAddress
         });
@@ -278,14 +276,14 @@ export default {
           if (this.bindSearchResult.address === this.verifyForm.address) {
             return true;
           } else {
-            this.bindId = await this.$store.dispatch("putBindDApp", {
+            this.bindId = await this.putBindDApp({
               scHash: this.verifyForm.scHash,
               ontId: this.verifyForm.ontId,
               address: this.verifyForm.address
             });
           }
         } else {
-          this.bindId = await this.$store.dispatch("setBindDApp", {
+          this.bindId = await this.setBindDApp({
             scHash: this.verifyForm.scHash,
             ontId: this.verifyForm.ontId,
             address: this.verifyForm.address
@@ -299,6 +297,145 @@ export default {
         this.$message.error(err.Result || err.toString());
         return false;
       }
+    },
+    /**
+     *【ONT ID】绑定【发布合约的Address】
+     *
+     * @param data
+     * @return {Promise<void>}
+     */
+    async setBindWallet(data) {
+      let params = {
+        contract: CONTRACT_HASH.bindWallet,
+        method: "bind",
+        parameters: [
+          { type: "String", value: data.ontId },
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(data.address).serialize()
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: false
+      };
+
+      await client.api.smartContract.invoke(params);
+    },
+    /**
+     * 查询该ONT ID已经绑定的Wallet列表
+     *
+     * @param ontId
+     * @return {Promise<void>}
+     */
+    async getBindedWallet(ontId) {
+      let retArr = [];
+      let params = {
+        contract: CONTRACT_HASH.bindWallet,
+        method: "get_binded_wallet",
+        parameters: [{ type: "String", value: ontId }]
+      };
+
+      let ret = await client.api.smartContract.invokeRead(params);
+      if (ret) {
+        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+        ret = this.$HelperTools.strMapToObj(ret);
+        for (let retKey in ret) {
+          retArr.push(new Crypto.Address(utils.str2hexstr(retKey)).toBase58()); // 将KEY值转换成地址
+        }
+      }
+
+      this.bindList = retArr;
+    },
+    /**
+     *【ONT ID】（已绑【发布合约的Address】）、【奖励领取Address】、【合约】互相绑定
+     *
+     * @param data: contract_hash、ontid、receive_account(or new_receive_account)
+     * @return {Promise<*|string>}
+     */
+    async setBindDApp(data) {
+      let params = {
+        contract: CONTRACT_HASH.bindDApp,
+        method: "dapp_bind",
+        parameters: [
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(data.scHash).serialize()
+          },
+          { type: "String", value: data.ontId },
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(data.address).serialize()
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: true
+      };
+
+      let ret = await client.api.smartContract.invoke(params);
+
+      return ret.result[0][2] || "";
+    },
+    /**
+     * 更新【ONT ID】（已绑【发布合约的Address】）、【奖励领取Address】、【合约】互相绑定
+     *
+     * @param data: contract_hash、ontid、receive_account(or new_receive_account)
+     * @return {Promise<*|string>}
+     */
+    async putBindDApp(data) {
+      let params = {
+        contract: CONTRACT_HASH.bindDApp,
+        method: "update_dapp_bind",
+        parameters: [
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(data.scHash).serialize()
+          },
+          { type: "String", value: data.ontId },
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(data.address).serialize()
+          }
+        ],
+        gasPrice: "500",
+        gasLimit: "20000",
+        requireIdentity: true
+      };
+
+      let ret = await client.api.smartContract.invoke(params);
+
+      return ret.result[0][2] || "";
+    },
+    /**
+     * 查询该合约已经绑定的dApp信息
+     *
+     * @param scHash
+     * @return {Promise<void>}
+     */
+    async getBindedDApp(scHash) {
+      let data = {};
+      let params = {
+        contract: CONTRACT_HASH.bindDApp,
+        method: "get_binded_dapp",
+        parameters: [
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(scHash).serialize()
+          }
+        ]
+      };
+
+      let ret = await client.api.smartContract.invokeRead(params);
+      if (ret) {
+        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+        ret = this.$HelperTools.strMapToObj(ret);
+
+        data.ontId = utils.hexstr2str(ret.ontid);
+        data.address = new Crypto.Address(ret.receive_account).toBase58();
+      }
+
+      this.bindSearchResult = data;
     },
     async handleSubmit() {
       await this.$refs.verifyForm.validate();

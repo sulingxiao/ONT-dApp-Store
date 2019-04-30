@@ -52,7 +52,9 @@
 </template>
 
 <script>
+import { CONTRACT_HASH } from "@/utils/const";
 import { client } from "ontology-dapi";
+import { Crypto, ScriptBuilder, utils } from "ontology-ts-sdk";
 
 export default {
   data() {
@@ -63,6 +65,12 @@ export default {
       users: {
         account: "",
         ontId: ""
+      },
+      bindSearchResult: {
+        ontId: "None",
+        address: "None",
+        nodeName: "None",
+        nodePublicKey: "None"
       }
     };
   },
@@ -82,14 +90,6 @@ export default {
             message: this.$t("bind.ruleMsg.length") + "40"
           }
         ]
-      };
-    },
-    bindSearchResult() {
-      return {
-        ontId: this.$store.getters.bindedDApp.ontId || "None",
-        address: this.$store.getters.bindedDApp.address || "None",
-        nodeName: this.$store.getters.bindedNode.nodeName || "None",
-        nodePublicKey: this.$store.getters.bindedNode.nodePublicKey || "None"
       };
     }
   },
@@ -114,15 +114,84 @@ export default {
       await this.$refs.searchForm.validate();
 
       try {
-        await this.$store.dispatch("delBindedDApp");
-        await this.$store.dispatch("getBindedDApp", this.searchForm.scHash);
-        await this.$store.dispatch("getBindedNode", this.searchForm.scHash);
+        await this.delBindedDApp();
+        await this.getBindedDApp(this.searchForm.scHash);
+        await this.getBindedNode(this.searchForm.scHash);
 
         this.$message({ message: "Success", type: "success" });
       } catch (e) {
         let err = this.$HelperTools.strToJson(e);
         this.$message.error(err.Result || err.toString());
       }
+    },
+    /**
+     * 查询该合约已经绑定的dApp信息
+     *
+     * @param scHash
+     * @return {Promise<void>}
+     */
+    async getBindedDApp(scHash) {
+      let params = {
+        contract: CONTRACT_HASH.bindDApp,
+        method: "get_binded_dapp",
+        parameters: [
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(scHash).serialize()
+          }
+        ]
+      };
+
+      let ret = await client.api.smartContract.invokeRead(params);
+      if (ret) {
+        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+        ret = this.$HelperTools.strMapToObj(ret);
+
+        this.bindSearchResult.ontId = utils.hexstr2str(ret.ontid);
+        this.bindSearchResult.address = new Crypto.Address(
+          ret.receive_account
+        ).toBase58();
+      }
+    },
+    /**
+     * 查询该合约已经绑定的节点信息
+     *
+     * @param scHash
+     * @return {Promise<void>}
+     */
+    async getBindedNode(scHash) {
+      let params = {
+        contract: CONTRACT_HASH.bindDApp,
+        method: "get_binded_node",
+        parameters: [
+          {
+            type: "ByteArray",
+            value: new Crypto.Address(scHash).serialize()
+          }
+        ]
+      };
+
+      let ret = await client.api.smartContract.invokeRead(params);
+      if (ret) {
+        ret = ScriptBuilder.deserializeItem(new utils.StringReader(ret));
+        ret = this.$HelperTools.strMapToObj(ret);
+
+        this.bindSearchResult.nodeName = utils.hexstr2str(ret.node_name);
+        this.bindSearchResult.nodePublicKey = ret.node_pubkey;
+      }
+    },
+    /**
+     * 清空上一次查询信息
+     *
+     * @return {Promise<void>}
+     */
+    async delBindedDApp() {
+      this.bindSearchResult = {
+        ontId: "None",
+        address: "None",
+        nodeName: "None",
+        nodePublicKey: "None"
+      };
     }
   }
 };
