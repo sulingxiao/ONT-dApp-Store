@@ -95,7 +95,7 @@ export default {
         desc: "用户行为付出的手续费，开发者和节点各分50%"
       },
       detail2: {
-        name: "日激励 周激励",
+        name: "活跃高 激励多",
         nickname: "工蚁计划",
         desc: "通过ONG和ONT奖励活跃度排名前50的dApp"
       },
