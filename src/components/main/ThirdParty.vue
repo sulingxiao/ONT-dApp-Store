@@ -47,7 +47,7 @@ export default {
           url: "http://dappbirds.com/explore",
           img: "/static/tp/3.png"
         },
-        { url: "", img: "" }
+        { url: "https://dapptotal.com/ont", img: "/static/tp/2.png" }
       ]
     };
   }

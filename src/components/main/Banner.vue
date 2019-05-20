@@ -9,7 +9,7 @@
         >
           <el-carousel-item v-for="(banner, index) in banners" :key="index">
             <a v-if="banner.url" :href="banner.url" target="_blank"
-            ><img :src="banner.img" alt=""
+              ><img :src="banner.img" alt=""
             /></a>
             <img v-else :src="banner.img" alt="" />
           </el-carousel-item>

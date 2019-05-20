@@ -1521,6 +1521,14 @@ browserslist@^4.0.0, browserslist@^4.1.0:
     electron-to-chromium "^1.3.82"
     node-releases "^1.0.1"
 
+browserslist@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.6.0.tgz#5274028c26f4d933d5b1323307c1d1da5084c9ff"
+  dependencies:
+    caniuse-lite "^1.0.30000967"
+    electron-to-chromium "^1.3.133"
+    node-releases "^1.1.19"
+
 bs58@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/bs58/-/bs58-2.0.1.tgz#55908d58f1982aba2008fa1bed8f91998a29bf8d"
@@ -1691,6 +1699,10 @@ caniuse-api@^3.0.0:
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000864, caniuse-lite@^1.0.30000899:
   version "1.0.30000906"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000906.tgz#7c44e498a2504f7a5db3b4f91285bbc821157a77"
+
+caniuse-lite@^1.0.30000967, caniuse-lite@^1.0.30000969:
+  version "1.0.30000969"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000969.tgz#7664f571f2072657bde70b00a1fc1ba41f1942a9"
 
 case-sensitive-paths-webpack-plugin@^2.1.2:
   version "2.1.2"
@@ -2705,6 +2717,10 @@ ee-first@1.1.1:
 ejs@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
+
+electron-to-chromium@^1.3.133:
+  version "1.3.135"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.135.tgz#f5799b95f2bcd8de17cde47d63392d83a4477041"
 
 electron-to-chromium@^1.3.47, electron-to-chromium@^1.3.82:
   version "1.3.83"
@@ -5096,6 +5112,12 @@ node-pre-gyp@^0.10.0:
 node-releases@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.3.tgz#3414ed84595096459c251699bfcb47d88324a9e4"
+  dependencies:
+    semver "^5.3.0"
+
+node-releases@^1.1.19:
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.19.tgz#c492d1e381fea0350b338b646c27867e88e91b3d"
   dependencies:
     semver "^5.3.0"
 
