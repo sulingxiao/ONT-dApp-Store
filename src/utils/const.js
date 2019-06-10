@@ -1,8 +1,8 @@
 export const CONTRACT_HASH = {
-  bindWallet: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b", // 测试网
-  bindDApp: "174a0431f2b3ccdf41843362f53e6c195438812d" // 测试网
-  // bindWallet: "99dd1b1e454a912ab69b60d46c0cc805fe0e3658", // 主网
-  // bindDApp: "939053a288f44eb560cad17c36df5ad34dafca2c" // 主网
+  //bindWallet: "d5c9a4a49bc8f3b5301be8f73fdc2b67e4d0e67b", // 测试网
+  //bindDApp: "174a0431f2b3ccdf41843362f53e6c195438812d" // 测试网
+   bindWallet: "99dd1b1e454a912ab69b60d46c0cc805fe0e3658", // 主网
+   bindDApp: "939053a288f44eb560cad17c36df5ad34dafca2c" // 主网
 };
 
 export const NODE_LIST = [
@@ -428,5 +428,19 @@ export const NODE_LIST = [
       "02f0e43592212629ff5f482a0011eba5c5be059cd40eb1bdd2c956c1139967bb35",
     address: "AV59sm9kRGB4EYRKCMYXXsiCPKzbAFMcpA",
     ontid: "did:ont:AdiYHQJkfGC1PjMP9KePMAcoPJrVpBW6RB"
+  },
+  {
+    nodename: "DAppbirds",
+    publickey:
+      "038da17c2ddee8a1c290a7d4bed024c2d206bfb0479d790edda5c1500b9fce9d6a",
+    address: "ANjcr5MimVyXhKVeVYfkyLmnw5hkQiT62z",
+    ontid: "did:ont:APGxbJXVt4z7PmqsLtAUTSkeHGWEnehY9B"
+  },
+  {
+    nodename: "Karathen",
+    publickey:
+      "03b28e0376202679cc993fbc1a7982718cbee00b8718309fa5731c8ce645a7a41c",
+    address: "AW4ytrVJX2h6W2jxKCf5Ws2bh1DUXAK2qq",
+    ontid: "did:ont:ARi9Hi88dv9ENqNdnzvAhWJubdC3eWuVzV"
   }
 ];
